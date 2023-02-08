@@ -78,67 +78,6 @@ main {
   padding: 0 10px;
   font-size: 12px;
 }
-.item-icon {
-  position: absolute;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  bottom: 36px;
-  right: -4px;
-}
 .item-add {
-  color: #fe6332;
-  cursor: pointer;
-}
-.buy_display {
-  cursor: pointer;
-}
-#back {
-  background-color: #fe6332;
-  color: white;
-  border-radius: 4px;
-  width: 200px;
-  height: 30px;
-  border: none;
-  cursor: pointer;
-}
-#buy {
-  background-color: #27aa99;
-  color: white;
-  border-radius: 4px;
-  width: 50px;
-  height: 30px;
-  border: none;
-  cursor: pointer;
-}
-.title {
-  display: grid;
-  grid-template-columns: 600px 200px 100px 100px 100px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.list_buy {
-  display: flex;
-  text-align: center;
-}
-.buy-name {
-  width: 600px;
-}
-.buy-quality {
-  width: 200px;
-}
-.buy-price,
-.buy-del,
-.buy-sum {
-  width: 100px;
-}
-.buy {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
-}
-.buy-del {
-  color: red;
-  cursor: pointer;
+  position: absolute;
 }

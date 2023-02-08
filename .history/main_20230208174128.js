@@ -137,13 +137,12 @@ buyDisplay.addEventListener("click", (e) => {
   const itemBuy = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
   console.log(itemBuy);
   const buy = document.querySelector(".buy");
-  let quality = 0;
-  itemBuy.forEach((value) => {
+  itemBuy.forEach((value, index) => {
+    // console.log(value);
+    let quality = 0;
     if (value.id) {
       quality += 1;
     }
-  });
-  itemBuy.forEach((value, index) => {
     const templateBuy = `<div class="list_buy">
     <div class="buy-name">${value.name}</div>
     <div class="buy-quality">${quality}</div>

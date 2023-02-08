@@ -135,10 +135,5 @@ main {
 }
 .buy {
   display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
-}
-.buy-del {
-  color: red;
-  cursor: pointer;
+  justify-content: space-around;
 }

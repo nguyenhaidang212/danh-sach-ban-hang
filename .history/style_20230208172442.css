@@ -118,6 +118,9 @@ main {
   text-align: center;
   margin-bottom: 20px;
 }
+.title:first-child {
+  text-align: start;
+}
 .list_buy {
   display: flex;
   text-align: center;
@@ -132,13 +135,4 @@ main {
 .buy-del,
 .buy-sum {
   width: 100px;
-}
-.buy {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
-}
-.buy-del {
-  color: red;
-  cursor: pointer;
 }

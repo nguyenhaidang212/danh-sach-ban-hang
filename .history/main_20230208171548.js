@@ -117,7 +117,9 @@ addItemIcon.forEach((value, index) => {
     const itemAdd = value.parentNode.nextElementSibling.textContent;
     item.forEach((value) => {
       if (itemAdd == value.name) {
+        console.log(value);
         arrItemBuy.push(value);
+        console.log(arrItemBuy);
       }
     });
   });
@@ -133,26 +135,6 @@ buyDisplay.addEventListener("click", (e) => {
   // main.removeChild(".list");
   mainMenu.style.display = "none";
   mainBuy.style.display = "block";
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrItemBuy));
-  const itemBuy = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
-  console.log(itemBuy);
-  const buy = document.querySelector(".buy");
-  let quality = 0;
-  itemBuy.forEach((value) => {
-    if (value.id) {
-      quality += 1;
-    }
-  });
-  itemBuy.forEach((value, index) => {
-    const templateBuy = `<div class="list_buy">
-    <div class="buy-name">${value.name}</div>
-    <div class="buy-quality">${quality}</div>
-    <div class="buy-price">${value.gia}</div>
-    <div class="buy-sum">100</div>
-    <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
-    </div>`;
-    buy.insertAdjacentHTML("beforebegin", templateBuy);
-  });
 });
 back.addEventListener("click", (e) => {
   mainMenu.style.display = "block";

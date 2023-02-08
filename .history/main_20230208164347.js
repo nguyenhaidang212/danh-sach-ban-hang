@@ -86,7 +86,6 @@ const listData = [
 ];
 const keyLocalStorageListSP = "DANHSACHSP";
 const keyLocalStorageItemCart = "DANHSACHITEMCART";
-let arrItemBuy = [];
 const listItem = document.querySelector(".list");
 const nameList = document.querySelector(".item-title");
 // const idList = document.querySelector(".item-id");
@@ -95,6 +94,7 @@ const priceList = document.querySelector(".item-price");
 
 localStorage.setItem(keyLocalStorageListSP, JSON.stringify(listData));
 const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
+console.log(item);
 item.forEach((value, index, array) => {
   const template = `        <div class="item">
   <div class="item-imgs">
@@ -117,7 +117,7 @@ addItemIcon.forEach((value, index) => {
     const itemAdd = value.parentNode.nextElementSibling.textContent;
     item.forEach((value) => {
       if (itemAdd == value.name) {
-        arrItemBuy.push(value);
+        console.log(value);
       }
     });
   });
@@ -125,37 +125,6 @@ addItemIcon.forEach((value, index) => {
 
 //Trang thanh toan
 const buyDisplay = document.querySelector(".buy_display");
-const main = document.querySelector("main");
-const mainMenu = document.querySelector(".main_menu");
+const mainManu = document.querySelector(".main_menu");
 const mainBuy = document.querySelector(".main_buy");
-const back = document.getElementById("back");
-buyDisplay.addEventListener("click", (e) => {
-  // main.removeChild(".list");
-  mainMenu.style.display = "none";
-  mainBuy.style.display = "block";
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrItemBuy));
-  const itemBuy = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
-  console.log(itemBuy);
-  const buy = document.querySelector(".buy");
-  let quality = 0;
-  itemBuy.forEach((value) => {
-    if (value.id) {
-      quality += 1;
-    }
-  });
-  itemBuy.forEach((value, index) => {
-    const templateBuy = `<div class="list_buy">
-    <div class="buy-name">${value.name}</div>
-    <div class="buy-quality">${quality}</div>
-    <div class="buy-price">${value.gia}</div>
-    <div class="buy-sum">100</div>
-    <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
-    </div>`;
-    buy.insertAdjacentHTML("beforebegin", templateBuy);
-  });
-});
-back.addEventListener("click", (e) => {
-  mainMenu.style.display = "block";
-  mainBuy.style.display = "none";
-});
-localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrItemBuy));
+buyDisplay.addEventListener("click", (e) => {});
