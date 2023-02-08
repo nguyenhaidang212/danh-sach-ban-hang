@@ -1,0 +1,23 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.form {
+  display: inline-grid;
+  grid-template-columns: 150px 150px 150px 150px;
+  column-gap: 20px;
+  row-gap: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+header {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  padding: 10px 100px 10px;
+  justify-content: space-between;
+}
+.header-menu {
+  display: flex;
+}

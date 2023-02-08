@@ -69,42 +69,22 @@ const listData = [
     gia: 300,
     src: "https://luzy.vn/wp-content/uploads/2020/05/LZD10951-18.jpg",
   },
-  {
-    id: 11,
-    name: "Mắt kính",
-    so_luong: 2100,
-    gia: 400,
-    src: "https://vn-test-11.slatic.net/p/5e0af4609b84659f759982ac0146f184.jpg_800x800q100.jpg_600x600Q100.jpg",
-  },
-  {
-    id: 12,
-    name: "Thắt lưng da",
-    so_luong: 200,
-    gia: 200,
-    src: "https://hoianleather.com/wp-content/uploads/2021/04/That-lung-da-bo-that-danh-cho-nam-2.jpg",
-  },
 ];
 const keyLocalStorageListSP = "DANHSACHSP";
 const keyLocalStorageItemCart = "DANHSACHITEMCART";
-const listItem = document.querySelector(".list");
-const nameList = document.querySelector(".item-title");
-// const idList = document.querySelector(".item-id");
-const countList = document.querySelector(".item-quality");
-const priceList = document.querySelector(".item-price");
+const nameList = document.querySelector(".list-name");
+const idList = document.querySelector(".list-id");
+const countList = document.querySelector(".list-count");
+const priceList = document.querySelector(".list-price");
 
 localStorage.setItem(keyLocalStorageListSP, JSON.stringify(listData));
 const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
 item.forEach((value, index, array) => {
-  const template = `        <div class="item">
-  <div class="item-imgs">
-    <img src="${value.src}" alt="" class="item-img"/>
-  </div>
-  <div class="item-icon">icon</div>
-  <div class="item-title">${value.name}</div>
-  <div class="item-info">
-    <div class="item-price">${value.gia}</div>
-    <div class="item-quality">${value.so_luong}</div>
-  </div>
-</div>`;
-  listItem.insertAdjacentHTML("beforeend", template);
+  const template = `
+  <img src="" alt="">
+    <span>${value.id}</span>
+    <span>${value.name}</span>
+    <span>${value.so_luong}</span>
+    <span>${value.gia}</span>`;
+  document.querySelector(".form").insertAdjacentHTML("beforeend", template);
 });

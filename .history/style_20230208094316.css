@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 500px;
+  margin: 50px auto;
+}
+.list {
+  margin: 8px;
+  padding: 4px;
+}
+.form {
+  display: flex;
+}

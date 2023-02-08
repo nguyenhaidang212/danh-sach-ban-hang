@@ -34,37 +34,12 @@ h2 {
   grid-template-columns: 50px 50px 50px 50px;
   column-gap: 20px;
 }
-a {
-  text-decoration: none;
-  color: black;
-}
-main {
-  width: 1200px;
-  margin: 50px auto;
-}
 .list {
+  margin: 0 70px;
   display: grid;
-  margin: 0 225px;
-  grid-template-columns: 180px 180px 180px 180px;
+  grid-template-columns: 200px 200px 200px 200px;
   column-gap: 10px;
-  row-gap: 20px;
   text-align: center;
-}
-.item {
-  border: 2px solid #eee;
-}
-.item-imgs {
-  width: 100%;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 8px;
-  overflow: hidden;
-}
-.item-img {
-  text-align: center;
-  width: 100%;
 }
 .item-title {
   font-size: 20px;
@@ -74,5 +49,5 @@ main {
   display: flex;
   justify-content: space-between;
   margin: 0 10px;
-  padding: 0 20px;
+  padding: 0 10px;
 }

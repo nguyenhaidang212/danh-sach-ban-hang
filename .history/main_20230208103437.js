@@ -1,21 +1,21 @@
 const listData = [
   {
     id: 1,
-    name: "Quần áo nam",
+    name: "quan ao nam",
     so_luong: 100,
     gia: 100,
     src: "https://znews-photo.zadn.vn/w660/Uploaded/ycgmvjvj/2018_03_31/1.jpg",
   },
   {
     id: 2,
-    name: "Điện thoại",
+    name: "dien thoai va phu kien",
     so_luong: 200,
     gia: 500,
     src: "https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/t/_/t_m_12.png",
   },
   {
     id: 3,
-    name: "Macbook",
+    name: "thiet bi dien tu",
     so_luong: 300,
     gia: 1000,
     src: "https://cdn.tgdd.vn/Products/Images/44/231244/macbook-air-m1-2020-gold-600x600.jpg",
@@ -43,68 +43,47 @@ const listData = [
   },
   {
     id: 7,
-    name: "Tủ lạnh",
+    name: "Tủ lạnh Aqua Inverter 456 lít",
     so_luong: 700,
     gia: 1600,
     src: "https://cdn.tgdd.vn/Products/Images/1943/284851/tu-lanh-aqua-inverter-456-lit-aqr-m525xa-fb-600x600.jpg",
   },
   {
     id: 8,
-    name: "Điều hòa",
+    name: "Điều hòa Panasonic N9WKH-8M 9000Btu 1 chiều",
     so_luong: 800,
     gia: 1700,
     src: "https://hangdienmaygiare.com/images/products/2020/02/22/large/dieu-hoa-1-chieu-panasonic-n9wkh-8m_1582358300.jpg",
   },
   {
     id: 9,
-    name: "Máy giặt",
+    name: "Máy giặt Electrolux EWF1042BDWA 10 Kg Inverter",
     so_luong: 1000,
     gia: 2000,
     src: "https://hangdienmaygiare.com/images/products/2019/09/03/large/may-giat-electrolux-ewf1042bdwa-10-kg-inverter.jpg",
   },
   {
     id: 10,
-    name: "Váy đầm nữ",
+    name: "Váy đầm nữ hè công sở eo cao trẻ trung thanh lịch",
     so_luong: 2000,
     gia: 300,
     src: "https://luzy.vn/wp-content/uploads/2020/05/LZD10951-18.jpg",
   },
-  {
-    id: 11,
-    name: "Mắt kính",
-    so_luong: 2100,
-    gia: 400,
-    src: "https://vn-test-11.slatic.net/p/5e0af4609b84659f759982ac0146f184.jpg_800x800q100.jpg_600x600Q100.jpg",
-  },
-  {
-    id: 12,
-    name: "Thắt lưng da",
-    so_luong: 200,
-    gia: 200,
-    src: "https://hoianleather.com/wp-content/uploads/2021/04/That-lung-da-bo-that-danh-cho-nam-2.jpg",
-  },
 ];
 const keyLocalStorageListSP = "DANHSACHSP";
 const keyLocalStorageItemCart = "DANHSACHITEMCART";
-const listItem = document.querySelector(".list");
-const nameList = document.querySelector(".item-title");
-// const idList = document.querySelector(".item-id");
-const countList = document.querySelector(".item-quality");
-const priceList = document.querySelector(".item-price");
+const nameList = document.querySelector(".list-name");
+const idList = document.querySelector(".list-id");
+const countList = document.querySelector(".list-count");
+const priceList = document.querySelector(".list-price");
 
 localStorage.setItem(keyLocalStorageListSP, JSON.stringify(listData));
 const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
 item.forEach((value, index, array) => {
-  const template = `        <div class="item">
-  <div class="item-imgs">
-    <img src="${value.src}" alt="" class="item-img"/>
-  </div>
-  <div class="item-icon">icon</div>
-  <div class="item-title">${value.name}</div>
-  <div class="item-info">
-    <div class="item-price">${value.gia}</div>
-    <div class="item-quality">${value.so_luong}</div>
-  </div>
-</div>`;
-  listItem.insertAdjacentHTML("beforeend", template);
+  const template = `
+    <span>${value.id}</span>
+    <span>${value.name}</span>
+    <span>${value.so_luong}</span>
+    <span>${value.gia}</span>`;
+  document.querySelector(".form").insertAdjacentHTML("beforeend", template);
 });

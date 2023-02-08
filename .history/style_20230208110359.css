@@ -43,8 +43,8 @@ main {
   margin: 50px auto;
 }
 .list {
+  margin: auto;
   display: grid;
-  margin: 0 225px;
   grid-template-columns: 180px 180px 180px 180px;
   column-gap: 10px;
   row-gap: 20px;

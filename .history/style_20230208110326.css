@@ -40,18 +40,18 @@ a {
 }
 main {
   width: 1200px;
-  margin: 50px auto;
+  margin: auto;
 }
 .list {
+  margin: auto;
   display: grid;
-  margin: 0 225px;
   grid-template-columns: 180px 180px 180px 180px;
   column-gap: 10px;
   row-gap: 20px;
   text-align: center;
 }
 .item {
-  border: 2px solid #eee;
+  border: 1px solid #eee;
 }
 .item-imgs {
   width: 100%;

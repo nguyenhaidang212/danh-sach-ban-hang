@@ -69,20 +69,6 @@ const listData = [
     gia: 300,
     src: "https://luzy.vn/wp-content/uploads/2020/05/LZD10951-18.jpg",
   },
-  {
-    id: 11,
-    name: "Mắt kính",
-    so_luong: 2100,
-    gia: 400,
-    src: "https://vn-test-11.slatic.net/p/5e0af4609b84659f759982ac0146f184.jpg_800x800q100.jpg_600x600Q100.jpg",
-  },
-  {
-    id: 12,
-    name: "Thắt lưng da",
-    so_luong: 200,
-    gia: 200,
-    src: "https://hoianleather.com/wp-content/uploads/2021/04/That-lung-da-bo-that-danh-cho-nam-2.jpg",
-  },
 ];
 const keyLocalStorageListSP = "DANHSACHSP";
 const keyLocalStorageItemCart = "DANHSACHITEMCART";
