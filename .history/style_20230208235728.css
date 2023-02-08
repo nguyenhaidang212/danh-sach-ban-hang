@@ -136,6 +136,7 @@ main {
   width: 100px;
 }
 .buy {
+  width: 800px;
   margin: auto;
   display: flex;
   justify-content: space-between;

@@ -136,9 +136,10 @@ main {
   width: 100px;
 }
 .buy {
+  width: 1000px;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 50px;
 }
 .buy-del {

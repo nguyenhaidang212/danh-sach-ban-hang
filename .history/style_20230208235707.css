@@ -136,10 +136,14 @@ main {
   width: 100px;
 }
 .buy {
+  width: 1000px;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 50px;
+}
+.back {
+  margin-right: 1000px;
 }
 .buy-del {
   color: red;
