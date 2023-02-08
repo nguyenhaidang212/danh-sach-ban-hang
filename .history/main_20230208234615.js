@@ -110,7 +110,7 @@ item.forEach((value, index, array) => {
   listItem.insertAdjacentHTML("beforeend", template);
 });
 
-//Them san pham, them so luong san pham
+//Them san pham
 const buy = document.querySelector(".buy");
 const addItemIcon = document.querySelectorAll(".item-add");
 const arrListItem = [];

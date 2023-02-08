@@ -110,10 +110,9 @@ item.forEach((value, index, array) => {
   listItem.insertAdjacentHTML("beforeend", template);
 });
 
-//Them san pham, them so luong san pham
+//Them san pham
 const buy = document.querySelector(".buy");
 const addItemIcon = document.querySelectorAll(".item-add");
-const arrListItem = [];
 addItemIcon.forEach((value) => {
   let quality = 0;
   let sum = 0;
@@ -125,6 +124,13 @@ addItemIcon.forEach((value) => {
           case 1:
             quality += 1;
             break;
+          case 2:
+            quality += 1;
+            break;
+          case 3:
+            quality += 1;
+            break;
+
           default:
             quality += 1;
             break;
@@ -151,22 +157,8 @@ addItemIcon.forEach((value) => {
             }
           });
         }
-        if (arrListItem.length == 0) {
-          arrListItem.push(value);
-        } else {
-          let tong = 0;
-          arrListItem.forEach((e) => {
-            if (e.name == value.name) {
-              tong++;
-            }
-          });
-          if (tong == 0) {
-            arrListItem.push(value);
-          }
-        }
       }
     });
-    localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrListItem));
   });
 });
 
