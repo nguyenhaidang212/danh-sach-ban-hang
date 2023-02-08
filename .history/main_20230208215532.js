@@ -111,55 +111,13 @@ item.forEach((value, index, array) => {
 });
 
 //Them san pham
-const buy = document.querySelector(".buy");
 const addItemIcon = document.querySelectorAll(".item-add");
-addItemIcon.forEach((value) => {
-  let quality = 0;
+addItemIcon.forEach((value, index) => {
   value.addEventListener("click", (e) => {
     const itemAdd = value.parentNode.nextElementSibling.textContent;
     item.forEach((value) => {
-      const templateBuy = `<div class="list_buy">
-      <div class="buy-name">${value.name}</div>
-      <div class="buy-quality">${quality}</div>
-      <div class="buy-price">${value.gia}</div>
-      <div class="buy-sum">100</div>
-      <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
-      </div>`;
       if (itemAdd == value.name) {
-        switch (value.id) {
-          case 1:
-            quality += 1;
-            break;
-          case 2:
-            quality += 1;
-            break;
-          case 3:
-            quality += 1;
-            break;
-
-          default:
-            quality += 1;
-            break;
-        }
-        if (quality == 1) {
-          buy.insertAdjacentHTML(
-            "beforebegin",
-            `<div class="list_buy">
-          <div class="buy-name">${value.name}</div>
-          <div class="buy-quality">${quality}</div>
-          <div class="buy-price">${value.gia}</div>
-          <div class="buy-sum">100</div>
-          <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
-          </div>`
-          );
-        }
-        if (quality != 1) {
-          document.querySelectorAll(".buy-name").forEach((e) => {
-            if (e.textContent == value.name) {
-              e.nextElementSibling.textContent = quality;
-            }
-          });
-        }
+        arrItemBuy.push(value);
       }
     });
   });
@@ -171,12 +129,37 @@ const main = document.querySelector("main");
 const mainMenu = document.querySelector(".main_menu");
 const mainBuy = document.querySelector(".main_buy");
 const back = document.getElementById("back");
+const buy = document.querySelector(".buy");
 
 buyDisplay.addEventListener("click", (e) => {
+  // main.removeChild(".list");
   mainMenu.style.display = "none";
   mainBuy.style.display = "block";
+  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrItemBuy));
+  const itemBuy = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
+  itemBuy.forEach((value) => {
+    const templateBuy = `<div class="list_buy">
+      <div class="buy-name">${value.name}</div>
+      <div class="buy-quality"></div>
+      <div class="buy-price">${value.gia}</div>
+      <div class="buy-sum">100</div>
+      <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
+      </div>`;
+    buy.insertAdjacentHTML("beforebegin", templateBuy);
+  });
 });
 back.addEventListener("click", (e) => {
   mainMenu.style.display = "block";
   mainBuy.style.display = "none";
+  mainBuy.insertAdjacentHTML(
+    "afterbegin",
+    `<div class="title">
+  <span>Product Name</span><span>Quality</span><span>Subtotal</span
+  ><span>Total</span><span>Clear Cart</span>
+</div>
+<div class="buy">
+  <button id="back">Back to Shopping</button>
+  <button id="buy">Buy</button>
+</div>`
+  );
 });

@@ -143,7 +143,7 @@ addItemIcon.forEach((value) => {
         }
         if (quality == 1) {
           buy.insertAdjacentHTML(
-            "beforebegin",
+            "afterbegin",
             `<div class="list_buy">
           <div class="buy-name">${value.name}</div>
           <div class="buy-quality">${quality}</div>
@@ -173,10 +173,15 @@ const mainBuy = document.querySelector(".main_buy");
 const back = document.getElementById("back");
 
 buyDisplay.addEventListener("click", (e) => {
+  // main.removeChild(".list");
   mainMenu.style.display = "none";
   mainBuy.style.display = "block";
 });
 back.addEventListener("click", (e) => {
   mainMenu.style.display = "block";
   mainBuy.style.display = "none";
+  const listBuy = document.querySelectorAll(".list_buy");
+  listBuy.forEach((value) => {
+    value.remove();
+  });
 });

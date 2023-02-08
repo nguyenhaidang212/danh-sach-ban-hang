@@ -179,4 +179,8 @@ buyDisplay.addEventListener("click", (e) => {
 back.addEventListener("click", (e) => {
   mainMenu.style.display = "block";
   mainBuy.style.display = "none";
+  const listBuy = document.querySelectorAll(".list_buy");
+  listBuy.forEach((value) => {
+    value.remove();
+  });
 });
