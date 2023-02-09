@@ -122,13 +122,12 @@ $.addEventListener("click", (e) => {
     mainMenu.style.display = "block";
     mainBuy.style.display = "none";
   }
-
   //-----Add Item-----
   if (e.target.matches(".item-add")) {
     addItem(e.target);
-    displayItem();
+    // displayItem();
+    // quality(e.target.parentNode.nextElementSibling);
   }
-
   //-----Del Item-----
   if (e.target.matches(".buy-del")) {
     const itemDelName =
@@ -139,20 +138,33 @@ $.addEventListener("click", (e) => {
     addItemLocalStorage(arrayItemAdd);
   }
 });
-
-//-----Them localstorage-----
-function addItemLocalStorage(array) {
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
-}
-
 // -----Them san pham-----
 function addItem(value) {
   const iconBuy = value.parentNode.nextElementSibling;
+  console.log(iconBuy);
   item.forEach((e) => {
     if (e.name == iconBuy.textContent) {
-      if (arrayItemAdd.length == 0) {
-        arrayItemAdd.push(e);
+      console.log(1);
+      buyDiplay.insertAdjacentHTML(
+        "beforebegin",
+        `<div class="list_buy">
+      <div class="buy-name">${e.name}</div>
+      <div class="buy-quality">1</div>
+      <div class="buy-price">${e.gia}</div>
+      <div class="buy-sum">${e.id}</div>
+      <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
+    </div>`
+      );
+const listBuyItem = document.querySelectorAll(".buy-name");
+      listBuyItem.forEach(e => {
+        if(e.textContent ==iconBuy.textContent)  {
+
+        }
+      })
+
       }
+    }
+    if (e.name == iconBuy.textContent) {
       arrayItemAdd.forEach((e, i) => {
         if (e.name == iconBuy.textContent) {
           arrayItemAdd.splice(i, 1);
@@ -163,13 +175,13 @@ function addItem(value) {
   });
   addItemLocalStorage(arrayItemAdd);
 }
-
+//-----Them localstorage-----
+function addItemLocalStorage(array) {
+  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
+}
 //-----Hien thi san pham da mua-----
 function displayItem() {
-  const listBuy = document.querySelectorAll(".list_buy");
-  listBuy.forEach((e) => {
-    e.remove();
-  });
+
   arrayItemAdd.forEach((e) => {
     buyDiplay.insertAdjacentHTML(
       "beforebegin",
@@ -183,8 +195,6 @@ function displayItem() {
     );
   });
 }
-
-//-----xoa item-----
 function delItemBuy(name) {
   arrayItemAdd.forEach((e, i) => {
     if (e.name == name) {
@@ -192,3 +202,19 @@ function delItemBuy(name) {
     }
   });
 }
+// function quality(value) {
+//   arrayItemAdd.forEach((e) => {
+//     if (e.name == value.textContent) {
+//       const listBuyItem = document.querySelectorAll(".buy-name");
+//       listBuyItem.forEach((e) => {
+//         if (e.textContent == value.textContent) {
+//           let quality = Number(e.nextElementSibling.textContent);
+//           quality++;
+//           console.log(typeof quality);
+//           console.log(quality);
+//           e.nextElementSibling.textContent = `${quality}`;
+//         }
+//       });
+//     }
+//   });
+// }

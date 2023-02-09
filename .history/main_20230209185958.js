@@ -140,11 +140,6 @@ $.addEventListener("click", (e) => {
   }
 });
 
-//-----Them localstorage-----
-function addItemLocalStorage(array) {
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
-}
-
 // -----Them san pham-----
 function addItem(value) {
   const iconBuy = value.parentNode.nextElementSibling;
@@ -162,6 +157,11 @@ function addItem(value) {
     }
   });
   addItemLocalStorage(arrayItemAdd);
+}
+
+//-----Them localstorage-----
+function addItemLocalStorage(array) {
+  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
 }
 
 //-----Hien thi san pham da mua-----

@@ -122,13 +122,12 @@ $.addEventListener("click", (e) => {
     mainMenu.style.display = "block";
     mainBuy.style.display = "none";
   }
-
   //-----Add Item-----
   if (e.target.matches(".item-add")) {
     addItem(e.target);
-    displayItem();
+    // displayItem();
+    // quality(e.target.parentNode.nextElementSibling);
   }
-
   //-----Del Item-----
   if (e.target.matches(".buy-del")) {
     const itemDelName =
@@ -139,15 +138,10 @@ $.addEventListener("click", (e) => {
     addItemLocalStorage(arrayItemAdd);
   }
 });
-
-//-----Them localstorage-----
-function addItemLocalStorage(array) {
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
-}
-
 // -----Them san pham-----
 function addItem(value) {
   const iconBuy = value.parentNode.nextElementSibling;
+  console.log(iconBuy;
   item.forEach((e) => {
     if (e.name == iconBuy.textContent) {
       if (arrayItemAdd.length == 0) {
@@ -163,7 +157,10 @@ function addItem(value) {
   });
   addItemLocalStorage(arrayItemAdd);
 }
-
+//-----Them localstorage-----
+function addItemLocalStorage(array) {
+  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
+}
 //-----Hien thi san pham da mua-----
 function displayItem() {
   const listBuy = document.querySelectorAll(".list_buy");
@@ -183,8 +180,6 @@ function displayItem() {
     );
   });
 }
-
-//-----xoa item-----
 function delItemBuy(name) {
   arrayItemAdd.forEach((e, i) => {
     if (e.name == name) {
@@ -192,3 +187,19 @@ function delItemBuy(name) {
     }
   });
 }
+// function quality(value) {
+//   arrayItemAdd.forEach((e) => {
+//     if (e.name == value.textContent) {
+//       const listBuyItem = document.querySelectorAll(".buy-name");
+//       listBuyItem.forEach((e) => {
+//         if (e.textContent == value.textContent) {
+//           let quality = Number(e.nextElementSibling.textContent);
+//           quality++;
+//           console.log(typeof quality);
+//           console.log(quality);
+//           e.nextElementSibling.textContent = `${quality}`;
+//         }
+//       });
+//     }
+//   });
+// }

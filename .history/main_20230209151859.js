@@ -106,89 +106,13 @@ item.forEach((value) => {
   listItem.insertAdjacentHTML("beforeend", template);
 });
 
+// -----Them san pham-----
+const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
 const itemAdd = document.querySelectorAll(".item-add");
 const arrayItemAdd = [];
-const mainMenu = document.querySelector(".main_menu");
-const mainBuy = document.querySelector(".main_buy");
-const buyDiplay = document.querySelector(".buy");
-const delItem = document.querySelector(".buy-del");
 $.addEventListener("click", (e) => {
-  //-----Chuyen trang-----
-  if (e.target.matches(".buy_display")) {
-    mainMenu.style.display = "none";
-    mainBuy.style.display = "block";
-  }
-  if (e.target.matches("#back")) {
-    mainMenu.style.display = "block";
-    mainBuy.style.display = "none";
-  }
+  const iconBuy = e.target.parentNode.nextElementSibling.textContent;
 
-  //-----Add Item-----
-  if (e.target.matches(".item-add")) {
-    addItem(e.target);
-    displayItem();
-  }
-
-  //-----Del Item-----
-  if (e.target.matches(".buy-del")) {
-    const itemDelName =
-      e.target.parentNode.previousElementSibling.previousElementSibling
-        .previousElementSibling.previousElementSibling.textContent;
-    e.target.parentNode.parentNode.remove();
-    delItemBuy(itemDelName);
-    addItemLocalStorage(arrayItemAdd);
-  }
+  // if (e.target.value)
 });
-
-//-----Them localstorage-----
-function addItemLocalStorage(array) {
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
-}
-
-// -----Them san pham-----
-function addItem(value) {
-  const iconBuy = value.parentNode.nextElementSibling;
-  item.forEach((e) => {
-    if (e.name == iconBuy.textContent) {
-      if (arrayItemAdd.length == 0) {
-        arrayItemAdd.push(e);
-      }
-      arrayItemAdd.forEach((e, i) => {
-        if (e.name == iconBuy.textContent) {
-          arrayItemAdd.splice(i, 1);
-        }
-      });
-      arrayItemAdd.push(e);
-    }
-  });
-  addItemLocalStorage(arrayItemAdd);
-}
-
-//-----Hien thi san pham da mua-----
-function displayItem() {
-  const listBuy = document.querySelectorAll(".list_buy");
-  listBuy.forEach((e) => {
-    e.remove();
-  });
-  arrayItemAdd.forEach((e) => {
-    buyDiplay.insertAdjacentHTML(
-      "beforebegin",
-      `<div class="list_buy">
-      <div class="buy-name">${e.name}</div>
-      <div class="buy-quality">1</div>
-      <div class="buy-price">${e.gia}</div>
-      <div class="buy-sum">${e.id}</div>
-      <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
-    </div>`
-    );
-  });
-}
-
-//-----xoa item-----
-function delItemBuy(name) {
-  arrayItemAdd.forEach((e, i) => {
-    if (e.name == name) {
-      arrayItemAdd.splice(i, 1);
-    }
-  });
-}
+function addItem() {}

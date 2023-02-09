@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh sach ban hang</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/2568d54abe.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-title">
+        <i class="fas fa-store header-icon-title"></i>
+        <h2>SHOP</h2>
+      </div>
+      <div class="header-menu">
+        <div class="header-menu-home">
+          <a href="">HOME</a>
+        </div>
+        <div class="header-menu-about">
+          <a href="">ABOUT</a>
+        </div>
+        <div class="header-menu-bill">
+          <a href="">BILLS</a>
+        </div>
+        <i class="fas fa-shopping-cart buy_display"></i>
+      </div>
+    </header>
+
+    <!-- Trang giao dien -->
+    <main class="main_menu">
+      <div class="list"></div>
+    </main>
+    <!-- Trang thanh toan -->
+    <main class="main_buy" style="display: none">
+      <div class="title">
+        <span>Product Name</span><span>Quality</span><span>Subtotal</span
+        ><span>Total</span><span>Clear Cart</span>
+      </div>
+
+      <div class="buy">
+        <button id="back">Back to Shopping</button>
+        <button id="buy">Buy</button>
+      </div>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>

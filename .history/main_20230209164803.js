@@ -112,6 +112,8 @@ const mainMenu = document.querySelector(".main_menu");
 const mainBuy = document.querySelector(".main_buy");
 const buyDiplay = document.querySelector(".buy");
 const delItem = document.querySelector(".buy-del");
+const listBuy = document.querySelectorAll(".list_buy");
+// console.log(listBuy);
 $.addEventListener("click", (e) => {
   //-----Chuyen trang-----
   if (e.target.matches(".buy_display")) {
@@ -119,16 +121,15 @@ $.addEventListener("click", (e) => {
     mainBuy.style.display = "block";
   }
   if (e.target.matches("#back")) {
+    console.log(1);
     mainMenu.style.display = "block";
     mainBuy.style.display = "none";
   }
-
   //-----Add Item-----
   if (e.target.matches(".item-add")) {
     addItem(e.target);
     displayItem();
   }
-
   //-----Del Item-----
   if (e.target.matches(".buy-del")) {
     const itemDelName =
@@ -139,20 +140,11 @@ $.addEventListener("click", (e) => {
     addItemLocalStorage(arrayItemAdd);
   }
 });
-
-//-----Them localstorage-----
-function addItemLocalStorage(array) {
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
-}
-
 // -----Them san pham-----
 function addItem(value) {
   const iconBuy = value.parentNode.nextElementSibling;
   item.forEach((e) => {
     if (e.name == iconBuy.textContent) {
-      if (arrayItemAdd.length == 0) {
-        arrayItemAdd.push(e);
-      }
       arrayItemAdd.forEach((e, i) => {
         if (e.name == iconBuy.textContent) {
           arrayItemAdd.splice(i, 1);
@@ -163,19 +155,21 @@ function addItem(value) {
   });
   addItemLocalStorage(arrayItemAdd);
 }
-
+//-----Them localstorage-----
+function addItemLocalStorage(array) {
+  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
+}
 //-----Hien thi san pham da mua-----
 function displayItem() {
-  const listBuy = document.querySelectorAll(".list_buy");
-  listBuy.forEach((e) => {
-    e.remove();
-  });
+  // listBuy.forEach((e) => {
+  //   e.remove();
+  // });
   arrayItemAdd.forEach((e) => {
     buyDiplay.insertAdjacentHTML(
       "beforebegin",
       `<div class="list_buy">
       <div class="buy-name">${e.name}</div>
-      <div class="buy-quality">1</div>
+      <div class="buy-quality">${e.so_luong}</div>
       <div class="buy-price">${e.gia}</div>
       <div class="buy-sum">${e.id}</div>
       <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
@@ -183,12 +177,13 @@ function displayItem() {
     );
   });
 }
-
-//-----xoa item-----
 function delItemBuy(name) {
   arrayItemAdd.forEach((e, i) => {
     if (e.name == name) {
       arrayItemAdd.splice(i, 1);
     }
   });
+  console.log(arrayItemAdd);
 }
+
+// localStorage.clear();

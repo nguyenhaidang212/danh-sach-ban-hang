@@ -86,13 +86,17 @@ const listData = [
 ];
 const keyLocalStorageListSP = "DANHSACHSP";
 const keyLocalStorageItemCart = "DANHSACHITEMCART";
+let arrItemBuy = [];
 const listItem = document.querySelector(".list");
-const $ = document.body;
+const nameList = document.querySelector(".item-title");
+// const idList = document.querySelector(".item-id");
+const countList = document.querySelector(".item-quality");
+const priceList = document.querySelector(".item-price");
 
 localStorage.setItem(keyLocalStorageListSP, JSON.stringify(listData));
 const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-item.forEach((value) => {
-  const template = `<div class="item">
+item.forEach((value, index, array) => {
+  const template = `        <div class="item">
   <div class="item-imgs">
     <img src="${value.src}" alt="" class="item-img"/>
   </div>
@@ -106,89 +110,85 @@ item.forEach((value) => {
   listItem.insertAdjacentHTML("beforeend", template);
 });
 
-const itemAdd = document.querySelectorAll(".item-add");
-const arrayItemAdd = [];
-const mainMenu = document.querySelector(".main_menu");
-const mainBuy = document.querySelector(".main_buy");
-const buyDiplay = document.querySelector(".buy");
-const delItem = document.querySelector(".buy-del");
-$.addEventListener("click", (e) => {
-  //-----Chuyen trang-----
-  if (e.target.matches(".buy_display")) {
-    mainMenu.style.display = "none";
-    mainBuy.style.display = "block";
-  }
-  if (e.target.matches("#back")) {
-    mainMenu.style.display = "block";
-    mainBuy.style.display = "none";
-  }
-
-  //-----Add Item-----
-  if (e.target.matches(".item-add")) {
-    addItem(e.target);
-    displayItem();
-  }
-
-  //-----Del Item-----
-  if (e.target.matches(".buy-del")) {
-    const itemDelName =
-      e.target.parentNode.previousElementSibling.previousElementSibling
-        .previousElementSibling.previousElementSibling.textContent;
-    e.target.parentNode.parentNode.remove();
-    delItemBuy(itemDelName);
-    addItemLocalStorage(arrayItemAdd);
-  }
+//Them san pham, them so luong san pham
+const buy = document.querySelector(".buy");
+const addItemIcon = document.querySelectorAll(".item-add");
+const arrListItem = [];
+addItemIcon.forEach((value) => {
+  let quality = 0;
+  let sum = 0;
+  value.addEventListener("click", (e) => {
+    const itemAdd = value.parentNode.nextElementSibling.textContent;
+    item.forEach((value) => {
+      if (itemAdd == value.name) {
+        switch (value.id) {
+          case 1:
+            quality += 1;
+            break;
+          default:
+            quality += 1;
+            break;
+        }
+        sum = Number(value.gia) * Number(quality);
+        if (quality == 1) {
+          buy.insertAdjacentHTML(
+            "beforebegin",
+            `<div class="list_buy">
+          <div class="buy-name">${value.name}</div>
+          <div class="buy-quality">${quality}</div>
+          <div class="buy-price">${value.gia}</div>
+          <div class="buy-sum">${sum}</div>
+          <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
+          </div>`
+          );
+        }
+        if (quality != 1) {
+          document.querySelectorAll(".buy-name").forEach((e) => {
+            if (e.textContent == value.name) {
+              e.nextElementSibling.textContent = quality;
+              e.nextElementSibling.nextElementSibling.nextElementSibling.textContent =
+                sum;
+            }
+          });
+        }
+        if (arrListItem.length == 0) {
+          arrListItem.push(value);
+        } else {
+          let tong = 0;
+          arrListItem.forEach((e) => {
+            if (e.name == value.name) {
+              tong++;
+            }
+          });
+          if (tong == 0) {
+            arrListItem.push(value);
+          }
+        }
+      }
+    });
+    localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrListItem));
+  });
 });
 
-//-----Them localstorage-----
-function addItemLocalStorage(array) {
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
-}
+//Trang thanh toan
+const buyDisplay = document.querySelector(".buy_display");
+const main = document.querySelector("main");
+const mainMenu = document.querySelector(".main_menu");
+const mainBuy = document.querySelector(".main_buy");
+const back = document.getElementById("back");
 
-// -----Them san pham-----
-function addItem(value) {
-  const iconBuy = value.parentNode.nextElementSibling;
-  item.forEach((e) => {
-    if (e.name == iconBuy.textContent) {
-      if (arrayItemAdd.length == 0) {
-        arrayItemAdd.push(e);
-      }
-      arrayItemAdd.forEach((e, i) => {
-        if (e.name == iconBuy.textContent) {
-          arrayItemAdd.splice(i, 1);
-        }
-      });
-      arrayItemAdd.push(e);
-    }
+buyDisplay.addEventListener("click", (e) => {
+  mainMenu.style.display = "none";
+  mainBuy.style.display = "block";
+});
+back.addEventListener("click", (e) => {
+  mainMenu.style.display = "block";
+  mainBuy.style.display = "none";
+});
+const buyDel = document.querySelectorAll(".buy-del");
+console.log(buyDel);
+buyDel.forEach((e) => {
+  e.addEventListener("click", (value) => {
+    console.log(value.target);
   });
-  addItemLocalStorage(arrayItemAdd);
-}
-
-//-----Hien thi san pham da mua-----
-function displayItem() {
-  const listBuy = document.querySelectorAll(".list_buy");
-  listBuy.forEach((e) => {
-    e.remove();
-  });
-  arrayItemAdd.forEach((e) => {
-    buyDiplay.insertAdjacentHTML(
-      "beforebegin",
-      `<div class="list_buy">
-      <div class="buy-name">${e.name}</div>
-      <div class="buy-quality">1</div>
-      <div class="buy-price">${e.gia}</div>
-      <div class="buy-sum">${e.id}</div>
-      <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
-    </div>`
-    );
-  });
-}
-
-//-----xoa item-----
-function delItemBuy(name) {
-  arrayItemAdd.forEach((e, i) => {
-    if (e.name == name) {
-      arrayItemAdd.splice(i, 1);
-    }
-  });
-}
+});
