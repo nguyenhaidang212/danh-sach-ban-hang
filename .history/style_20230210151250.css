@@ -42,7 +42,6 @@ a {
 .header-menu {
   text-decoration: none;
   color: black;
-  position: relative;
 }
 main {
   width: 1200px;
@@ -100,9 +99,8 @@ main {
 .buy_display {
   cursor: pointer;
   position: absolute;
-  top: 4px;
-  right: -36px;
-  font-size: 20px;
+  top: 20px;
+  right: 0;
 }
 #back {
   background-color: #fe6332;

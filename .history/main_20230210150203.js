@@ -142,14 +142,8 @@ $.addEventListener("click", (e) => {
   if (e.target.matches("#buy")) {
     $.style.backgroundColor = "rgba(128, 128, 128, 1)";
     mainBuy.style.display = "none";
-    document.querySelector("header").style.display = "none";
-    document.querySelector(".main_confirm").style.display = "block";
-  }
-  if (e.target.matches(".close") || e.target.matches(".btn-danger")) {
-    document.querySelector(".main_confirm").style.display = "none";
-    mainBuy.style.display = "block";
-    $.style.backgroundColor = "white";
-    document.querySelector("header").style.display = "block";
+    document.head.style.display = "none";
+    document.querySelectorAll(".main_confirm").style.display = "block";
   }
   //-----Add Item-----
   if (e.target.matches(".item-add")) {

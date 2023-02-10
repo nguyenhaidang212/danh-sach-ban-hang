@@ -148,7 +148,6 @@ $.addEventListener("click", (e) => {
   if (e.target.matches(".close") || e.target.matches(".btn-danger")) {
     document.querySelector(".main_confirm").style.display = "none";
     mainBuy.style.display = "block";
-    $.style.backgroundColor = "white";
     document.querySelector("header").style.display = "block";
   }
   //-----Add Item-----

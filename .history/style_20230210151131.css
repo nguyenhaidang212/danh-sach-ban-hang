@@ -37,12 +37,11 @@ a {
   display: flex;
   grid-template-columns: 50px 50px 50px 50px;
   column-gap: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .header-menu {
   text-decoration: none;
   color: black;
-  position: relative;
 }
 main {
   width: 1200px;
@@ -99,10 +98,6 @@ main {
 }
 .buy_display {
   cursor: pointer;
-  position: absolute;
-  top: 4px;
-  right: -36px;
-  font-size: 20px;
 }
 #back {
   background-color: #fe6332;
