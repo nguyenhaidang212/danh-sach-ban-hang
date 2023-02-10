@@ -123,6 +123,8 @@ main {
   text-align: center;
   margin-bottom: 12px;
   max-height: 400px;
+  border: 1px solid #eee;
+  margin: auto 300px;
 }
 .buy-name {
   width: 600px;

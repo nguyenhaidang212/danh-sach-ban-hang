@@ -117,6 +117,7 @@ item.forEach((value) => {
 </div>`;
   listItem.insertAdjacentHTML("beforeend", template);
 });
+
 const itemAdd = document.querySelectorAll(".item-add");
 const arrayItemAdd = [];
 const mainMenu = document.querySelector(".main_menu");
@@ -126,72 +127,36 @@ const delItem = document.querySelector(".buy-del");
 $.addEventListener("click", (e) => {
   //-----Chuyen trang-----
   if (e.target.matches(".buy_display")) {
-    const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
     mainMenu.style.display = "none";
     mainBuy.style.display = "block";
-    displayItem(listItem);
+    const listItem = localStorage.getItem("danhsachmua");
   }
   if (e.target.matches("#back")) {
     mainMenu.style.display = "block";
     mainBuy.style.display = "none";
-    const back = document.querySelector("#back");
-    document.querySelectorAll(".list_buy").forEach((e) => {
-      e.remove();
-    });
-    if (e.target.matches("#buy")) {
-      console.log(1);
-    }
   }
+
   //-----Add Item-----
   if (e.target.matches(".item-add")) {
+    // addItem(e.target);
     addItem(e.target);
   }
+
   //-----Del Item-----
   if (e.target.matches(".buy-del")) {
     const itemDelName =
       e.target.parentNode.previousElementSibling.previousElementSibling
-        .previousElementSibling.previousElementSibling;
+        .previousElementSibling.previousElementSibling.textContent;
+    e.target.parentNode.parentNode.remove();
     delItemBuy(itemDelName);
-  }
-  //-----Increase/Decrease Item----
-  if (e.target.matches(".plus-icon")) {
-    const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
-    listItem.forEach((value) => {
-      if (
-        value.name == e.target.parentNode.previousElementSibling.textContent
-      ) {
-        value.soluong++;
-      }
-    });
-    localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(listItem));
-    console.log(listItem);
-    const listBuy = document.querySelectorAll(".list_buy");
-    listBuy.forEach((e) => {
-      e.remove();
-    });
-    displayItem(listItem);
-  }
-  if (e.target.matches(".minus-icon")) {
-    const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
-    listItem.forEach((value, i) => {
-      if (
-        value.name == e.target.parentNode.previousElementSibling.textContent
-      ) {
-        value.soluong--;
-        if (value.soluong == 0) {
-          listItem.splice(i, 1);
-        }
-      }
-    });
-    console.log(listItem);
-    localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(listItem));
-    const listBuy = document.querySelectorAll(".list_buy");
-    listBuy.forEach((e) => {
-      e.remove();
-    });
-    displayItem(listItem);
+    addItemLocalStorage(arrayItemAdd);
   }
 });
+
+// //-----Them localstorage-----
+// function addItemLocalStorage(array) {
+//   localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
+// }
 
 // // -----Them san pham-----
 function addItem(value) {
@@ -200,8 +165,6 @@ function addItem(value) {
       const object = {
         id: e.id,
         soluong: e.quality,
-        name: e.name,
-        price: e.gia,
       };
       arrayItemAdd.forEach((e, i) => {
         if (object.id == e.id) {
@@ -212,42 +175,36 @@ function addItem(value) {
       arrayItemAdd.push(object);
     }
   });
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
+  console.log(arrayItemAdd);
+  localStorage.setItem("danhsachmua", JSON.stringify(arrayItemAdd));
 }
 
 // //-----Hien thi san pham da mua-----
-function displayItem(arr) {
-  arr.forEach((e) => {
-    item.forEach((value) => {
-      if (value.id == e.id) {
-        const price = Number(e.price) * Number(e.soluong);
-        buyDiplay.insertAdjacentHTML(
-          "beforebegin",
-          `<div class="list_buy">
-        <div class="buy-name">${value.name}</div>
-        <div class="buy-quality">
-        <i class="fa-solid fa-minus minus-icon"></i>
-        ${e.soluong}
-        <i class="fa-solid fa-plus plus-icon"></i>
-        </div>
-        <div class="buy-price">${value.gia}</div>
-        <div class="buy-sum">${price}</div>
-        <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
-      </div>`
-        );
-      }
-    });
-  });
-}
+// function displayItem() {
+//   arrayItemAdd.forEach((e) => {
+//     buyDiplay.insertAdjacentHTML(
+//       "beforebegin",
+//       `<div class="list_buy">
+//       <div class="buy-name">${e.name}</div>
+//       <div class="buy-quality">
+//       <i class="fa-solid fa-minus plus-icon"></i>
+//       ${e.quality}
+//       <i class="fa-solid fa-plus minus-icon"></i>
+//       </div>
+//       <div class="buy-price">${e.gia}</div>
+//       <div class="buy-sum">${e.id}</div>
+//       <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
+//     </div>`
+//     );
+//   });
+// }
 
 // //-----Xoa san pham-----
-function delItemBuy(name) {
-  name.parentNode.remove();
-  arrayItemAdd.forEach((e, i) => {
-    if (e.name == name.textContent) {
-      arrayItemAdd.splice(i, 1);
-    }
-  });
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
-}
+// function delItemBuy(name) {
+//   arrayItemAdd.forEach((e, i) => {
+//     if (e.name == name) {
+//       arrayItemAdd.splice(i, 1);
+//     }
+//   });
+// }
 // localStorage.clear();

@@ -5,7 +5,7 @@ const listData = [
     so_luong: 100,
     gia: 100,
     src: "https://znews-photo.zadn.vn/w660/Uploaded/ycgmvjvj/2018_03_31/1.jpg",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const listData = [
     so_luong: 200,
     gia: 500,
     src: "https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/t/_/t_m_12.png",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const listData = [
     so_luong: 300,
     gia: 1000,
     src: "https://cdn.tgdd.vn/Products/Images/44/231244/macbook-air-m1-2020-gold-600x600.jpg",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const listData = [
     so_luong: 400,
     gia: 1200,
     src: "https://www.nguyenkim.com/images/detailed/644/10036326-may-anh-canon-eos-3000d-kit-ef-s-18-55mm-den-1.jpg",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const listData = [
     so_luong: 500,
     gia: 1400,
     src: "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/Apple_Watch_SE-Cell-44mm-star1.jpg",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const listData = [
     so_luong: 600,
     gia: 1500,
     src: "https://cdn.elly.vn/uploads/2019/08/13121739/giay-nam-cao-cap-da-that-ELLY-EGTM2-5.jpg",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const listData = [
     so_luong: 700,
     gia: 1600,
     src: "https://cdn.tgdd.vn/Products/Images/1943/284851/tu-lanh-aqua-inverter-456-lit-aqr-m525xa-fb-600x600.jpg",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ const listData = [
     so_luong: 800,
     gia: 1700,
     src: "https://hangdienmaygiare.com/images/products/2020/02/22/large/dieu-hoa-1-chieu-panasonic-n9wkh-8m_1582358300.jpg",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ const listData = [
     so_luong: 1000,
     gia: 2000,
     src: "https://hangdienmaygiare.com/images/products/2019/09/03/large/may-giat-electrolux-ewf1042bdwa-10-kg-inverter.jpg",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ const listData = [
     so_luong: 2000,
     gia: 300,
     src: "https://luzy.vn/wp-content/uploads/2020/05/LZD10951-18.jpg",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 11,
@@ -85,7 +85,7 @@ const listData = [
     so_luong: 2100,
     gia: 400,
     src: "https://vn-test-11.slatic.net/p/5e0af4609b84659f759982ac0146f184.jpg_800x800q100.jpg_600x600Q100.jpg",
-    quality: 1,
+    quality: 0,
   },
   {
     id: 12,
@@ -93,7 +93,7 @@ const listData = [
     so_luong: 200,
     gia: 200,
     src: "https://hoianleather.com/wp-content/uploads/2021/04/That-lung-da-bo-that-danh-cho-nam-2.jpg",
-    quality: 1,
+    quality: 0,
   },
 ];
 const keyLocalStorageListSP = "DANHSACHSP";
@@ -117,6 +117,7 @@ item.forEach((value) => {
 </div>`;
   listItem.insertAdjacentHTML("beforeend", template);
 });
+
 const itemAdd = document.querySelectorAll(".item-add");
 const arrayItemAdd = [];
 const mainMenu = document.querySelector(".main_menu");
@@ -126,128 +127,86 @@ const delItem = document.querySelector(".buy-del");
 $.addEventListener("click", (e) => {
   //-----Chuyen trang-----
   if (e.target.matches(".buy_display")) {
-    const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
     mainMenu.style.display = "none";
     mainBuy.style.display = "block";
-    displayItem(listItem);
   }
   if (e.target.matches("#back")) {
     mainMenu.style.display = "block";
     mainBuy.style.display = "none";
-    const back = document.querySelector("#back");
-    document.querySelectorAll(".list_buy").forEach((e) => {
-      e.remove();
-    });
-    if (e.target.matches("#buy")) {
-      console.log(1);
-    }
   }
+
   //-----Add Item-----
   if (e.target.matches(".item-add")) {
     addItem(e.target);
   }
+
+  if (e.target.matches(".buy_display")) {
+    displayItem();
+  }
+
   //-----Del Item-----
   if (e.target.matches(".buy-del")) {
     const itemDelName =
       e.target.parentNode.previousElementSibling.previousElementSibling
-        .previousElementSibling.previousElementSibling;
+        .previousElementSibling.previousElementSibling.textContent;
+    e.target.parentNode.parentNode.remove();
     delItemBuy(itemDelName);
-  }
-  //-----Increase/Decrease Item----
-  if (e.target.matches(".plus-icon")) {
-    const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
-    listItem.forEach((value) => {
-      if (
-        value.name == e.target.parentNode.previousElementSibling.textContent
-      ) {
-        value.soluong++;
-      }
-    });
-    localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(listItem));
-    console.log(listItem);
-    const listBuy = document.querySelectorAll(".list_buy");
-    listBuy.forEach((e) => {
-      e.remove();
-    });
-    displayItem(listItem);
-  }
-  if (e.target.matches(".minus-icon")) {
-    const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
-    listItem.forEach((value, i) => {
-      if (
-        value.name == e.target.parentNode.previousElementSibling.textContent
-      ) {
-        value.soluong--;
-        if (value.soluong == 0) {
-          listItem.splice(i, 1);
-        }
-      }
-    });
-    console.log(listItem);
-    localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(listItem));
-    const listBuy = document.querySelectorAll(".list_buy");
-    listBuy.forEach((e) => {
-      e.remove();
-    });
-    displayItem(listItem);
+    addItemLocalStorage(arrayItemAdd);
   }
 });
 
-// // -----Them san pham-----
+//-----Them localstorage-----
+function addItemLocalStorage(array) {
+  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(array));
+}
+
+// -----Them san pham-----
 function addItem(value) {
+  const iconBuy = value.parentNode.nextElementSibling;
   item.forEach((e) => {
-    if (e.name == value.parentNode.nextElementSibling.textContent) {
-      const object = {
-        id: e.id,
-        soluong: e.quality,
-        name: e.name,
-        price: e.gia,
-      };
+    if (e.name == iconBuy.textContent) {
+      if (arrayItemAdd.length == 0) {
+        arrayItemAdd.push(e);
+      }
       arrayItemAdd.forEach((e, i) => {
-        if (object.id == e.id) {
-          object.soluong = e.soluong + 1;
+        if (e.name == iconBuy.textContent) {
+          e.quality++;
+          console.log(e.quality);
           arrayItemAdd.splice(i, 1);
         }
       });
-      arrayItemAdd.push(object);
+      arrayItemAdd.push(e);
     }
   });
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
+  addItemLocalStorage(arrayItemAdd);
 }
 
-// //-----Hien thi san pham da mua-----
-function displayItem(arr) {
-  arr.forEach((e) => {
-    item.forEach((value) => {
-      if (value.id == e.id) {
-        const price = Number(e.price) * Number(e.soluong);
-        buyDiplay.insertAdjacentHTML(
-          "beforebegin",
-          `<div class="list_buy">
-        <div class="buy-name">${value.name}</div>
-        <div class="buy-quality">
-        <i class="fa-solid fa-minus minus-icon"></i>
-        ${e.soluong}
-        <i class="fa-solid fa-plus plus-icon"></i>
-        </div>
-        <div class="buy-price">${value.gia}</div>
-        <div class="buy-sum">${price}</div>
-        <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
-      </div>`
-        );
-      }
-    });
+//-----Hien thi san pham da mua-----
+function displayItem() {
+  arrayItemAdd.forEach((e) => {
+    buyDiplay.insertAdjacentHTML(
+      "beforebegin",
+      `<div class="list_buy">
+      <div class="buy-name">${e.name}</div>
+      <div class="buy-quality">
+      <i class="fa-solid fa-minus plus-icon"></i>
+      ${e.quality}
+      <i class="fa-solid fa-plus pluc-minus"></i>
+      </div>
+      <div class="buy-price">${e.gia}</div>
+      <div class="buy-sum">${e.id}</div>
+      <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
+    </div>`
+    );
   });
 }
 
-// //-----Xoa san pham-----
+//-----Xoa san pham-----
 function delItemBuy(name) {
-  name.parentNode.remove();
   arrayItemAdd.forEach((e, i) => {
-    if (e.name == name.textContent) {
+    if (e.name == name) {
       arrayItemAdd.splice(i, 1);
     }
   });
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
 }
 // localStorage.clear();

@@ -147,15 +147,6 @@ main {
 }
 .plus-icon,
 .minus-icon {
-  margin: 0 24px;
+  margin: 0 12px;
   cursor: pointer;
-  border: 1px solid #eee;
-  padding: 4px;
-  border-radius: 50%;
-}
-.plus-icon:hover {
-  background-color: #fe6332;
-}
-.minus-icon:hover {
-  background-color: #27aa99;
 }

@@ -138,14 +138,14 @@ $.addEventListener("click", (e) => {
     document.querySelectorAll(".list_buy").forEach((e) => {
       e.remove();
     });
-    if (e.target.matches("#buy")) {
-      console.log(1);
-    }
   }
+
   //-----Add Item-----
   if (e.target.matches(".item-add")) {
+    // addItem(e.target);
     addItem(e.target);
   }
+
   //-----Del Item-----
   if (e.target.matches(".buy-del")) {
     const itemDelName =
@@ -153,43 +153,23 @@ $.addEventListener("click", (e) => {
         .previousElementSibling.previousElementSibling;
     delItemBuy(itemDelName);
   }
+
   //-----Increase/Decrease Item----
   if (e.target.matches(".plus-icon")) {
+    console.log(e.target.parentNode.previousElementSibling);
     const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
     listItem.forEach((value) => {
+      console.log(value.name);
       if (
         value.name == e.target.parentNode.previousElementSibling.textContent
       ) {
         value.soluong++;
       }
     });
-    localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(listItem));
-    console.log(listItem);
-    const listBuy = document.querySelectorAll(".list_buy");
-    listBuy.forEach((e) => {
-      e.remove();
-    });
-    displayItem(listItem);
-  }
-  if (e.target.matches(".minus-icon")) {
-    const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
-    listItem.forEach((value, i) => {
-      if (
-        value.name == e.target.parentNode.previousElementSibling.textContent
-      ) {
-        value.soluong--;
-        if (value.soluong == 0) {
-          listItem.splice(i, 1);
-        }
-      }
-    });
     console.log(listItem);
     localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(listItem));
-    const listBuy = document.querySelectorAll(".list_buy");
-    listBuy.forEach((e) => {
-      e.remove();
-    });
-    displayItem(listItem);
+    // console.log(arrayItemAdd);
+    // displayItem(listItem);
   }
 });
 
@@ -212,6 +192,7 @@ function addItem(value) {
       arrayItemAdd.push(object);
     }
   });
+  // console.log(arrayItemAdd);
   localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
 }
 

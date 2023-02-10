@@ -149,13 +149,9 @@ main {
 .minus-icon {
   margin: 0 24px;
   cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
   border: 1px solid #eee;
-  padding: 4px;
   border-radius: 50%;
-}
-.plus-icon:hover {
-  background-color: #fe6332;
-}
-.minus-icon:hover {
-  background-color: #27aa99;
 }

@@ -138,14 +138,14 @@ $.addEventListener("click", (e) => {
     document.querySelectorAll(".list_buy").forEach((e) => {
       e.remove();
     });
-    if (e.target.matches("#buy")) {
-      console.log(1);
-    }
   }
+
   //-----Add Item-----
   if (e.target.matches(".item-add")) {
+    // addItem(e.target);
     addItem(e.target);
   }
+
   //-----Del Item-----
   if (e.target.matches(".buy-del")) {
     const itemDelName =
@@ -153,6 +153,7 @@ $.addEventListener("click", (e) => {
         .previousElementSibling.previousElementSibling;
     delItemBuy(itemDelName);
   }
+
   //-----Increase/Decrease Item----
   if (e.target.matches(".plus-icon")) {
     const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
@@ -179,7 +180,8 @@ $.addEventListener("click", (e) => {
       ) {
         value.soluong--;
         if (value.soluong == 0) {
-          listItem.splice(i, 1);
+          // listItem.splice(i, 1);
+          console.log(1);
         }
       }
     });
@@ -212,6 +214,7 @@ function addItem(value) {
       arrayItemAdd.push(object);
     }
   });
+  // console.log(arrayItemAdd);
   localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
 }
 
