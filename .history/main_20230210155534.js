@@ -162,7 +162,6 @@ $.addEventListener("click", (e) => {
       e.target.parentNode.previousElementSibling.previousElementSibling
         .previousElementSibling.previousElementSibling;
     delItemBuy(itemDelName);
-    total();
   }
   //-----Increase/Decrease Item----
   if (e.target.matches(".plus-icon")) {
@@ -181,7 +180,6 @@ $.addEventListener("click", (e) => {
       e.remove();
     });
     displayItem(listItem);
-    total();
   }
   if (e.target.matches(".minus-icon")) {
     const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
@@ -202,7 +200,6 @@ $.addEventListener("click", (e) => {
       e.remove();
     });
     displayItem(listItem);
-    total();
   }
 });
 
@@ -270,6 +267,6 @@ function total() {
   list.forEach((e) => {
     total += Number(e.textContent);
   });
-  document.querySelector(".bill").textContent = total;
+  document.querySelector(".bill").textContent = "total";
 }
 // localStorage.clear();

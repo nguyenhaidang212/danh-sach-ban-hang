@@ -270,6 +270,6 @@ function total() {
   list.forEach((e) => {
     total += Number(e.textContent);
   });
-  document.querySelector(".bill").textContent = total;
+  document.querySelector(".bill").textContent = "total";
 }
 // localStorage.clear();

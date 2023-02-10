@@ -127,7 +127,6 @@ main {
   grid-template-columns: 600px 200px 100px 100px 100px;
   text-align: center;
   margin-bottom: 20px;
-  font-weight: 700;
 }
 .list_buy {
   display: flex;
@@ -152,9 +151,6 @@ main {
   justify-content: space-between;
   margin-top: 50px;
 }
-#buy {
-  margin-right: 40px;
-}
 .buy-del {
   color: red;
   cursor: pointer;
@@ -173,13 +169,6 @@ main {
 .minus-icon:hover {
   background-color: #27aa99;
 }
-.total {
-  display: flex;
-  align-items: center;
-}
-.bill {
-  margin-right: 30px;
-}
 /* Trang thanh toan */
 .buy_form {
   border: 1px solid rgba(128, 128, 128, 1);
@@ -193,10 +182,10 @@ main {
 }
 .form_content {
   border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  padding: 30px 20px;
+  border-bottom: 1ox solid #eee;
+  padding: 20px;
 }
-.form_com .username {
+.username {
   display: flex;
   justify-content: space-between;
   column-gap: 20px;
@@ -214,8 +203,5 @@ main {
 }
 .confirm {
   text-align: right;
-  padding: 20px;
-}
-.close:hover {
-  opacity: 0.8;
+  margin-top: 10px;
 }
