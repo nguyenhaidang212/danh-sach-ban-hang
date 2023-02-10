@@ -34,10 +34,8 @@ promiseDistrict
 const selectDistrict = document.querySelector(".select-district");
 // console.log(data);
 setTimeout((e) => {
-  selectDistrict.addEventListener("click", (e) => {
-    console.log(arrayDistric);
-    // if (selectCity.value == "--Chọn Tỉnh/Thành phố--") {
-    //   console.log("ban can chon tinh/thanh pho truoc");
-    // }
-  });
-}, 1000);
+  console.log(arrayDistric);
+  if (selectCity.value == "--Chọn Tỉnh/Thành phố--") {
+    console.log("ban can chon tinh/thanh pho truoc");
+  }
+}, 2000);
