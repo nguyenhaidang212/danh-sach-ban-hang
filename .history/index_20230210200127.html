@@ -44,7 +44,7 @@
       </div>
     </header>
     <!-- Trang giao dien -->
-    <main class="main_menu" style="display: none">
+    <main class="main_menu">
       <div class="list"></div>
     </main>
     <!-- Trang danh sach -->
@@ -63,7 +63,7 @@
       </div>
     </main>
     <!-- Trang thanh toan -->
-    <main class="main_confirm">
+    <main class="main_confirm" style="display: none">
       <div class="buy_form">
         <div class="form_title">
           <h1>Thông tin người mua</h1>
@@ -113,21 +113,53 @@
             </div>
             <div id="address">Địa chỉ</div>
             <div class="address">
-              <select
-                class="form-select select-city"
-                aria-label="Default select example"
-              >
-                <option selected>--Chọn Tỉnh/Thành phố--</option>
-              </select>
-              <select
-                class="form-select select-district"
-                aria-label="Default select example"
-              >
-                <option selected>--Chọn Huyện/Quận--</option>
-              </select>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>--Chọn Xã--</option>
-              </select>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  --Chọn Tỉnh/Thành phố --
+                </button>
+                <ul class="dropdown-menu menu-city">
+                  <li><a class="dropdown-item" href="#">Hà Nội</a></li>
+                </ul>
+              </div>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  --Chọn huyện/quận--
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  --Chọn đường/xã--
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div class="input-group mb-3">
               <input
@@ -151,9 +183,7 @@
         </div>
         <div class="confirm">
           <button type="button" class="btn btn-danger">Hủy</button>
-          <button type="button" class="btn btn-primary btn-confirm">
-            Xác nhận
-          </button>
+          <button type="button" class="btn btn-primary">Xác nhận</button>
         </div>
       </div>
     </main>

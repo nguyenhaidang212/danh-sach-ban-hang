@@ -220,6 +220,5 @@ main {
   opacity: 0.8;
 }
 .form-select {
-  width: 300px;
-  text-align: center;
+  width: fit-content;
 }
