@@ -14,12 +14,12 @@ const arrayWard = [];
 let city = [];
 let district = [];
 let ward = [];
-let email = "";
-let sodienthoai = "";
-let diachi = "";
-let message = "";
-let ho = "";
-let ten = "";
+let email;
+let sodienthoai;
+let diachi;
+let message;
+let ho;
+let ten;
 promiseCity
   .then((response) => {
     return response.json();
@@ -135,19 +135,14 @@ btnConfirm.addEventListener("click", (e) => {
     " " +
     ward;
   const userInfo = {
-    name: ho + " " + ten,
+    ho_va_ten: ho + " " + ten,
     email: email,
-    phonenumber: sodienthoai,
-    address: diachi,
+    sodienthoai: sodienthoai,
+    diachi: diachi,
     message: message,
     id: randomID(),
   };
-  if (
-    userInfo.name == "" ||
-    userInfo.email == "" ||
-    userInfo.phonenumber == "" ||
-    userInfo.address == ""
-  ) {
+  if (userInfo.ho_va_ten == "") {
     console.log(1);
   }
   console.log(userInfo);
@@ -157,17 +152,21 @@ input.forEach((e) => {
     e.target.parentNode.previousElementSibling.textContent = "";
   });
 });
-document.querySelector(".form_username").addEventListener("blur", (e) => {
-  ho = ValidateName(e.target);
-});
+function getName() {
+  let ho;
+  document.querySelector(".form_username").addEventListener("blur", (e) => {
+    const ho = ValidateName(e.target);
+  });
+  return ho;
+}
 document.querySelector(".form_username2").addEventListener("blur", (e) => {
-  ten = ValidateName(e.target);
+  const ten = ValidateName(e.target);
 });
 document.querySelector(".form_number").addEventListener("blur", (e) => {
-  sodienthoai = ValidatePhone(e.target);
+  ValidatePhone(e.target);
 });
 document.querySelector(".form_email").addEventListener("blur", (e) => {
-  diachi = ValidateEmail(e.target);
+  ValidateEmail(e.target);
 });
 document.querySelector(".form_home").addEventListener("blur", (e) => {
   diachi = e.target.value;
@@ -177,14 +176,16 @@ document.querySelector(".form_message").addEventListener("blur", (e) => {
 });
 function ValidateName(value) {
   if (/^[a-zA-Z \/]+$/.test(value.value)) {
-    return value.value;
+    name = value.value;
+    return name;
   }
   value.parentNode.previousElementSibling.textContent =
     "Thông tin không phù hợp (tên chỉ bao gồm a-z A-Z)";
 }
 function ValidateEmail(mail) {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail.value)) {
-    return mail.value;
+    email = mail.value;
+    return true;
   }
   mail.parentNode.previousElementSibling.textContent =
     "Thông tin không phù hợp (email có dạng: abc@gmail.com hoặc abc@yahoo.com)";
@@ -196,7 +197,8 @@ function ValidatePhone(value) {
       value.value
     )
   ) {
-    return value.value;
+    phone = value.value;
+    return true;
   }
   value.parentNode.previousElementSibling.textContent =
     "Thông tin không phù hợp (số điện thoại bao gồm 10 chữ số!)";

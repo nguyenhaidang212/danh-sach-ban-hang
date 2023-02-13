@@ -142,14 +142,9 @@ btnConfirm.addEventListener("click", (e) => {
     message: message,
     id: randomID(),
   };
-  if (
-    userInfo.name == "" ||
-    userInfo.email == "" ||
-    userInfo.phonenumber == "" ||
-    userInfo.address == ""
-  ) {
-    console.log(1);
-  }
+  // if (userInfo.name == "") {
+  //   console.log(1);
+  // }
   console.log(userInfo);
 });
 input.forEach((e) => {

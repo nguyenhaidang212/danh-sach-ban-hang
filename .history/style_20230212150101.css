@@ -223,6 +223,8 @@ main {
   width: 300px;
   text-align: center;
 }
+.form-control {
+}
 .form_wrong {
   color: red;
   font-size: 15px;

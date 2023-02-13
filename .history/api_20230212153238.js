@@ -5,26 +5,15 @@ const selectCity = document.querySelector(".select-city");
 const selectDistrict = document.querySelector(".select-district");
 const selectWard = document.querySelector(".select-ward");
 const optionCity = document.querySelector(".option-city");
-const btnConfirm = document.querySelector(".btn-confirm");
-const input = document.querySelectorAll("input");
-const formSelect = document.querySelectorAll(".form-select");
 const arrayCity = [];
 const arrayDistric = [];
 const arrayWard = [];
-let city = [];
-let district = [];
-let ward = [];
-let email = "";
-let sodienthoai = "";
-let diachi = "";
-let message = "";
-let ho = "";
-let ten = "";
 promiseCity
   .then((response) => {
     return response.json();
   })
   .then((data) => {
+    // console.log(data);
     data.forEach((e) => {
       arrayCity.push(e);
       selectCity.insertAdjacentHTML(
@@ -63,6 +52,8 @@ document.body.addEventListener("click", (e) => {
   if (e.target.matches(".select-district")) {
     wardChoose();
   }
+  if (e.target.matches(".select-ward")) {
+  }
 });
 function districChoose() {
   const district = document.querySelectorAll(".district");
@@ -96,6 +87,8 @@ function wardChoose() {
     }
   });
 }
+const btnConfirm = document.querySelector(".btn-confirm");
+const input = document.querySelectorAll("input");
 btnConfirm.addEventListener("click", (e) => {
   input.forEach((e) => {
     if (e.value == "") {
@@ -103,53 +96,13 @@ btnConfirm.addEventListener("click", (e) => {
         "Bạn cần điền thông tin vào ô dưới!";
     }
   });
-  if (
-    selectCity.value == "--Chọn Tỉnh/Thành phố--" ||
-    selectDistrict.value == "--Chọn Huyện/Quận--" ||
-    selectWard.value == "--Chọn Xã--"
-  ) {
-    selectDistrict.parentNode.previousElementSibling.textContent =
-      "Bạn cần điền đầy đủ thông tin!";
-  }
-  arrayCity.forEach((e) => {
-    if (e.code == selectCity.value) {
-      city = e.name;
-    }
-  });
-  arrayDistric.forEach((e) => {
-    if (e.code == selectDistrict.value) {
-      district = e.name;
-    }
-  });
-  arrayWard.forEach((e) => {
-    if (e.code == selectWard.value) {
-      ward = e.name;
-    }
-  });
-  diachi =
-    document.querySelector(".form_home").value +
-    ", " +
-    city +
-    " " +
-    district +
-    " " +
-    ward;
   const userInfo = {
-    name: ho + " " + ten,
-    email: email,
-    phonenumber: sodienthoai,
-    address: diachi,
-    message: message,
-    id: randomID(),
+    ho_va_ten: 1,
+    email: 1,
+    sodienthoai: 1,
+    diachi: 1,
+    message: 1,
   };
-  if (
-    userInfo.name == "" ||
-    userInfo.email == "" ||
-    userInfo.phonenumber == "" ||
-    userInfo.address == ""
-  ) {
-    console.log(1);
-  }
   console.log(userInfo);
 });
 input.forEach((e) => {
@@ -158,50 +111,32 @@ input.forEach((e) => {
   });
 });
 document.querySelector(".form_username").addEventListener("blur", (e) => {
-  ho = ValidateName(e.target);
+  if (e.target.value != "admin") {
+    e.target.parentNode.previousElementSibling.textContent =
+      "Thông tin không phù hợp";
+    return false;
+  } else return true;
 });
+const ten = document.querySelector(".form_username2");
 document.querySelector(".form_username2").addEventListener("blur", (e) => {
-  ten = ValidateName(e.target);
-});
-document.querySelector(".form_number").addEventListener("blur", (e) => {
-  sodienthoai = ValidatePhone(e.target);
+  if (e.target.value != "admin") {
+    e.target.parentNode.previousElementSibling.textContent =
+      "Thông tin không phù hợp";
+    return false;
+  } else {
+    ten = e.target.value;
+    return true;
+  }
 });
 document.querySelector(".form_email").addEventListener("blur", (e) => {
-  diachi = ValidateEmail(e.target);
+  ValidateEmail(e.target);
 });
-document.querySelector(".form_home").addEventListener("blur", (e) => {
-  diachi = e.target.value;
-});
-document.querySelector(".form_message").addEventListener("blur", (e) => {
-  message = e.target.value;
-});
-function ValidateName(value) {
-  if (/^[a-zA-Z \/]+$/.test(value.value)) {
-    return value.value;
-  }
-  value.parentNode.previousElementSibling.textContent =
-    "Thông tin không phù hợp (tên chỉ bao gồm a-z A-Z)";
-}
+function nameValidate() {}
 function ValidateEmail(mail) {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail.value)) {
-    return mail.value;
+    return true;
   }
   mail.parentNode.previousElementSibling.textContent =
-    "Thông tin không phù hợp (email có dạng: abc@gmail.com hoặc abc@yahoo.com)";
+    "Thông tin không phù hợp";
   return false;
-}
-function ValidatePhone(value) {
-  if (
-    /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(
-      value.value
-    )
-  ) {
-    return value.value;
-  }
-  value.parentNode.previousElementSibling.textContent =
-    "Thông tin không phù hợp (số điện thoại bao gồm 10 chữ số!)";
-}
-function randomID() {
-  const time = new Date().getTime();
-  return time;
 }

@@ -223,11 +223,11 @@ main {
   width: 300px;
   text-align: center;
 }
+.form-control {
+  margin-top: 12px;
+}
 .form_wrong {
   color: red;
   font-size: 15px;
-  /* display: none; */
-}
-.address {
-  margin-bottom: 12px;
+  /* display: block; */
 }

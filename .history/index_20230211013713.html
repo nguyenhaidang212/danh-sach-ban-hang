@@ -44,7 +44,7 @@
       </div>
     </header>
     <!-- Trang giao dien -->
-    <main class="main_menu" style="display: none">
+    <main class="main_menu">
       <div class="list"></div>
     </main>
     <!-- Trang danh sach -->
@@ -63,7 +63,7 @@
       </div>
     </main>
     <!-- Trang thanh toan -->
-    <main class="main_confirm">
+    <main class="main_confirm" style="display: none">
       <div class="buy_form">
         <div class="form_title">
           <h1>Thông tin người mua</h1>
@@ -72,51 +72,46 @@
         <div class="form_content">
           <div class="form_grid">
             <div class="username">
-              <div class="form_wrong"></div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Họ</span>
                 <input
                   type="text"
-                  class="form-control form_username"
+                  class="form-control"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
               </div>
-              <div class="form_wrong"></div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Tên</span>
                 <input
                   type="text"
-                  class="form-control form_username2"
+                  class="form-control"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
               </div>
             </div>
-            <div class="form_wrong"></div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Email</span>
               <input
                 type="text"
-                class="form-control form_email"
+                class="form-control"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
               />
             </div>
-            <div class="form_wrong"></div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"
                 >Số điện thoại</span
               >
               <input
                 type="text"
-                class="form-control form_number"
+                class="form-control"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
               />
             </div>
             <div id="address">Địa chỉ</div>
-            <div class="form_wrong form_address"></div>
             <div class="address">
               <select
                 class="form-select select-city"
@@ -139,11 +134,10 @@
                 <option selected>--Chọn Xã--</option>
               </select>
             </div>
-            <div class="form_wrong"></div>
             <div class="input-group mb-3">
               <input
                 type="text"
-                class="form-control form_home"
+                class="form-control"
                 placeholder="Số nhà"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
@@ -151,7 +145,7 @@
             </div>
             <div class="form-floating">
               <textarea
-                class="form-control form_message"
+                class="form-control"
                 placeholder="Leave a comment here"
                 id="floatingTextarea2"
                 style="height: 100px"
