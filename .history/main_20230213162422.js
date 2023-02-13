@@ -152,7 +152,7 @@ $.addEventListener("click", (e) => {
     $.style.backgroundColor = "white";
     document.querySelector("header").style.display = "block";
   }
-  if (e.target.matches("#back2")) {
+  if (e.target.matches(".back2")) {
     document.querySelector(".main_info").style.display = "none";
     document.querySelector(".main_confirm").style.display = "none";
     document.querySelector(".main_buy").style.display = "block";

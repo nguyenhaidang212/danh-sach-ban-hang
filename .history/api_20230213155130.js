@@ -156,6 +156,7 @@ btnConfirm.addEventListener("click", (e) => {
     postApi(userInfo);
   }
   getApi();
+  // deleteApi(1);
 });
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {

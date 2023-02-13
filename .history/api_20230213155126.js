@@ -156,6 +156,7 @@ btnConfirm.addEventListener("click", (e) => {
     postApi(userInfo);
   }
   getApi();
+  // deleteApi(1);
 });
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
@@ -231,7 +232,7 @@ function postApi(value) {
     })
     .then((tasks) => {
       // Do something with the list of tasks
-      // console.log(tasks);
+      console.log(tasks);
     })
     .catch((error) => {
       // handle error

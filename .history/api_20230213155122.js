@@ -156,6 +156,7 @@ btnConfirm.addEventListener("click", (e) => {
     postApi(userInfo);
   }
   getApi();
+  // deleteApi(1);
 });
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
@@ -222,20 +223,19 @@ function postApi(value) {
     headers: { "content-type": "application/json" },
     // Send your data in the request body as JSON
     body: JSON.stringify(value),
+  }); .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    // handle error
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // handle error
-    })
-    .then((tasks) => {
-      // Do something with the list of tasks
-      // console.log(tasks);
-    })
-    .catch((error) => {
-      // handle error
-    });
+  .then((tasks) => {
+    // Do something with the list of tasks
+    console.log(tasks);
+  })
+  .catch((error) => {
+    // handle error
+  });
 }
 function getApi() {
   fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks", {

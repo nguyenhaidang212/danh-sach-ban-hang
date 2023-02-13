@@ -152,16 +152,6 @@ $.addEventListener("click", (e) => {
     $.style.backgroundColor = "white";
     document.querySelector("header").style.display = "block";
   }
-  if (e.target.matches("#back2")) {
-    document.querySelector(".main_info").style.display = "none";
-    document.querySelector(".main_confirm").style.display = "none";
-    document.querySelector(".main_buy").style.display = "block";
-  }
-  if (e.target.matches(".show")) {
-    document.querySelector(".main_info").style.display = "none";
-    document.querySelector(".main_confirm").style.display = "block";
-    document.querySelector(".main_buy").style.display = "none";
-  }
   //-----Add Item-----
   if (e.target.matches(".item-add")) {
     addItem(e.target);

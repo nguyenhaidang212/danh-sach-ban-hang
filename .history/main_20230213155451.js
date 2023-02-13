@@ -100,9 +100,9 @@ const keyLocalStorageListSP = "DANHSACHSP";
 const keyLocalStorageItemCart = "DANHSACHITEMCART";
 const listItem = document.querySelector(".list");
 const $ = document.body;
-const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
 
 localStorage.setItem(keyLocalStorageListSP, JSON.stringify(listData));
+const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
 item.forEach((value) => {
   const template = `<div class="item">
   <div class="item-imgs">
@@ -144,23 +144,13 @@ $.addEventListener("click", (e) => {
     $.style.backgroundColor = "rgba(128, 128, 128, 1)";
     mainBuy.style.display = "none";
     document.querySelector("header").style.display = "none";
-    document.querySelector(".main_info").style.display = "block";
+    document.querySelector(".main_confirm").style.display = "block";
   }
   if (e.target.matches(".close") || e.target.matches(".btn-danger")) {
-    document.querySelector(".main_info").style.display = "none";
+    document.querySelector(".main_confirm").style.display = "none";
     mainBuy.style.display = "block";
     $.style.backgroundColor = "white";
     document.querySelector("header").style.display = "block";
-  }
-  if (e.target.matches("#back2")) {
-    document.querySelector(".main_info").style.display = "none";
-    document.querySelector(".main_confirm").style.display = "none";
-    document.querySelector(".main_buy").style.display = "block";
-  }
-  if (e.target.matches(".show")) {
-    document.querySelector(".main_info").style.display = "none";
-    document.querySelector(".main_confirm").style.display = "block";
-    document.querySelector(".main_buy").style.display = "none";
   }
   //-----Add Item-----
   if (e.target.matches(".item-add")) {

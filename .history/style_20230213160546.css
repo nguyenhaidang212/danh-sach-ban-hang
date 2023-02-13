@@ -231,10 +231,3 @@ main {
 .address {
   margin-bottom: 12px;
 }
-/* Trang thanh toan */
-.confirm_grid {
-  display: grid;
-  text-align: center;
-  grid-template-columns: 100px 300px 100px 200px 200px 200px 100px;
-  grid-template-rows: 20px;
-}

@@ -44,7 +44,7 @@
       </div>
     </header>
     <!-- Trang giao dien -->
-    <main class="main_menu">
+    <main class="main_menu" style="display: none">
       <div class="list"></div>
     </main>
     <!-- Trang danh sach -->
@@ -54,7 +54,7 @@
         ><span>Total</span><span>Clear Cart</span>
       </div>
       <div class="buy">
-        <button id="back" class="back">Back to Shopping</button>
+        <button id="back">Back to Shopping</button>
         <div class="total">
           <strong>Total: $</strong>
           <div class="bill"></div>
@@ -161,10 +161,6 @@
           </div>
         </div>
         <div class="confirm">
-          <button type="button" class="btn btn-danger show">
-            Xem thông tin giỏ hàng
-          </button>
-
           <button type="button" class="btn btn-danger">Hủy</button>
           <button type="button" class="btn btn-primary btn-confirm">
             Xác nhận
@@ -173,7 +169,7 @@
       </div>
     </main>
     <!-- Trang thanh toan -->
-    <main class="main_confirm" style="display: none">
+    <main class="main_confirm">
       <div class="confirm_grid">
         <div class="confirm_title"><strong>Code</strong></div>
         <div class="confirm_title"><strong>Customer Name</strong></div>
@@ -183,7 +179,13 @@
         <div class="confirm_title"><strong>Totol Price</strong></div>
         <div class="confirm_title"><strong>Return</strong></div>
       </div>
-      <button class="back" id="back2">Back to Shopping</button>
+      <button
+        type="button"
+        class="btn btn-outline-warning"
+        style="color: #fe6332; border: #fe6332"
+      >
+        Back to Shopping
+      </button>
     </main>
     <script src="main.js"></script>
     <script src="api.js"></script>
