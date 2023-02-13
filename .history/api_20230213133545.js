@@ -8,9 +8,6 @@ const optionCity = document.querySelector(".option-city");
 const btnConfirm = document.querySelector(".btn-confirm");
 const input = document.querySelectorAll("input");
 const formSelect = document.querySelectorAll(".form-select");
-const orderApi = fetch(
-  "https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks"
-);
 const arrayCity = [];
 const arrayDistric = [];
 const arrayWard = [];
@@ -147,16 +144,15 @@ btnConfirm.addEventListener("click", (e) => {
     id: randomID(),
   };
   if (
-    userInfo.name != "" &&
-    userInfo.email != "" &&
-    userInfo.phonenumber != false &&
-    userInfo.address != "" &&
-    document.querySelector(".form_home").value != ""
+    userInfo.name == "undefined undefined" ||
+    userInfo.email == "" ||
+    userInfo.phonenumber == "" ||
+    userInfo.address == "" ||
+    document.querySelector(".form_home").value == ""
   ) {
-    postApi(userInfo);
+    console.log(1);
   }
-  getApi();
-  deleteApi(1);
+  console.log(userInfo);
 });
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
@@ -211,41 +207,35 @@ function ValidatePhone(value) {
   }
   value.parentNode.previousElementSibling.textContent =
     "Thông tin không phù hợp (số điện thoại bao gồm 10 chữ số!)";
-  return false;
 }
 function randomID() {
   const time = new Date().getTime();
   return time;
 }
-function postApi(value) {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    // Send your data in the request body as JSON
-    body: JSON.stringify(value),
-  });
-}
-function getApi() {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks", {
-    method: "GET",
-    headers: { "content-type": "application/json" },
+fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/")
+  .then((res) => {
+    return res.json();
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // handle error
-    })
-    .then((tasks) => {
-      // Do something with the list of tasks
-      console.log(tasks);
-    })
-    .catch((error) => {
-      // handle error
-    });
-}
-function deleteApi(value) {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks/" + value, {
-    method: "DELETE",
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log("error:" + err);
   });
-}
+// fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/", {
+//   method: "GET",
+//   headers: { "content-type": "application/json" },
+// })
+//   .then((res) => {
+//     if (res.ok) {
+//       return res.json();
+//     }
+//     // handle error
+//   })
+//   .then((tasks) => {
+//     // Do something with the list of tasks
+//     console.log(tasks);
+//   })
+//   .catch((error) => {
+//     // handle error
+//   });

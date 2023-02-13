@@ -156,7 +156,7 @@ btnConfirm.addEventListener("click", (e) => {
     postApi(userInfo);
   }
   getApi();
-  deleteApi(1);
+  deleteApi(2);
 });
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
@@ -245,7 +245,7 @@ function getApi() {
     });
 }
 function deleteApi(value) {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks/" + value, {
+  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks/{value}", {
     method: "DELETE",
   });
 }

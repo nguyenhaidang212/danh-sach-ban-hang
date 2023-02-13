@@ -154,9 +154,9 @@ btnConfirm.addEventListener("click", (e) => {
     document.querySelector(".form_home").value != ""
   ) {
     postApi(userInfo);
+    console.log(userInfo);
   }
-  getApi();
-  deleteApi(1);
+  getApi(1);
 });
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
@@ -225,27 +225,16 @@ function postApi(value) {
     body: JSON.stringify(value),
   });
 }
-function getApi() {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks", {
-    method: "GET",
+function getApi(value) {
+  fetch("https://PROJECT_TOKEN.mockapi.io/tasks", {
+    method: "POST",
     headers: { "content-type": "application/json" },
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // handle error
-    })
-    .then((tasks) => {
-      // Do something with the list of tasks
-      console.log(tasks);
-    })
-    .catch((error) => {
-      // handle error
-    });
+    // Send your data in the request body as JSON
+    body: JSON.stringify(value),
+  });
 }
 function deleteApi(value) {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks/" + value, {
+  fetch("https://<PROJECT_TOKEN.mockapi.io/tasks/1", {
     method: "DELETE",
   });
 }

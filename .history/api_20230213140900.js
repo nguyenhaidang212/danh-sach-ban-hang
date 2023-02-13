@@ -149,14 +149,20 @@ btnConfirm.addEventListener("click", (e) => {
   if (
     userInfo.name != "" &&
     userInfo.email != "" &&
-    userInfo.phonenumber != false &&
+    userInfo.phonenumber != "" &&
     userInfo.address != "" &&
     document.querySelector(".form_home").value != ""
   ) {
     postApi(userInfo);
+    console.log(userInfo);
   }
-  getApi();
-  deleteApi(1);
+  orderApi
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+    });
 });
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
@@ -211,7 +217,6 @@ function ValidatePhone(value) {
   }
   value.parentNode.previousElementSibling.textContent =
     "Thông tin không phù hợp (số điện thoại bao gồm 10 chữ số!)";
-  return false;
 }
 function randomID() {
   const time = new Date().getTime();
@@ -223,29 +228,5 @@ function postApi(value) {
     headers: { "content-type": "application/json" },
     // Send your data in the request body as JSON
     body: JSON.stringify(value),
-  });
-}
-function getApi() {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks", {
-    method: "GET",
-    headers: { "content-type": "application/json" },
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // handle error
-    })
-    .then((tasks) => {
-      // Do something with the list of tasks
-      console.log(tasks);
-    })
-    .catch((error) => {
-      // handle error
-    });
-}
-function deleteApi(value) {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks/" + value, {
-    method: "DELETE",
   });
 }

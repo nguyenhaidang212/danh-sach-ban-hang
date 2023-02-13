@@ -147,16 +147,15 @@ btnConfirm.addEventListener("click", (e) => {
     id: randomID(),
   };
   if (
-    userInfo.name != "" &&
-    userInfo.email != "" &&
-    userInfo.phonenumber != false &&
-    userInfo.address != "" &&
-    document.querySelector(".form_home").value != ""
+    userInfo.name == "undefined undefined" ||
+    userInfo.email == "" ||
+    userInfo.phonenumber == "" ||
+    userInfo.address == "" ||
+    document.querySelector(".form_home").value == ""
   ) {
-    postApi(userInfo);
+    console.log(1);
   }
-  getApi();
-  deleteApi(1);
+  console.log(userInfo);
 });
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
@@ -211,12 +210,18 @@ function ValidatePhone(value) {
   }
   value.parentNode.previousElementSibling.textContent =
     "Thông tin không phù hợp (số điện thoại bao gồm 10 chữ số!)";
-  return false;
 }
 function randomID() {
   const time = new Date().getTime();
   return time;
 }
+const newTask = {
+  name: "hai dang",
+  age: 23,
+};
+const orderApi = fetch(
+  "https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks"
+);
 function postApi(value) {
   fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks", {
     method: "POST",
@@ -225,27 +230,23 @@ function postApi(value) {
     body: JSON.stringify(value),
   });
 }
-function getApi() {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks", {
-    method: "GET",
-    headers: { "content-type": "application/json" },
+orderApi
+  .then((res) => {
+    return res.json();
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // handle error
-    })
-    .then((tasks) => {
-      // Do something with the list of tasks
-      console.log(tasks);
-    })
-    .catch((error) => {
-      // handle error
-    });
-}
-function deleteApi(value) {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks/" + value, {
-    method: "DELETE",
+  .then((data) => {
+    console.log(data);
   });
-}
+//   .then((res) => {
+//     if (res.ok) {
+//       return res.json();
+//     }
+//     // handle error
+//   })
+//   .then((task) => {
+//     // do something with the new task
+//     console.log(task);
+//   })
+//   .catch((error) => {
+//     // handle error
+//   });
