@@ -129,7 +129,7 @@ btnConfirm.addEventListener("click", (e) => {
   }
   diachi =
     document.querySelector(".form_home").value +
-    " " +
+    ", " +
     city +
     " " +
     district +
@@ -147,8 +147,7 @@ btnConfirm.addEventListener("click", (e) => {
     userInfo.name == "undefined undefined" ||
     userInfo.email == "" ||
     userInfo.phonenumber == "" ||
-    userInfo.address == "" ||
-    document.querySelector(".form_home").value == ""
+    userInfo.address == ""
   ) {
     console.log(1);
   }
@@ -161,6 +160,7 @@ input.forEach((e) => {
 });
 formSelect.forEach((e) => {
   e.addEventListener("click", (e) => {
+    console.log(e.target.parentNode.previousElementSibling);
     e.target.parentNode.previousElementSibling.textContent = "";
   });
 });
@@ -174,7 +174,7 @@ document.querySelector(".form_number").addEventListener("blur", (e) => {
   sodienthoai = ValidatePhone(e.target);
 });
 document.querySelector(".form_email").addEventListener("blur", (e) => {
-  email = ValidateEmail(e.target);
+  diachi = ValidateEmail(e.target);
 });
 document.querySelector(".form_home").addEventListener("blur", (e) => {
   diachi = e.target.value;

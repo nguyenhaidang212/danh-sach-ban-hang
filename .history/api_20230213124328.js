@@ -174,7 +174,7 @@ document.querySelector(".form_number").addEventListener("blur", (e) => {
   sodienthoai = ValidatePhone(e.target);
 });
 document.querySelector(".form_email").addEventListener("blur", (e) => {
-  email = ValidateEmail(e.target);
+  diachi = ValidateEmail(e.target);
 });
 document.querySelector(".form_home").addEventListener("blur", (e) => {
   diachi = e.target.value;
