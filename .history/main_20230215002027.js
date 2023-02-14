@@ -170,7 +170,6 @@ $.addEventListener("click", (e) => {
     displayItem(getItemLocalstorage());
   }
   if (e.target.matches("#back2")) {
-    putApi(orderNumber, false);
     // getApi()
     //   .then((res) => res.json())
     //   .then((data) => {
