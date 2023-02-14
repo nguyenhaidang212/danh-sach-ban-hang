@@ -101,16 +101,12 @@ function wardChoose() {
   });
 }
 document.querySelector(".show").addEventListener("click", (e) => {
-  if (getItemLocalstorage().length == 0) {
-    document.querySelector(".info").textContent = "Bạn chưa chọn sản phẩm nào";
-  } else {
-    document.querySelector(".info").textContent = "";
-  }
   let quantily = 0;
   getItemLocalstorage().forEach((e) => {
     quantily += e.soluong;
   });
   totalPrice = document.querySelector(".bill").textContent;
+  // console.log(quantily);
   input.forEach((e) => {
     if (e.value == "") {
       e.parentNode.previousElementSibling.textContent =
@@ -162,8 +158,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
     userInfo.email != "" &&
     userInfo.phonenumber != false &&
     userInfo.address != "" &&
-    document.querySelector(".form_home").value != "" &&
-    document.querySelector(".info").textContent == ""
+    document.querySelector(".form_home").value != ""
   ) {
     postApi(userInfo);
     setTimeout((e) => {
@@ -176,7 +171,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
         .then((tasks) => {
           tasks.forEach((e) => {
             if (e.id == userInfo.id) {
-              orderNumber = e.OrderNumber;
               document.querySelector(".confirm_grid").insertAdjacentHTML(
                 "beforeend",
                 `
@@ -212,8 +206,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
     document.querySelector(".main_confirm").style.display = "block";
     document.querySelector(".main_buy").style.display = "none";
     document.querySelector("header").style.display = "block";
-    // document.querySelector(".confirm_item_buy").style.display = "block";
-
     $.style.backgroundColor = "white";
   }
 });
@@ -251,9 +243,6 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelector("header").style.display = "block";
 });
 document.querySelector(".finish").addEventListener("click", (e) => {
-  if (document.querySelectorAll(".confirm_user").length == 0) {
-    e.target.preventDefault();
-  }
   const arrItem = getItemLocalstorage();
   const arrList = getListLocalstorage();
   arrList.forEach((value) => {
@@ -267,6 +256,7 @@ document.querySelector(".finish").addEventListener("click", (e) => {
         } else {
           rest = Number(value.so_luong - e.soluong);
           value.so_luong = rest;
+          // alert("ban da mua hang thanh cong");
         }
       }
     });
@@ -275,6 +265,7 @@ document.querySelector(".finish").addEventListener("click", (e) => {
     success();
   }
   setListLocalstorage(arrList);
+  console.log(getListLocalstorage());
   document.querySelectorAll(".item").forEach((e) => {
     e.remove();
   });

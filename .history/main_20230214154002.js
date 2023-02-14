@@ -102,7 +102,7 @@ const keyLocalStorageItemCart = "DANHSACHITEMCART";
 const listItem = document.querySelector(".list");
 const $ = document.body;
 const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-let orderNumber = 0;
+
 localStorage.setItem(keyLocalStorageListSP, JSON.stringify(listData));
 item.forEach((value) => {
   const template = `<div class="item">
@@ -153,7 +153,6 @@ $.addEventListener("click", (e) => {
     document.querySelectorAll(".form_wrong").forEach((e) => {
       e.textContent = "";
     });
-    document.querySelector(".info").textContent = "";
   }
   if (e.target.matches(".close") || e.target.matches(".cancer")) {
     document.querySelector(".main_info").style.display = "none";
@@ -271,10 +270,7 @@ $.addEventListener("click", (e) => {
     document.querySelector(".confirm_item_buy").style.display = "none";
   }
   if (e.target.matches(".return_item") || e.target.matches(".success")) {
-    arrayItemAdd.splice(0, arrayItemAdd.length);
-    document.querySelectorAll(".confirm_user").forEach((e) => {
-      e.remove();
-    });
+    console.log(1);
   }
 });
 // // -----Them san pham-----

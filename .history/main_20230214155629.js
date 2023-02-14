@@ -153,7 +153,6 @@ $.addEventListener("click", (e) => {
     document.querySelectorAll(".form_wrong").forEach((e) => {
       e.textContent = "";
     });
-    document.querySelector(".info").textContent = "";
   }
   if (e.target.matches(".close") || e.target.matches(".cancer")) {
     document.querySelector(".main_info").style.display = "none";

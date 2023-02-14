@@ -111,6 +111,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
     quantily += e.soluong;
   });
   totalPrice = document.querySelector(".bill").textContent;
+  // console.log(quantily);
   input.forEach((e) => {
     if (e.value == "") {
       e.parentNode.previousElementSibling.textContent =
@@ -162,8 +163,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
     userInfo.email != "" &&
     userInfo.phonenumber != false &&
     userInfo.address != "" &&
-    document.querySelector(".form_home").value != "" &&
-    document.querySelector(".info").textContent == ""
+    document.querySelector(".form_home").value != ""
   ) {
     postApi(userInfo);
     setTimeout((e) => {
@@ -176,7 +176,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
         .then((tasks) => {
           tasks.forEach((e) => {
             if (e.id == userInfo.id) {
-              orderNumber = e.OrderNumber;
+              orderNumber = e.orderNumber;
               document.querySelector(".confirm_grid").insertAdjacentHTML(
                 "beforeend",
                 `
@@ -251,9 +251,6 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelector("header").style.display = "block";
 });
 document.querySelector(".finish").addEventListener("click", (e) => {
-  if (document.querySelectorAll(".confirm_user").length == 0) {
-    e.target.preventDefault();
-  }
   const arrItem = getItemLocalstorage();
   const arrList = getListLocalstorage();
   arrList.forEach((value) => {
@@ -275,6 +272,7 @@ document.querySelector(".finish").addEventListener("click", (e) => {
     success();
   }
   setListLocalstorage(arrList);
+  console.log(getListLocalstorage());
   document.querySelectorAll(".item").forEach((e) => {
     e.remove();
   });

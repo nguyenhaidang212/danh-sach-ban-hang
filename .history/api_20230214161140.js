@@ -252,7 +252,7 @@ document.querySelector(".success").addEventListener("click", (e) => {
 });
 document.querySelector(".finish").addEventListener("click", (e) => {
   if (document.querySelectorAll(".confirm_user").length == 0) {
-    e.target.preventDefault();
+    e.preventDefault;
   }
   const arrItem = getItemLocalstorage();
   const arrList = getListLocalstorage();

@@ -103,6 +103,7 @@ function wardChoose() {
 document.querySelector(".show").addEventListener("click", (e) => {
   if (getItemLocalstorage().length == 0) {
     document.querySelector(".info").textContent = "Bạn chưa chọn sản phẩm nào";
+    e.preventDefault();
   } else {
     document.querySelector(".info").textContent = "";
   }
@@ -111,6 +112,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
     quantily += e.soluong;
   });
   totalPrice = document.querySelector(".bill").textContent;
+  // console.log(quantily);
   input.forEach((e) => {
     if (e.value == "") {
       e.parentNode.previousElementSibling.textContent =
@@ -162,8 +164,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
     userInfo.email != "" &&
     userInfo.phonenumber != false &&
     userInfo.address != "" &&
-    document.querySelector(".form_home").value != "" &&
-    document.querySelector(".info").textContent == ""
+    document.querySelector(".form_home").value != ""
   ) {
     postApi(userInfo);
     setTimeout((e) => {
@@ -251,9 +252,6 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelector("header").style.display = "block";
 });
 document.querySelector(".finish").addEventListener("click", (e) => {
-  if (document.querySelectorAll(".confirm_user").length == 0) {
-    e.target.preventDefault();
-  }
   const arrItem = getItemLocalstorage();
   const arrList = getListLocalstorage();
   arrList.forEach((value) => {
@@ -275,6 +273,7 @@ document.querySelector(".finish").addEventListener("click", (e) => {
     success();
   }
   setListLocalstorage(arrList);
+  console.log(getListLocalstorage());
   document.querySelectorAll(".item").forEach((e) => {
     e.remove();
   });
