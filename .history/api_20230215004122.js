@@ -248,6 +248,10 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelector(".success").style.display = "none";
   document.querySelector(".main_menu").style.display = "block";
   document.querySelector("header").style.display = "block";
+  document.querySelector(".confirm_item_buy").style.display = "none";
+  document.querySelectorAll(".item_buy").forEach((e) => {
+    e.remove();
+  });
 });
 //-----Finish handle-----
 document.querySelector(".finish").addEventListener("click", (e) => {
