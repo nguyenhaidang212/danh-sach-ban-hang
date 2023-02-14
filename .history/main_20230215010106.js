@@ -127,9 +127,6 @@ $.addEventListener("click", (e) => {
   //-----Chuyen trang-----
   // main_buy
   if (e.target.matches(".buy_display")) {
-    if (document.querySelector(".main_confirm").style.display == "block") {
-      document.querySelector(".buy_display").preventDefault();
-    }
     document.querySelector(".confirm_item_buy").style.display = "none";
     document.querySelectorAll(".item_buy").forEach((e) => {
       e.remove();
@@ -190,9 +187,6 @@ $.addEventListener("click", (e) => {
     document.querySelectorAll(".item_buy").forEach((e) => {
       e.remove();
     });
-    if (document.querySelectorAll(".list_buy").length == 0) {
-      document.querySelector(".img").style.display = "block";
-    }
   }
   // main_info
   if (e.target.matches("#buy")) {

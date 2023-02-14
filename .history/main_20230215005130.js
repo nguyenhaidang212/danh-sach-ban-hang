@@ -127,13 +127,11 @@ $.addEventListener("click", (e) => {
   //-----Chuyen trang-----
   // main_buy
   if (e.target.matches(".buy_display")) {
-    if (document.querySelector(".main_confirm").style.display == "block") {
-      document.querySelector(".buy_display").preventDefault();
-    }
     document.querySelector(".confirm_item_buy").style.display = "none";
     document.querySelectorAll(".item_buy").forEach((e) => {
       e.remove();
     });
+    // document.querySelector(".bill").textContent = "0";
     document.querySelectorAll(".list_buy").forEach((e) => {
       e.remove();
     });
@@ -179,6 +177,27 @@ $.addEventListener("click", (e) => {
   }
   if (e.target.matches("#back2")) {
     putApi(orderNumber, false);
+    // getApi()
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     data.forEach((e, i) => {
+    //       if (e.OrderNumber == orderNumber) {
+    //         // deleteApi(e.OrderNumber);
+    //         arrayItemAdd.splice(0, arrayItemAdd.length);
+    //         localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
+    //         document.querySelectorAll(".confirm_user").forEach((e) => {
+    //           e.remove();
+    //         });
+    //         document.querySelector(".confirm_item_buy").style.display = "none";
+    //       }
+    //     });
+    //   });
+    // getItemLocalstorage()
+    // if (getItemLocalstorage().length == 0) {
+    //   document.querySelector(".img").style.display = "block";
+    // } else {
+    //   document.querySelector(".img").style.display = "none";
+    // }
     document.querySelector(".main_info").style.display = "none";
     document.querySelector(".main_confirm").style.display = "none";
     document.querySelector(".main_buy").style.display = "block";
@@ -190,9 +209,12 @@ $.addEventListener("click", (e) => {
     document.querySelectorAll(".item_buy").forEach((e) => {
       e.remove();
     });
-    if (document.querySelectorAll(".list_buy").length == 0) {
-      document.querySelector(".img").style.display = "block";
-    }
+    // if (getItemLocalstorage().length == 0) {
+    //   document.querySelectorAll(".list_buy").forEach((e) => {
+    //     e.remove();
+    //   });
+    document.querySelector(".bill").textContent = "0";
+    // }
   }
   // main_info
   if (e.target.matches("#buy")) {
@@ -294,8 +316,6 @@ $.addEventListener("click", (e) => {
   }
   //-----Delete order from api
   if (e.target.matches(".return_item")) {
-    document.querySelectorAll(".list_buy").forEach((e) => e.remove());
-    document.querySelector(".bill").textContent = "0";
     getApi()
       .then((res) => res.json())
       .then((data) => {

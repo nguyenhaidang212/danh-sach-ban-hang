@@ -212,7 +212,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
     $.style.backgroundColor = "white";
   }
 });
-//-----Validate logic-----
+//-----Validate-----
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
     e.target.parentNode.previousElementSibling.textContent = "";
@@ -360,7 +360,7 @@ function putApi(value, status) {
     body: JSON.stringify({ completed: status }),
   });
 }
-//-----Success function-----
+//-----Order success-----
 function success() {
   document.querySelector(".success").style.display = "block";
   document.querySelector(".main_confirm").style.display = "none";
