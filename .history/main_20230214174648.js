@@ -4,7 +4,8 @@ const listData = [
     name: "Quần áo nam",
     so_luong: 20,
     gia: 100,
-    src: "./imgs/item1.jpg",
+
+    src: "https://znews-photo.zadn.vn/w660/Uploaded/ycgmvjvj/2018_03_31/1.jpg",
     quality: 1,
   },
   {
@@ -12,7 +13,7 @@ const listData = [
     name: "Điện thoại",
     so_luong: 20,
     gia: 500,
-    src: "./imgs/item2.jpeg",
+    src: "https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/t/_/t_m_12.png",
     quality: 1,
   },
   {
@@ -20,7 +21,7 @@ const listData = [
     name: "Macbook",
     so_luong: 20,
     gia: 1000,
-    src: "./imgs/item3.jpg",
+    src: "https://cdn.tgdd.vn/Products/Images/44/231244/macbook-air-m1-2020-gold-600x600.jpg",
     quality: 1,
   },
   {
@@ -28,7 +29,7 @@ const listData = [
     name: "Máy ảnh",
     so_luong: 20,
     gia: 1200,
-    src: "./imgs/item4.jpg",
+    src: "https://www.nguyenkim.com/images/detailed/644/10036326-may-anh-canon-eos-3000d-kit-ef-s-18-55mm-den-1.jpg",
     quality: 1,
   },
   {
@@ -36,7 +37,7 @@ const listData = [
     name: "Đồng hồ",
     so_luong: 20,
     gia: 1400,
-    src: "./imgs/item5.jpg",
+    src: "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/Apple_Watch_SE-Cell-44mm-star1.jpg",
     quality: 1,
   },
   {
@@ -44,7 +45,7 @@ const listData = [
     name: "Giày nam",
     so_luong: 20,
     gia: 1500,
-    src: "./imgs/item6.jpg",
+    src: "https://cdn.elly.vn/uploads/2019/08/13121739/giay-nam-cao-cap-da-that-ELLY-EGTM2-5.jpg",
     quality: 1,
   },
   {
@@ -52,7 +53,7 @@ const listData = [
     name: "Tủ lạnh",
     so_luong: 20,
     gia: 1600,
-    src: "./imgs/item7.jpg",
+    src: "https://cdn.tgdd.vn/Products/Images/1943/284851/tu-lanh-aqua-inverter-456-lit-aqr-m525xa-fb-600x600.jpg",
     quality: 1,
   },
   {
@@ -60,7 +61,7 @@ const listData = [
     name: "Điều hòa",
     so_luong: 20,
     gia: 1700,
-    src: "./imgs/item8.jpg",
+    src: "https://hangdienmaygiare.com/images/products/2020/02/22/large/dieu-hoa-1-chieu-panasonic-n9wkh-8m_1582358300.jpg",
     quality: 1,
   },
   {
@@ -68,7 +69,7 @@ const listData = [
     name: "Máy giặt",
     so_luong: 20,
     gia: 2000,
-    src: "./imgs/item9.jpg",
+    src: "https://hangdienmaygiare.com/images/products/2019/09/03/large/may-giat-electrolux-ewf1042bdwa-10-kg-inverter.jpg",
     quality: 1,
   },
   {
@@ -76,7 +77,7 @@ const listData = [
     name: "Váy đầm nữ",
     so_luong: 20,
     gia: 300,
-    src: "./imgs/item10.jpg",
+    src: "https://luzy.vn/wp-content/uploads/2020/05/LZD10951-18.jpg",
     quality: 1,
   },
   {
@@ -84,7 +85,7 @@ const listData = [
     name: "Mắt kính",
     so_luong: 20,
     gia: 400,
-    src: "./imgs/item11.jpg",
+    src: "https://vn-test-11.slatic.net/p/5e0af4609b84659f759982ac0146f184.jpg_800x800q100.jpg_600x600Q100.jpg",
     quality: 1,
   },
   {
@@ -92,7 +93,7 @@ const listData = [
     name: "Thắt lưng da",
     so_luong: 20,
     gia: 200,
-    src: "./imgs/item12.jpg",
+    src: "https://hoianleather.com/wp-content/uploads/2021/04/That-lung-da-bo-that-danh-cho-nam-2.jpg",
     quality: 1,
   },
 ];
