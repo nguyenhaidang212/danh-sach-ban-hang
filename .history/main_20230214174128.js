@@ -193,7 +193,7 @@ $.addEventListener("click", (e) => {
       document.querySelector(".bill").textContent = "0";
     }
   }
-  // main_info
+  //main_info
   if (e.target.matches("#buy")) {
     $.style.backgroundColor = "rgba(128, 128, 128, 1)";
     mainBuy.style.display = "none";
@@ -204,6 +204,7 @@ $.addEventListener("click", (e) => {
     });
     document.querySelector(".info").textContent = "";
   }
+
   //-----Add Item-----
   if (e.target.matches(".item-add")) {
     addItem(e.target);

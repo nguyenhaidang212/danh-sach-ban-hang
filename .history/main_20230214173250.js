@@ -125,12 +125,8 @@ const buyDiplay = document.querySelector(".buy");
 const delItem = document.querySelector(".buy-del");
 $.addEventListener("click", (e) => {
   //-----Chuyen trang-----
-  // main_buy
   if (e.target.matches(".buy_display")) {
     document.querySelectorAll(".list_buy").forEach((e) => {
-      e.remove();
-    });
-    document.querySelectorAll(".confirm_user").forEach((e) => {
       e.remove();
     });
     const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
@@ -141,8 +137,6 @@ $.addEventListener("click", (e) => {
     total();
     if (getItemLocalstorage().length == 0) {
       document.querySelector(".img").style.display = "block";
-    } else {
-      document.querySelector(".img").style.display = "none";
     }
   }
   if (e.target.matches("#back")) {
@@ -152,6 +146,16 @@ $.addEventListener("click", (e) => {
     document.querySelectorAll(".list_buy").forEach((e) => {
       e.remove();
     });
+  }
+  if (e.target.matches("#buy")) {
+    $.style.backgroundColor = "rgba(128, 128, 128, 1)";
+    mainBuy.style.display = "none";
+    document.querySelector("header").style.display = "none";
+    document.querySelector(".main_info").style.display = "block";
+    document.querySelectorAll(".form_wrong").forEach((e) => {
+      e.textContent = "";
+    });
+    document.querySelector(".info").textContent = "";
   }
   if (e.target.matches(".close") || e.target.matches(".cancer")) {
     if (getItemLocalstorage().length == 0) {
@@ -170,11 +174,6 @@ $.addEventListener("click", (e) => {
     displayItem(getItemLocalstorage());
   }
   if (e.target.matches("#back2")) {
-    if (getItemLocalstorage().length == 0) {
-      document.querySelector(".img").style.display = "block";
-    } else {
-      document.querySelector(".img").style.display = "none";
-    }
     document.querySelector(".main_info").style.display = "none";
     document.querySelector(".main_confirm").style.display = "none";
     document.querySelector(".main_buy").style.display = "block";
@@ -192,17 +191,6 @@ $.addEventListener("click", (e) => {
       });
       document.querySelector(".bill").textContent = "0";
     }
-  }
-  // main_info
-  if (e.target.matches("#buy")) {
-    $.style.backgroundColor = "rgba(128, 128, 128, 1)";
-    mainBuy.style.display = "none";
-    document.querySelector("header").style.display = "none";
-    document.querySelector(".main_info").style.display = "block";
-    document.querySelectorAll(".form_wrong").forEach((e) => {
-      e.textContent = "";
-    });
-    document.querySelector(".info").textContent = "";
   }
   //-----Add Item-----
   if (e.target.matches(".item-add")) {
