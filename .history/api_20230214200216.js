@@ -218,6 +218,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
     document.querySelector("header").style.display = "block";
     $.style.backgroundColor = "white";
   }
+  console.log(userInfo);
 });
 //-----Validate-----
 input.forEach((e) => {

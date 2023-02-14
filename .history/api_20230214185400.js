@@ -102,7 +102,7 @@ function wardChoose() {
     }
   });
 }
-//-----Validate form + Create Order------
+//-----Validate form------
 document.querySelector(".show").addEventListener("click", (e) => {
   if (getItemLocalstorage().length == 0) {
     document.querySelector(".info").textContent = "Bạn chưa chọn sản phẩm nào";
@@ -159,7 +159,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
     address: diachi,
     message: message,
     id: randomID(),
-    order: getItemLocalstorage(),
   };
   if (
     userInfo.name != "" &&

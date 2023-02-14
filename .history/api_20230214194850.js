@@ -159,7 +159,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
     address: diachi,
     message: message,
     id: randomID(),
-    order: getItemLocalstorage(),
   };
   if (
     userInfo.name != "" &&

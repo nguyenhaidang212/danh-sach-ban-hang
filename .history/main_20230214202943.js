@@ -285,7 +285,7 @@ $.addEventListener("click", (e) => {
     });
   }
   //-----Delete order from api
-  if (e.target.matches(".return_item") || e.target.matches("#back2")) {
+  if (e.target.matches(".return_item") || e.target.matches(".success")) {
     getApi()
       .then((res) => res.json())
       .then((data) => {

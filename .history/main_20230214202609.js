@@ -284,8 +284,16 @@ $.addEventListener("click", (e) => {
       e.remove();
     });
   }
+  //-----Return order
+  // if (e.target.matches(".return_item")) {
+  //   localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
+  //   document.querySelectorAll(".confirm_user").forEach((e) => {
+  //     e.remove();
+  //   });
+  //   document.querySelector(".confirm_item_buy").style.display = "none";
+  // }
   //-----Delete order from api
-  if (e.target.matches(".return_item") || e.target.matches("#back2")) {
+  if (e.target.matches(".return_item") || e.target.matches(".success")) {
     getApi()
       .then((res) => res.json())
       .then((data) => {

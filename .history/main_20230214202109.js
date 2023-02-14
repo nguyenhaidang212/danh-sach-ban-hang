@@ -284,23 +284,31 @@ $.addEventListener("click", (e) => {
       e.remove();
     });
   }
+  //-----Return order
+  if (e.target.matches(".return_item")) {
+    localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
+    document.querySelectorAll(".confirm_user").forEach((e) => {
+      e.remove();
+    });
+    document.querySelector(".confirm_item_buy").style.display = "none";
+  }
   //-----Delete order from api
-  if (e.target.matches(".return_item") || e.target.matches("#back2")) {
+  if (e.target.matches(".return_item") || e.target.matches(".success")) {
     getApi()
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         data.forEach((e, i) => {
           if (e.name == document.querySelector(".confirm_name").textContent) {
+            console.log(e.OrderNumber);
             deleteApi(e.OrderNumber);
-            arrayItemAdd.splice(0, arrayItemAdd.length);
-            localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
-            document.querySelectorAll(".confirm_user").forEach((e) => {
-              e.remove();
-            });
-            document.querySelector(".confirm_item_buy").style.display = "none";
           }
         });
       });
+    arrayItemAdd.splice(0, arrayItemAdd.length);
+    document.querySelectorAll(".confirm_user").forEach((e) => {
+      e.remove();
+    });
   }
 });
 //-----Add item----
