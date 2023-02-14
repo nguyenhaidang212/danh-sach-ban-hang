@@ -210,7 +210,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
         .catch((error) => {
           // handle error
         });
-    }, 100);
+    }, 500);
     document.querySelector(".main_info").style.display = "none";
     document.querySelector(".main_confirm").style.display = "block";
     document.querySelector(".main_buy").style.display = "none";
@@ -253,7 +253,7 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelector(".main_menu").style.display = "block";
   document.querySelector("header").style.display = "block";
 });
-//-----Finish handle-----
+//-----Finish order-----
 document.querySelector(".finish").addEventListener("click", (e) => {
   if (document.querySelectorAll(".confirm_user").length == 0) {
     e.target.preventDefault();

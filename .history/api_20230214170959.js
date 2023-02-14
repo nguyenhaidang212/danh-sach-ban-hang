@@ -210,7 +210,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
         .catch((error) => {
           // handle error
         });
-    }, 100);
+    }, 1);
     document.querySelector(".main_info").style.display = "none";
     document.querySelector(".main_confirm").style.display = "block";
     document.querySelector(".main_buy").style.display = "none";
