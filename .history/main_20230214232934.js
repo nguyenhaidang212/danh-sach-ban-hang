@@ -174,7 +174,7 @@ $.addEventListener("click", (e) => {
       .then((res) => res.json())
       .then((data) => {
         data.forEach((e, i) => {
-          if (e.OrderNumber == orderNumber) {
+          if (e.name == document.querySelector(".confirm_name").textContent) {
             deleteApi(e.OrderNumber);
             arrayItemAdd.splice(0, arrayItemAdd.length);
             localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
@@ -305,7 +305,7 @@ $.addEventListener("click", (e) => {
       .then((res) => res.json())
       .then((data) => {
         data.forEach((e, i) => {
-          if (e.OrderNumber == orderNumber) {
+          if (e.name == document.querySelector(".confirm_name").textContent) {
             deleteApi(e.OrderNumber);
             arrayItemAdd.splice(0, arrayItemAdd.length);
             localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));

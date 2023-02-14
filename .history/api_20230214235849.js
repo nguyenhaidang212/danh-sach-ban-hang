@@ -160,6 +160,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
     message: message,
     id: randomID(),
     order: getItemLocalstorage(),
+    status: "false",
   };
   if (
     userInfo.name != "" &&
@@ -257,49 +258,52 @@ document.querySelector(".success").addEventListener("click", (e) => {
 //-----Finish handle-----
 document.querySelector(".finish").addEventListener("click", (e) => {
   if (document.querySelectorAll(".confirm_user").length == 0) {
-    document.querySelector(".finish").preventDefault();
-  } else {
-    const arrItem = getItemLocalstorage();
-    const arrList = getListLocalstorage();
-    arrList.forEach((value) => {
-      arrItem.forEach((e) => {
-        if (value.name == e.name) {
-          let rest = 0;
-          if (e.soluong > value.so_luong) {
-            document.querySelector(".max_item").textContent =
-              "Có sản phẩm vượt quá số lượng cho phép";
-            return false;
-          } else {
-            rest = Number(value.so_luong - e.soluong);
-            value.so_luong = rest;
-          }
-        }
-      });
-    });
-    if (document.querySelector(".max_item").textContent == "") {
-      putApi(orderNumber);
-      success();
-    }
-    setListLocalstorage(arrList);
-    document.querySelectorAll(".item").forEach((e) => {
-      e.remove();
-    });
-    const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-    item.forEach((value) => {
-      const template = `<div class="item">
-              <div class="item-imgs">
-                <img src="${value.src}" alt="" class="item-img"/>
-              </div>
-              <div class="item-icon"><i class="fa-solid fa-cart-plus item-add"></i></div>
-              <div class="item-title">${value.name}</div>
-              <div class="item-info">
-                <div class="item-price">Giá: ${value.gia}</div>
-                <div class="item-quality">Số lượng: ${value.so_luong}</div>
-              </div>
-            </div>`;
-      listItem.insertAdjacentHTML("beforeend", template);
-    });
+    e.target.preventDefault();
   }
+  const arrItem = getItemLocalstorage();
+  const arrList = getListLocalstorage();
+  arrList.forEach((value) => {
+    arrItem.forEach((e) => {
+      if (value.name == e.name) {
+        let rest = 0;
+        if (e.soluong > value.so_luong) {
+          document.querySelector(".max_item").textContent =
+            "Có sản phẩm vượt quá số lượng cho phép";
+          return false;
+        } else {
+          rest = Number(value.so_luong - e.soluong);
+          value.so_luong = rest;
+        }
+      }
+    });
+  });
+  if (document.querySelector(".max_item").textContent == "") {
+    putApi(orderNumber)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+    success();
+  }
+  setListLocalstorage(arrList);
+  document.querySelectorAll(".item").forEach((e) => {
+    e.remove();
+  });
+  const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
+  item.forEach((value) => {
+    const template = `<div class="item">
+            <div class="item-imgs">
+              <img src="${value.src}" alt="" class="item-img"/>
+            </div>
+            <div class="item-icon"><i class="fa-solid fa-cart-plus item-add"></i></div>
+            <div class="item-title">${value.name}</div>
+            <div class="item-info">
+              <div class="item-price">Giá: ${value.gia}</div>
+              <div class="item-quality">Số lượng: ${value.so_luong}</div>
+            </div>
+          </div>`;
+    listItem.insertAdjacentHTML("beforeend", template);
+  });
 });
 //-----Validate function
 function ValidateName(value) {
@@ -361,11 +365,14 @@ function deleteApi(value) {
   });
 }
 function putApi(value) {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks/" + value, {
-    method: "PUT", // or PATCH
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ completed: true }),
-  });
+  return fetch(
+    "https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks/" + value,
+    {
+      method: "PUT", // or PATCH
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ completed: true }),
+    }
+  );
 }
 //-----Order success-----
 function success() {

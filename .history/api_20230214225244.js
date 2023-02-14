@@ -170,53 +170,54 @@ document.querySelector(".show").addEventListener("click", (e) => {
     document.querySelector(".info").textContent == ""
   ) {
     postApi(userInfo);
-    setTimeout((e) => {
-      getApi()
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-        })
-        .then((tasks) => {
-          tasks.forEach((e) => {
-            if (e.id == userInfo.id) {
-              orderNumber = e.OrderNumber;
-              document.querySelector(".confirm_grid").insertAdjacentHTML(
-                "beforeend",
-                `
-              <div class="confirm_id confirm_user"><span class="show_item_buy">${
-                e.id
-              }</span>
-          <div class="details">Details <i class="fa-solid fa-caret-down"></i>
-          </div>
-              
-              </div>
-              <div class="confirm_name confirm_user">${e.name}</div>
-              <div class="confirm_date confirm_user">${date.getDate()}/${
-                  date.getMonth() + 1
-                }/${date.getFullYear()}</div>
-              <div class="confirm_order confirm_user">${
-                getItemLocalstorage().length
-              }</div>
-              <div class="confirm_quantily confirm_user">${quantily}</div>
-              <div class="confirm_price confirm_user">${totalPrice}$</div>
-              <div class="confirm_user">
-                <i class="fa-solid fa-circle-xmark return_item"></i>
-              </div>
-              `
-              );
-            }
-          });
-        })
-        .catch((error) => {
-          // handle error
-        });
-    }, 1000);
+    // setTimeout((e) => {
+    //   getApi()
+    //     .then((res) => {
+    //       if (res.ok) {
+    //         return res.json();
+    //       }
+    //     })
+    //     .then((tasks) => {
+    //       tasks.forEach((e) => {
+    //         if (e.id == userInfo.id) {
+    //           orderNumber = e.OrderNumber;
+    //           document.querySelector(".confirm_grid").insertAdjacentHTML(
+    //             "beforeend",
+    //             `
+    //           <div class="confirm_id confirm_user"><span class="show_item_buy">${
+    //             e.id
+    //           }</span>
+    //       <div class="details">Details <i class="fa-solid fa-caret-down"></i>
+    //       </div>
+
+    //           </div>
+    //           <div class="confirm_name confirm_user">${e.name}</div>
+    //           <div class="confirm_date confirm_user">${date.getDate()}/${
+    //               date.getMonth() + 1
+    //             }/${date.getFullYear()}</div>
+    //           <div class="confirm_order confirm_user">${
+    //             getItemLocalstorage().length
+    //           }</div>
+    //           <div class="confirm_quantily confirm_user">${quantily}</div>
+    //           <div class="confirm_price confirm_user">${totalPrice}$</div>
+    //           <div class="confirm_user">
+    //             <i class="fa-solid fa-circle-xmark return_item"></i>
+    //           </div>
+    //           `
+    //           );
+    //         }
+    //       });
+    //     })
+    //     .catch((error) => {
+    //       // handle error
+    //     });
+    // }, 1000);
     document.querySelector(".main_info").style.display = "none";
     document.querySelector(".main_confirm").style.display = "block";
     document.querySelector(".main_buy").style.display = "none";
     document.querySelector("header").style.display = "block";
     $.style.backgroundColor = "white";
+    console.log(1);
   }
 });
 //-----Validate-----
@@ -257,49 +258,47 @@ document.querySelector(".success").addEventListener("click", (e) => {
 //-----Finish handle-----
 document.querySelector(".finish").addEventListener("click", (e) => {
   if (document.querySelectorAll(".confirm_user").length == 0) {
-    document.querySelector(".finish").preventDefault();
-  } else {
-    const arrItem = getItemLocalstorage();
-    const arrList = getListLocalstorage();
-    arrList.forEach((value) => {
-      arrItem.forEach((e) => {
-        if (value.name == e.name) {
-          let rest = 0;
-          if (e.soluong > value.so_luong) {
-            document.querySelector(".max_item").textContent =
-              "Có sản phẩm vượt quá số lượng cho phép";
-            return false;
-          } else {
-            rest = Number(value.so_luong - e.soluong);
-            value.so_luong = rest;
-          }
-        }
-      });
-    });
-    if (document.querySelector(".max_item").textContent == "") {
-      putApi(orderNumber);
-      success();
-    }
-    setListLocalstorage(arrList);
-    document.querySelectorAll(".item").forEach((e) => {
-      e.remove();
-    });
-    const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-    item.forEach((value) => {
-      const template = `<div class="item">
-              <div class="item-imgs">
-                <img src="${value.src}" alt="" class="item-img"/>
-              </div>
-              <div class="item-icon"><i class="fa-solid fa-cart-plus item-add"></i></div>
-              <div class="item-title">${value.name}</div>
-              <div class="item-info">
-                <div class="item-price">Giá: ${value.gia}</div>
-                <div class="item-quality">Số lượng: ${value.so_luong}</div>
-              </div>
-            </div>`;
-      listItem.insertAdjacentHTML("beforeend", template);
-    });
+    e.target.preventDefault();
   }
+  const arrItem = getItemLocalstorage();
+  const arrList = getListLocalstorage();
+  arrList.forEach((value) => {
+    arrItem.forEach((e) => {
+      if (value.name == e.name) {
+        let rest = 0;
+        if (e.soluong > value.so_luong) {
+          document.querySelector(".max_item").textContent =
+            "Có sản phẩm vượt quá số lượng cho phép";
+          return false;
+        } else {
+          rest = Number(value.so_luong - e.soluong);
+          value.so_luong = rest;
+        }
+      }
+    });
+  });
+  if (document.querySelector(".max_item").textContent == "") {
+    success();
+  }
+  setListLocalstorage(arrList);
+  document.querySelectorAll(".item").forEach((e) => {
+    e.remove();
+  });
+  const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
+  item.forEach((value) => {
+    const template = `<div class="item">
+            <div class="item-imgs">
+              <img src="${value.src}" alt="" class="item-img"/>
+            </div>
+            <div class="item-icon"><i class="fa-solid fa-cart-plus item-add"></i></div>
+            <div class="item-title">${value.name}</div>
+            <div class="item-info">
+              <div class="item-price">Giá: ${value.gia}</div>
+              <div class="item-quality">Số lượng: ${value.so_luong}</div>
+            </div>
+          </div>`;
+    listItem.insertAdjacentHTML("beforeend", template);
+  });
 });
 //-----Validate function
 function ValidateName(value) {
@@ -360,19 +359,11 @@ function deleteApi(value) {
     method: "DELETE",
   });
 }
-function putApi(value) {
-  fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks/" + value, {
-    method: "PUT", // or PATCH
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ completed: true }),
-  });
-}
 //-----Order success-----
 function success() {
   document.querySelector(".success").style.display = "block";
   document.querySelector(".main_confirm").style.display = "none";
   document.querySelector("header").style.display = "none";
   localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
-  arrayItemAdd.splice(0, arrayItemAdd.length);
 }
 // localStorage.clear();

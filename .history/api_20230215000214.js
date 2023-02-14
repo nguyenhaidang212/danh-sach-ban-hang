@@ -257,7 +257,7 @@ document.querySelector(".success").addEventListener("click", (e) => {
 //-----Finish handle-----
 document.querySelector(".finish").addEventListener("click", (e) => {
   if (document.querySelectorAll(".confirm_user").length == 0) {
-    document.querySelector(".finish").preventDefault();
+    e.target.preventDefault();
   } else {
     const arrItem = getItemLocalstorage();
     const arrList = getListLocalstorage();

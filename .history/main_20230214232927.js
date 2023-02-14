@@ -174,7 +174,7 @@ $.addEventListener("click", (e) => {
       .then((res) => res.json())
       .then((data) => {
         data.forEach((e, i) => {
-          if (e.OrderNumber == orderNumber) {
+          if (e.name == document.querySelector(".confirm_name").textContent) {
             deleteApi(e.OrderNumber);
             arrayItemAdd.splice(0, arrayItemAdd.length);
             localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
@@ -300,12 +300,12 @@ $.addEventListener("click", (e) => {
     });
   }
   //-----Delete order from api
-  if (e.target.matches(".return_item")) {
+  if (e.target.matches(".return_item") || e.target.matches("#back2")) {
     getApi()
       .then((res) => res.json())
       .then((data) => {
         data.forEach((e, i) => {
-          if (e.OrderNumber == orderNumber) {
+          if (e.name == document.querySelector(".confirm_name").textContent) {
             deleteApi(e.OrderNumber);
             arrayItemAdd.splice(0, arrayItemAdd.length);
             localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
