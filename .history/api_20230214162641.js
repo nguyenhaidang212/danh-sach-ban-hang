@@ -218,7 +218,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
     $.style.backgroundColor = "white";
   }
 });
-//-----Validate-----
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
     e.target.parentNode.previousElementSibling.textContent = "";
@@ -229,6 +228,7 @@ formSelect.forEach((e) => {
     e.target.parentNode.previousElementSibling.textContent = "";
   });
 });
+//-----Validate-----
 document.querySelector(".form_username").addEventListener("blur", (e) => {
   ho = ValidateName(e.target);
 });

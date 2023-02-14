@@ -218,7 +218,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
     $.style.backgroundColor = "white";
   }
 });
-//-----Validate-----
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
     e.target.parentNode.previousElementSibling.textContent = "";
@@ -325,7 +324,6 @@ function ValidatePhone(value) {
     "Thông tin không phù hợp (số điện thoại bao gồm 10 chữ số!)";
   return false;
 }
-//-----Random ID using Date()
 function randomID() {
   const time = new Date().getTime();
   return time;

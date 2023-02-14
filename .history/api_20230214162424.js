@@ -218,7 +218,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
     $.style.backgroundColor = "white";
   }
 });
-//-----Validate-----
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
     e.target.parentNode.previousElementSibling.textContent = "";
@@ -297,7 +296,6 @@ document.querySelector(".finish").addEventListener("click", (e) => {
     listItem.insertAdjacentHTML("beforeend", template);
   });
 });
-//-----Validate function
 function ValidateName(value) {
   if (/^[a-zA-Z \/]+$/.test(value.value)) {
     return value.value;
@@ -325,12 +323,10 @@ function ValidatePhone(value) {
     "Thông tin không phù hợp (số điện thoại bao gồm 10 chữ số!)";
   return false;
 }
-//-----Random ID using Date()
 function randomID() {
   const time = new Date().getTime();
   return time;
 }
-//-----Api function-----
 function postApi(value) {
   fetch("https://63e9d3fa811db3d7ef016dcc.mockapi.io/api/shop/tasks", {
     method: "POST",
@@ -356,11 +352,11 @@ function deleteApi(value) {
     method: "DELETE",
   });
 }
-//-----Order success-----
 function success() {
   document.querySelector(".success").style.display = "block";
   document.querySelector(".main_confirm").style.display = "none";
   document.querySelector("header").style.display = "none";
   localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
+  // arrayItemAdd.splice(0, arrayItemAdd.length);
 }
 // localStorage.clear();

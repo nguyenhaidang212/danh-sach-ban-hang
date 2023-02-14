@@ -239,7 +239,6 @@ $.addEventListener("click", (e) => {
     displayItem(listItem);
     total();
   }
-  //-----Show details-----
   if (e.target.matches(".details")) {
     if (document.querySelector(".confirm_item_buy").style.display == "block") {
       e.preventDefault();
@@ -263,7 +262,6 @@ $.addEventListener("click", (e) => {
       e.remove();
     });
   }
-  //-----Return order
   if (e.target.matches(".return_item")) {
     localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
     document.querySelectorAll(".confirm_user").forEach((e) => {
@@ -271,7 +269,6 @@ $.addEventListener("click", (e) => {
     });
     document.querySelector(".confirm_item_buy").style.display = "none";
   }
-  //-----Delete order from api
   if (e.target.matches(".return_item") || e.target.matches(".success")) {
     arrayItemAdd.splice(0, arrayItemAdd.length);
     document.querySelectorAll(".confirm_user").forEach((e) => {
@@ -279,7 +276,7 @@ $.addEventListener("click", (e) => {
     });
   }
 });
-//-----Add item----
+// // -----Them san pham-----
 function addItem(value) {
   item.forEach((e) => {
     if (e.name == value.parentNode.nextElementSibling.textContent) {
@@ -300,7 +297,7 @@ function addItem(value) {
   });
   localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
 }
-//-----Show item-----
+// //-----Hien thi san pham da mua-----
 function displayItem(arr) {
   arr.forEach((e) => {
     item.forEach((value) => {
@@ -324,7 +321,7 @@ function displayItem(arr) {
     });
   });
 }
-//-----Delete item-----
+// //-----Xoa san pham-----
 function delItemBuy(name) {
   name.parentNode.remove();
   arrayItemAdd.forEach((e, i) => {
@@ -334,7 +331,6 @@ function delItemBuy(name) {
   });
   localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
 }
-//-----Total Price-----
 function total() {
   const list = document.querySelectorAll(".buy-sum");
   let total = 0;
@@ -343,7 +339,6 @@ function total() {
   });
   document.querySelector(".bill").textContent = total;
 }
-//-----Localstorage-----
 function getItemLocalstorage() {
   return JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
 }

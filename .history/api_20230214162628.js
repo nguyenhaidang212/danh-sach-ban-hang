@@ -218,7 +218,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
     $.style.backgroundColor = "white";
   }
 });
-//-----Validate-----
 input.forEach((e) => {
   e.addEventListener("focus", (e) => {
     e.target.parentNode.previousElementSibling.textContent = "";
