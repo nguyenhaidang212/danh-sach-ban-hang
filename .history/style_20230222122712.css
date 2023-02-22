@@ -206,27 +206,23 @@ main {
 .buy-name {
   width: 600px;
   height: 30px;
-  text-align: left;
   line-height: 30px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 1;
-  margin-right: 45px;
 }
 .buy-quality {
-  width: 150px;
+  width: 100px;
   display: grid;
   grid-template-columns: 30px 50px 20px;
+  margin-left: 45px;
 }
 .buy-price,
 .buy-del,
 .buy-sum,
 .return_item {
   width: 100px;
-}
-.buy-price {
-  margin-right: 8px;
 }
 .buy {
   margin: auto;
@@ -322,15 +318,9 @@ main {
 .confirm_grid {
   display: grid;
   text-align: center;
-  grid-template-columns: 150px 250px 100px 200px 200px 200px 100px;
+  grid-template-columns: 100px 300px 100px 200px 200px 200px 100px;
   grid-template-rows: 20px;
   row-gap: 12px;
-}
-.confirm_name {
-  height: 20px;
-  line-height: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 #back2,
 .finish {

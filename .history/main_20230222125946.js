@@ -290,6 +290,7 @@ $.addEventListener("click", (e) => {
       e.target.parentNode.previousElementSibling.previousElementSibling
         .previousElementSibling.previousElementSibling;
     delItemBuy(itemDelName);
+    total();
     if (document.querySelectorAll(".buy-del").length == 0) {
       document.querySelector(".img").style.display = "block";
       document.querySelector(".title").style.display = "none";

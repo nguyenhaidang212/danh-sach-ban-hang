@@ -250,9 +250,6 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelectorAll("input").forEach((e) => {
     e.value = "";
   });
-  document.querySelectorAll("option").forEach((e) => {
-    console.log(e.value);
-  });
   document.querySelector("textarea").value = "";
   document.querySelector(".home").style.color = "red";
   document.querySelector(".carts").style.color = "black";
@@ -366,4 +363,4 @@ function success() {
   localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
   arrayItemAdd.splice(0, arrayItemAdd.length);
 }
-// localStorage.clear();
+localStorage.clear();

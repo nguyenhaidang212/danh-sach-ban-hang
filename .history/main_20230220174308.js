@@ -2,7 +2,7 @@ const MAX = 20;
 const listData = [
   {
     id: 1,
-    name: "Surface Laptop Go (THH-00035)(i5 1035G1/8GB RAM/128GB SSD/12.4 Cảm ứng/Win 10/Vàng)(Bảo hành tại HACOM)",
+    name: "Surface Laptop Go",
     so_luong: 20,
     gia: 100,
     src: "./imgs/lap1.png",
@@ -34,7 +34,7 @@ const listData = [
   },
   {
     id: 5,
-    name: "Laptop Lenovo IdeaPad Gaming 3 15ARH7 (82SB007HVN) (R7 6800H/8GB RAM/512GB SSD/15.6 FHD/RTX 3050 4GB/Win11/Xám)",
+    name: "MSI Gaming GF63 Thin",
     so_luong: 20,
     gia: 1400,
     src: "./imgs/lap13.png",
@@ -50,10 +50,10 @@ const listData = [
   },
   {
     id: 7,
-    name: "Laptop Lenovo IdeaPad 3 14IAU7 (82RJ001BVN) (i5 1235U/8GB RAM/512GB SSD/14 FHD/Win11/Xanh)",
+    name: "MSI Gaming Katana GF66",
     so_luong: 20,
     gia: 1600,
-    src: "./imgs/lap14.png",
+    src: "./imgs/lap7.png",
     quality: 1,
   },
   {
@@ -147,7 +147,7 @@ $.addEventListener("click", (e) => {
     mainBuy.style.display = "block";
     document.querySelector(".main_confirm").style.display = "none";
     displayItem(listItem);
-    totalAll();
+    total();
     if (getItemLocalstorage().length == 0) {
       document.querySelector(".img").style.display = "block";
       document.querySelector(".title").style.display = "none";
@@ -290,12 +290,12 @@ $.addEventListener("click", (e) => {
       e.target.parentNode.previousElementSibling.previousElementSibling
         .previousElementSibling.previousElementSibling;
     delItemBuy(itemDelName);
+    total();
     if (document.querySelectorAll(".buy-del").length == 0) {
       document.querySelector(".img").style.display = "block";
       document.querySelector(".title").style.display = "none";
     }
     countItem();
-    totalAll();
   }
   //-----Increase/Decrease Item----
   if (e.target.matches(".plus-icon")) {
@@ -324,8 +324,8 @@ $.addEventListener("click", (e) => {
     localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(listItem));
     e.target.previousElementSibling.textContent =
       Number(e.target.previousElementSibling.textContent) + 1;
+    total();
     countItem();
-    totalPlus(e.target);
   }
   if (e.target.matches(".minus-icon")) {
     const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
@@ -360,7 +360,7 @@ $.addEventListener("click", (e) => {
       newList.push(value);
     });
     localStorage.setItem(keyLocalStorageListSP, JSON.stringify(newList));
-    totalMinus(e.target);
+    total();
     countItem();
     if (getItemLocalstorage().length == 0) {
       document.querySelector(".img").style.display = "block";
@@ -382,7 +382,7 @@ $.addEventListener("click", (e) => {
           "beforeend",
           `
       <div class="item_buy">
-      <span class="item_buy_name">${e.name}</span> <span>${e.price}</span><span>${e.soluong}</span>
+      <span>${e.name}</span> <span>${e.price}</span><span>${e.soluong}</span>
     </div>
       `
         );
@@ -486,22 +486,11 @@ function delItemBuy(name) {
   localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
 }
 //-----Total Price-----
-function totalPlus(value = 0) {
-  totalAll();
-  value.parentNode.nextElementSibling.nextElementSibling.textContent =
-    Number(value.previousElementSibling.textContent) *
-    Number(value.parentNode.nextElementSibling.textContent);
-}
-function totalMinus(value = 0) {
-  totalAll();
-  value.parentNode.nextElementSibling.nextElementSibling.textContent =
-    Number(value.nextElementSibling.textContent) *
-    Number(value.parentNode.nextElementSibling.textContent);
-}
-function totalAll() {
+function total() {
+  const list = document.querySelectorAll(".buy-sum");
   let total = 0;
-  getItemLocalstorage().forEach((e) => {
-    total += Number(e.price) * Number(e.soluong);
+  list.forEach((e) => {
+    total += Number(e.textContent);
   });
   document.querySelector(".bill").textContent = total;
 }

@@ -269,6 +269,7 @@ $.addEventListener("click", (e) => {
   }
   //-----Del Item-----
   if (e.target.matches(".buy-del")) {
+    totalAll();
     let newList = [];
     getListLocalstorage().forEach((value) => {
       if (
@@ -290,12 +291,12 @@ $.addEventListener("click", (e) => {
       e.target.parentNode.previousElementSibling.previousElementSibling
         .previousElementSibling.previousElementSibling;
     delItemBuy(itemDelName);
+    total();
     if (document.querySelectorAll(".buy-del").length == 0) {
       document.querySelector(".img").style.display = "block";
       document.querySelector(".title").style.display = "none";
     }
     countItem();
-    totalAll();
   }
   //-----Increase/Decrease Item----
   if (e.target.matches(".plus-icon")) {

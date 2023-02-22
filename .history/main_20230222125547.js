@@ -290,12 +290,12 @@ $.addEventListener("click", (e) => {
       e.target.parentNode.previousElementSibling.previousElementSibling
         .previousElementSibling.previousElementSibling;
     delItemBuy(itemDelName);
+    total();
     if (document.querySelectorAll(".buy-del").length == 0) {
       document.querySelector(".img").style.display = "block";
       document.querySelector(".title").style.display = "none";
     }
     countItem();
-    totalAll();
   }
   //-----Increase/Decrease Item----
   if (e.target.matches(".plus-icon")) {
@@ -325,7 +325,7 @@ $.addEventListener("click", (e) => {
     e.target.previousElementSibling.textContent =
       Number(e.target.previousElementSibling.textContent) + 1;
     countItem();
-    totalPlus(e.target);
+    total(e.target);
   }
   if (e.target.matches(".minus-icon")) {
     const listItem = JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
@@ -360,7 +360,7 @@ $.addEventListener("click", (e) => {
       newList.push(value);
     });
     localStorage.setItem(keyLocalStorageListSP, JSON.stringify(newList));
-    totalMinus(e.target);
+    total(e.target);
     countItem();
     if (getItemLocalstorage().length == 0) {
       document.querySelector(".img").style.display = "block";

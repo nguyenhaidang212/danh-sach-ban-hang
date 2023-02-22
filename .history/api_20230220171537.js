@@ -250,9 +250,6 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelectorAll("input").forEach((e) => {
     e.value = "";
   });
-  document.querySelectorAll("option").forEach((e) => {
-    console.log(e.value);
-  });
   document.querySelector("textarea").value = "";
   document.querySelector(".home").style.color = "red";
   document.querySelector(".carts").style.color = "black";
