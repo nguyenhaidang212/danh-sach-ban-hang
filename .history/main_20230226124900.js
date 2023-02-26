@@ -182,8 +182,6 @@ $.addEventListener("click", (e) => {
     document.querySelectorAll(".list_buy").forEach((e) => {
       e.remove();
     });
-    document.querySelector(".main_confirm").style.display = "none";
-    document.querySelectorAll(".confirm_user").forEach((e) => e.remove());
     arrayItemAdd.splice(0, arrayItemAdd.length);
     getItemLocalstorage().forEach((e) => arrayItemAdd.push(e));
     document.querySelectorAll(".item").forEach((e) => e.remove());
@@ -224,7 +222,6 @@ $.addEventListener("click", (e) => {
       e.remove();
     });
     displayItem(getItemLocalstorage());
-    document.querySelector(".bill").textContent = totalAll();
   }
   if (e.target.matches("#back2")) {
     countItem();
@@ -403,19 +400,9 @@ $.addEventListener("click", (e) => {
   }
   //-----Delete order from api
   if (e.target.matches(".return_item")) {
+    countItem();
     document.querySelectorAll(".list_buy").forEach((e) => e.remove());
     document.querySelector(".bill").textContent = "0";
-    let arr = [];
-    getListLocalstorage().forEach((value) => {
-      getItemLocalstorage().forEach((e) => {
-        if (e.name == value.name) {
-          value.so_luong = Number(e.soluong) + Number(value.so_luong);
-        }
-      });
-      arr.push(value);
-    });
-    setListLocalstorage(arr);
-    console.log(arr);
     getApi()
       .then((res) => res.json())
       .then((data) => {
@@ -428,7 +415,6 @@ $.addEventListener("click", (e) => {
               e.remove();
             });
             document.querySelector(".confirm_item_buy").style.display = "none";
-            countItem();
           }
         });
       });
@@ -521,7 +507,6 @@ function totalAll() {
     total += Number(e.price) * Number(e.soluong);
   });
   document.querySelector(".bill").textContent = total;
-  return total;
 }
 //-----Count item-----
 function countList(value) {

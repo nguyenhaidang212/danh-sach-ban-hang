@@ -176,7 +176,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
           tasks.forEach((e) => {
             if (e.id == userInfo.id) {
               orderNumber = e.OrderNumber;
-
               document.querySelector(".confirm_grid").insertAdjacentHTML(
                 "beforeend",
                 `
@@ -195,7 +194,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
                 getItemLocalstorage().length
               }</div>
               <div class="confirm_quantily confirm_user">${quantily}</div>
-              <div class="confirm_price confirm_user">${totalAll()}$</div>
+              <div class="confirm_price confirm_user">${totalPrice}$</div>
               <div class="confirm_user">
                 <i class="fa-solid fa-circle-xmark return_item"></i>
               </div>
@@ -251,6 +250,20 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelectorAll("input").forEach((e) => {
     e.value = "";
   });
+  promiseCity
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      data.forEach((e) => {
+        arrayCity.push(e);
+        selectCity.insertAdjacentHTML(
+          "afterbegin",
+          `
+      <option select value="${e.code}">${e.name}</option>`
+        );
+      });
+    });
   selectDistrict.value = "--Chọn Huyện/Quận--";
   selectWard.value = "--Chọn Xã--";
   document.querySelector("textarea").value = "";
@@ -260,9 +273,6 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelector(".success").style.display = "none";
   document.querySelector(".main_menu").style.display = "block";
   document.querySelector("header").style.display = "block";
-  document.querySelectorAll(".confirm_user").forEach((e) => {
-    e.remove();
-  });
 });
 //-----Finish handle-----
 document.querySelector(".finish").addEventListener("click", (e) => {
@@ -275,7 +285,6 @@ document.querySelector(".finish").addEventListener("click", (e) => {
     putApi(orderNumber, true);
     success();
     const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-    document.querySelectorAll(".item").forEach((e) => e.remove());
     item.forEach((value) => {
       const template = `<div class="item">
               <div class="item-imgs">

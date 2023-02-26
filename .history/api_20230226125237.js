@@ -103,6 +103,7 @@ function wardChoose() {
 }
 //-----Validate form + Create Order------
 document.querySelector(".show").addEventListener("click", (e) => {
+  console.log(totalAll());
   let diachi = "";
   let quantily = 0;
   getItemLocalstorage().forEach((e) => {
@@ -260,9 +261,6 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelector(".success").style.display = "none";
   document.querySelector(".main_menu").style.display = "block";
   document.querySelector("header").style.display = "block";
-  document.querySelectorAll(".confirm_user").forEach((e) => {
-    e.remove();
-  });
 });
 //-----Finish handle-----
 document.querySelector(".finish").addEventListener("click", (e) => {
@@ -275,7 +273,6 @@ document.querySelector(".finish").addEventListener("click", (e) => {
     putApi(orderNumber, true);
     success();
     const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-    document.querySelectorAll(".item").forEach((e) => e.remove());
     item.forEach((value) => {
       const template = `<div class="item">
               <div class="item-imgs">

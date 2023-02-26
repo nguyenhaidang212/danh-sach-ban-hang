@@ -414,7 +414,6 @@ $.addEventListener("click", (e) => {
       });
       arr.push(value);
     });
-    setListLocalstorage(arr);
     console.log(arr);
     getApi()
       .then((res) => res.json())

@@ -275,7 +275,6 @@ document.querySelector(".finish").addEventListener("click", (e) => {
     putApi(orderNumber, true);
     success();
     const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-    document.querySelectorAll(".item").forEach((e) => e.remove());
     item.forEach((value) => {
       const template = `<div class="item">
               <div class="item-imgs">

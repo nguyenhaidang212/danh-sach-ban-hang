@@ -104,6 +104,7 @@ function wardChoose() {
 //-----Validate form + Create Order------
 document.querySelector(".show").addEventListener("click", (e) => {
   let diachi = "";
+
   let quantily = 0;
   getItemLocalstorage().forEach((e) => {
     quantily += e.soluong;
@@ -147,6 +148,13 @@ document.querySelector(".show").addEventListener("click", (e) => {
       " " +
       ward;
   }
+  console.log(diachi);
+  // console.log(
+  //   document.querySelector(".select-city").value,
+  //   document.querySelector(".select-district").value,
+  //   document.querySelector(".select-ward").value
+  // );
+  // document.querySelectorAll("");
   const userInfo = {
     name: ho + " " + ten,
     email: email,
@@ -176,7 +184,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
           tasks.forEach((e) => {
             if (e.id == userInfo.id) {
               orderNumber = e.OrderNumber;
-
               document.querySelector(".confirm_grid").insertAdjacentHTML(
                 "beforeend",
                 `
@@ -195,7 +202,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
                 getItemLocalstorage().length
               }</div>
               <div class="confirm_quantily confirm_user">${quantily}</div>
-              <div class="confirm_price confirm_user">${totalAll()}$</div>
+              <div class="confirm_price confirm_user">${totalPrice}$</div>
               <div class="confirm_user">
                 <i class="fa-solid fa-circle-xmark return_item"></i>
               </div>
@@ -251,8 +258,9 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelectorAll("input").forEach((e) => {
     e.value = "";
   });
-  selectDistrict.value = "--Chọn Huyện/Quận--";
-  selectWard.value = "--Chọn Xã--";
+  document.querySelectorAll("option").forEach((e) => {
+    console.log(e.value);
+  });
   document.querySelector("textarea").value = "";
   document.querySelector(".home").style.color = "red";
   document.querySelector(".carts").style.color = "black";
@@ -260,9 +268,6 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelector(".success").style.display = "none";
   document.querySelector(".main_menu").style.display = "block";
   document.querySelector("header").style.display = "block";
-  document.querySelectorAll(".confirm_user").forEach((e) => {
-    e.remove();
-  });
 });
 //-----Finish handle-----
 document.querySelector(".finish").addEventListener("click", (e) => {
@@ -275,7 +280,6 @@ document.querySelector(".finish").addEventListener("click", (e) => {
     putApi(orderNumber, true);
     success();
     const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-    document.querySelectorAll(".item").forEach((e) => e.remove());
     item.forEach((value) => {
       const template = `<div class="item">
               <div class="item-imgs">

@@ -410,11 +410,11 @@ $.addEventListener("click", (e) => {
       getItemLocalstorage().forEach((e) => {
         if (e.name == value.name) {
           value.so_luong = Number(e.soluong) + Number(value.so_luong);
+          console.log(value.so_luong);
         }
       });
       arr.push(value);
     });
-    setListLocalstorage(arr);
     console.log(arr);
     getApi()
       .then((res) => res.json())
