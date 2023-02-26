@@ -251,13 +251,7 @@ document.querySelector(".success").addEventListener("click", (e) => {
     e.value = "";
   });
   document.querySelectorAll(".city-choose").forEach((e) => e.remove());
-  arrayCity.forEach((e) => {
-    selectCity.insertAdjacentHTML(
-      "afterbegin",
-      `
-    <option class="city-choose" select value="${e.code}">${e.name}</option>`
-    );
-  });
+  console.log(arrayCity);
   selectDistrict.value = "--Chọn Huyện/Quận--";
   selectWard.value = "--Chọn Xã--";
   document.querySelectorAll(".confirm_user").forEach((e) => e.remove());

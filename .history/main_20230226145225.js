@@ -226,6 +226,7 @@ $.addEventListener("click", (e) => {
     displayItem(getItemLocalstorage());
     document.querySelector(".bill").textContent = totalAll();
   }
+
   // main_info
   if (e.target.matches("#buy") || e.target.matches(".payment")) {
     if (false) {

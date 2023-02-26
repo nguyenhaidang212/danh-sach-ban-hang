@@ -33,7 +33,7 @@ promiseCity
       selectCity.insertAdjacentHTML(
         "afterbegin",
         `
-      <option class="city-choose" select value="${e.code}">${e.name}</option>`
+      <option select value="${e.code}">${e.name}</option>`
       );
     });
   })
@@ -249,14 +249,6 @@ document.querySelector(".success").addEventListener("click", (e) => {
   countItem();
   document.querySelectorAll("input").forEach((e) => {
     e.value = "";
-  });
-  document.querySelectorAll(".city-choose").forEach((e) => e.remove());
-  arrayCity.forEach((e) => {
-    selectCity.insertAdjacentHTML(
-      "afterbegin",
-      `
-    <option class="city-choose" select value="${e.code}">${e.name}</option>`
-    );
   });
   selectDistrict.value = "--Chọn Huyện/Quận--";
   selectWard.value = "--Chọn Xã--";

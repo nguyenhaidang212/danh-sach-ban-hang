@@ -251,6 +251,7 @@ document.querySelector(".success").addEventListener("click", (e) => {
     e.value = "";
   });
   document.querySelectorAll(".city-choose").forEach((e) => e.remove());
+  console.log(arrayCity);
   arrayCity.forEach((e) => {
     selectCity.insertAdjacentHTML(
       "afterbegin",

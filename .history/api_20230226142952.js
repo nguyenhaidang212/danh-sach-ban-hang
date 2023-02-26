@@ -33,7 +33,7 @@ promiseCity
       selectCity.insertAdjacentHTML(
         "afterbegin",
         `
-      <option class="city-choose" select value="${e.code}">${e.name}</option>`
+      <option select value="${e.code}">${e.name}</option>`
       );
     });
   })
@@ -173,20 +173,20 @@ document.querySelector(".show").addEventListener("click", (e) => {
     document.querySelector(".carts").style.color = "black";
     document.querySelector(".payment").style.color = "red";
     postApi(userInfo);
-    setTimeout((e) => {
-      getApi()
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-        })
-        .then((tasks) => {
-          tasks.forEach((e) => {
-            if (e.id == userInfo.id) {
-              orderNumber = e.OrderNumber;
-              document.querySelector(".confirm_grid").insertAdjacentHTML(
-                "beforeend",
-                `
+    getApi()
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((tasks) => {
+        console.log(tasks);
+        tasks.forEach((e) => {
+          if (e.id == userInfo.id) {
+            orderNumber = e.OrderNumber;
+            document.querySelector(".confirm_grid").insertAdjacentHTML(
+              "beforeend",
+              `
               <div class="confirm_id confirm_user"><span class="show_item_buy">${
                 e.id
               }</span>
@@ -196,8 +196,8 @@ document.querySelector(".show").addEventListener("click", (e) => {
               </div>
               <div class="confirm_name confirm_user">${e.name}</div>
               <div class="confirm_date confirm_user">${date.getDate()}/${
-                  date.getMonth() + 1
-                }/${date.getFullYear()}</div>
+                date.getMonth() + 1
+              }/${date.getFullYear()}</div>
               <div class="confirm_order confirm_user">${
                 getItemLocalstorage().length
               }</div>
@@ -207,12 +207,11 @@ document.querySelector(".show").addEventListener("click", (e) => {
                 <i class="fa-solid fa-circle-xmark return_item"></i>
               </div>
               `
-              );
-            }
-          });
-        })
-        .catch((error) => {});
-    }, 1000);
+            );
+          }
+        });
+      })
+      .catch((error) => {});
   }
 });
 //-----Validate logic-----
@@ -250,34 +249,8 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelectorAll("input").forEach((e) => {
     e.value = "";
   });
-  document.querySelectorAll(".city-choose").forEach((e) => e.remove());
-  arrayCity.forEach((e) => {
-    selectCity.insertAdjacentHTML(
-      "afterbegin",
-      `
-    <option class="city-choose" select value="${e.code}">${e.name}</option>`
-    );
-  });
   selectDistrict.value = "--Chọn Huyện/Quận--";
   selectWard.value = "--Chọn Xã--";
-  document.querySelectorAll(".confirm_user").forEach((e) => e.remove());
-  document.querySelectorAll(".item").forEach((e) => e.remove());
-  getListLocalstorage().forEach((value) => {
-    const template = `<div class="item">
-  <div class="item-imgs">
-    <img src="${value.src}" alt="" class="item-img"/>
-  </div>
-  <div class="item-icon">
-  <i class="fa-solid fa-cart-plus item-add"></i>
-  </div>
-  <div class="item-title">${value.name}</div>
-  <div class="item-info">
-    <div class="item-price">Giá: ${value.gia}</div>
-    <div class="item-quality">Số lượng: ${value.so_luong}</div>
-  </div>
-</div>`;
-    listItem.insertAdjacentHTML("beforeend", template);
-  });
   document.querySelector("textarea").value = "";
   document.querySelector(".home").style.color = "red";
   document.querySelector(".carts").style.color = "black";
@@ -285,6 +258,9 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelector(".success").style.display = "none";
   document.querySelector(".main_menu").style.display = "block";
   document.querySelector("header").style.display = "block";
+  document.querySelectorAll(".confirm_user").forEach((e) => {
+    e.remove();
+  });
 });
 //-----Finish handle-----
 document.querySelector(".finish").addEventListener("click", (e) => {
@@ -297,6 +273,7 @@ document.querySelector(".finish").addEventListener("click", (e) => {
     putApi(orderNumber, true);
     success();
     const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
+    document.querySelectorAll(".item").forEach((e) => e.remove());
     item.forEach((value) => {
       const template = `<div class="item">
               <div class="item-imgs">

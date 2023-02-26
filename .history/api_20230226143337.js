@@ -33,7 +33,7 @@ promiseCity
       selectCity.insertAdjacentHTML(
         "afterbegin",
         `
-      <option class="city-choose" select value="${e.code}">${e.name}</option>`
+      <option select value="${e.code}">${e.name}</option>`
       );
     });
   })
@@ -174,6 +174,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
     document.querySelector(".payment").style.color = "red";
     postApi(userInfo);
     setTimeout((e) => {
+      console.log(1);
       getApi()
         .then((res) => {
           if (res.ok) {
@@ -202,7 +203,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
                 getItemLocalstorage().length
               }</div>
               <div class="confirm_quantily confirm_user">${quantily}</div>
-              <div class="confirm_price confirm_user">${totalAll()}$</div>
+              <div class="confirm_price confirm_user">${totalPrice}$</div>
               <div class="confirm_user">
                 <i class="fa-solid fa-circle-xmark return_item"></i>
               </div>
@@ -250,33 +251,8 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelectorAll("input").forEach((e) => {
     e.value = "";
   });
-  document.querySelectorAll(".city-choose").forEach((e) => e.remove());
-  arrayCity.forEach((e) => {
-    selectCity.insertAdjacentHTML(
-      "afterbegin",
-      `
-    <option class="city-choose" select value="${e.code}">${e.name}</option>`
-    );
-  });
-  selectDistrict.value = "--Chọn Huyện/Quận--";
-  selectWard.value = "--Chọn Xã--";
-  document.querySelectorAll(".confirm_user").forEach((e) => e.remove());
-  document.querySelectorAll(".item").forEach((e) => e.remove());
-  getListLocalstorage().forEach((value) => {
-    const template = `<div class="item">
-  <div class="item-imgs">
-    <img src="${value.src}" alt="" class="item-img"/>
-  </div>
-  <div class="item-icon">
-  <i class="fa-solid fa-cart-plus item-add"></i>
-  </div>
-  <div class="item-title">${value.name}</div>
-  <div class="item-info">
-    <div class="item-price">Giá: ${value.gia}</div>
-    <div class="item-quality">Số lượng: ${value.so_luong}</div>
-  </div>
-</div>`;
-    listItem.insertAdjacentHTML("beforeend", template);
+  document.querySelectorAll("option").forEach((e) => {
+    console.log(e.value);
   });
   document.querySelector("textarea").value = "";
   document.querySelector(".home").style.color = "red";

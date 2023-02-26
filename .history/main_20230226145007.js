@@ -226,6 +226,31 @@ $.addEventListener("click", (e) => {
     displayItem(getItemLocalstorage());
     document.querySelector(".bill").textContent = totalAll();
   }
+  // if (e.target.matches("#back2")) {
+  //   countItem();
+  //   putApi(orderNumber, false);
+  //   document.querySelector(".main_info").style.display = "none";
+  //   document.querySelector(".main_confirm").style.display = "none";
+  //   document.querySelector(".main_buy").style.display = "block";
+  //   document.querySelectorAll(".confirm_user").forEach((e) => {
+  //     e.remove();
+  //   });
+  //   document.querySelector(".max_item").textContent = "";
+  //   document.querySelector(".confirm_item_buy").style.display = "none";
+  //   document.querySelectorAll(".item_buy").forEach((e) => {
+  //     e.remove();
+  //   });
+  //   if (document.querySelectorAll(".list_buy").length == 0) {
+  //     document.querySelector(".img").style.display = "block";
+  //     document.querySelector(".title").style.display = "none";
+  //   } else {
+  //     document.querySelector(".title").style.display = "grid";
+  //     document.querySelector(".img").style.display = "none";
+  //   }
+  //   document.querySelector(".home").style.color = "black";
+  //   document.querySelector(".carts").style.color = "red";
+  //   document.querySelector(".payment").style.color = "black";
+  // }
   // main_info
   if (e.target.matches("#buy") || e.target.matches(".payment")) {
     if (false) {
