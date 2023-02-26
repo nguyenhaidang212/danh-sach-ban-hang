@@ -147,6 +147,7 @@ document.querySelector(".show").addEventListener("click", (e) => {
       " " +
       ward;
   }
+
   const userInfo = {
     name: ho + " " + ten,
     email: email,
@@ -164,28 +165,21 @@ document.querySelector(".show").addEventListener("click", (e) => {
     document.querySelector(".form_home").value != "" &&
     document.querySelector(".info").textContent == ""
   ) {
-    document.querySelector(".main_info").style.display = "none";
-    document.querySelector(".main_confirm").style.display = "block";
-    document.querySelector(".main_buy").style.display = "none";
-    document.querySelector("header").style.display = "block";
-    $.style.backgroundColor = "white";
-    document.querySelector(".home").style.color = "black";
-    document.querySelector(".carts").style.color = "black";
-    document.querySelector(".payment").style.color = "red";
     postApi(userInfo);
-    getApi()
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((tasks) => {
-        tasks.forEach((e) => {
-          if (e.id == userInfo.id) {
-            orderNumber = e.OrderNumber;
-            document.querySelector(".confirm_grid").insertAdjacentHTML(
-              "beforeend",
-              `
+    setTimeout((e) => {
+      getApi()
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+        })
+        .then((tasks) => {
+          tasks.forEach((e) => {
+            if (e.id == userInfo.id) {
+              orderNumber = e.OrderNumber;
+              document.querySelector(".confirm_grid").insertAdjacentHTML(
+                "beforeend",
+                `
               <div class="confirm_id confirm_user"><span class="show_item_buy">${
                 e.id
               }</span>
@@ -195,22 +189,31 @@ document.querySelector(".show").addEventListener("click", (e) => {
               </div>
               <div class="confirm_name confirm_user">${e.name}</div>
               <div class="confirm_date confirm_user">${date.getDate()}/${
-                date.getMonth() + 1
-              }/${date.getFullYear()}</div>
+                  date.getMonth() + 1
+                }/${date.getFullYear()}</div>
               <div class="confirm_order confirm_user">${
                 getItemLocalstorage().length
               }</div>
               <div class="confirm_quantily confirm_user">${quantily}</div>
-              <div class="confirm_price confirm_user">${totalAll()}$</div>
+              <div class="confirm_price confirm_user">${totalPrice}$</div>
               <div class="confirm_user">
                 <i class="fa-solid fa-circle-xmark return_item"></i>
               </div>
               `
-            );
-          }
-        });
-      })
-      .catch((error) => {});
+              );
+            }
+          });
+        })
+        .catch((error) => {});
+    }, 1000);
+    document.querySelector(".main_info").style.display = "none";
+    document.querySelector(".main_confirm").style.display = "block";
+    document.querySelector(".main_buy").style.display = "none";
+    document.querySelector("header").style.display = "block";
+    $.style.backgroundColor = "white";
+    document.querySelector(".home").style.color = "black";
+    document.querySelector(".carts").style.color = "black";
+    document.querySelector(".payment").style.color = "red";
   }
 });
 //-----Validate logic-----
@@ -248,8 +251,9 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelectorAll("input").forEach((e) => {
     e.value = "";
   });
-  selectDistrict.value = "--Chọn Huyện/Quận--";
-  selectWard.value = "--Chọn Xã--";
+  document.querySelectorAll("option").forEach((e) => {
+    console.log(e.value);
+  });
   document.querySelector("textarea").value = "";
   document.querySelector(".home").style.color = "red";
   document.querySelector(".carts").style.color = "black";
@@ -257,9 +261,6 @@ document.querySelector(".success").addEventListener("click", (e) => {
   document.querySelector(".success").style.display = "none";
   document.querySelector(".main_menu").style.display = "block";
   document.querySelector("header").style.display = "block";
-  document.querySelectorAll(".confirm_user").forEach((e) => {
-    e.remove();
-  });
 });
 //-----Finish handle-----
 document.querySelector(".finish").addEventListener("click", (e) => {
@@ -272,7 +273,6 @@ document.querySelector(".finish").addEventListener("click", (e) => {
     putApi(orderNumber, true);
     success();
     const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-    document.querySelectorAll(".item").forEach((e) => e.remove());
     item.forEach((value) => {
       const template = `<div class="item">
               <div class="item-imgs">

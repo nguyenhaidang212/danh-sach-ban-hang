@@ -403,19 +403,9 @@ $.addEventListener("click", (e) => {
   }
   //-----Delete order from api
   if (e.target.matches(".return_item")) {
+    countItem();
     document.querySelectorAll(".list_buy").forEach((e) => e.remove());
     document.querySelector(".bill").textContent = "0";
-    let arr = [];
-    getListLocalstorage().forEach((value) => {
-      getItemLocalstorage().forEach((e) => {
-        if (e.name == value.name) {
-          value.so_luong = Number(e.soluong) + Number(value.so_luong);
-        }
-      });
-      arr.push(value);
-    });
-    setListLocalstorage(arr);
-    console.log(arr);
     getApi()
       .then((res) => res.json())
       .then((data) => {
@@ -428,7 +418,6 @@ $.addEventListener("click", (e) => {
               e.remove();
             });
             document.querySelector(".confirm_item_buy").style.display = "none";
-            countItem();
           }
         });
       });

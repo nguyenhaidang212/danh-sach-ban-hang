@@ -406,15 +406,14 @@ $.addEventListener("click", (e) => {
     document.querySelectorAll(".list_buy").forEach((e) => e.remove());
     document.querySelector(".bill").textContent = "0";
     let arr = [];
-    getListLocalstorage().forEach((value) => {
-      getItemLocalstorage().forEach((e) => {
+    getItemLocalstorage().forEach((e) => {
+      getListLocalstorage().forEach((value) => {
         if (e.name == value.name) {
           value.so_luong = Number(e.soluong) + Number(value.so_luong);
         }
+        arr.push(value);
       });
-      arr.push(value);
     });
-    setListLocalstorage(arr);
     console.log(arr);
     getApi()
       .then((res) => res.json())
