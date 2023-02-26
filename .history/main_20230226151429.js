@@ -183,17 +183,6 @@ $.addEventListener("click", (e) => {
     });
   }
   if (e.target.matches("#back") || e.target.matches(".home")) {
-    if (document.querySelector(".main_confirm").style.display == "block") {
-      getApi()
-        .then((res) => res.json())
-        .then((data) => {
-          data.forEach((e, i) => {
-            if (e.OrderNumber == orderNumber) {
-              putApi(orderNumber, false);
-            }
-          });
-        });
-    }
     document.querySelector(".home").style.color = "red";
     document.querySelector(".carts").style.color = "black";
     document.querySelector(".payment").style.color = "black";

@@ -129,17 +129,6 @@ $.addEventListener("click", (e) => {
   //-----Chuyen trang-----
   // main_buy
   if (e.target.matches(".buy_display") || e.target.matches("#back2")) {
-    if (document.querySelector(".main_confirm").style.display == "block") {
-      getApi()
-        .then((res) => res.json())
-        .then((data) => {
-          data.forEach((e, i) => {
-            if (e.OrderNumber == orderNumber) {
-              putApi(orderNumber, false);
-            }
-          });
-        });
-    }
     document.querySelector(".home").style.color = "black";
     document.querySelector(".carts").style.color = "red";
     document.querySelector(".payment").style.color = "black";
@@ -183,17 +172,6 @@ $.addEventListener("click", (e) => {
     });
   }
   if (e.target.matches("#back") || e.target.matches(".home")) {
-    if (document.querySelector(".main_confirm").style.display == "block") {
-      getApi()
-        .then((res) => res.json())
-        .then((data) => {
-          data.forEach((e, i) => {
-            if (e.OrderNumber == orderNumber) {
-              putApi(orderNumber, false);
-            }
-          });
-        });
-    }
     document.querySelector(".home").style.color = "red";
     document.querySelector(".carts").style.color = "black";
     document.querySelector(".payment").style.color = "black";
@@ -400,7 +378,7 @@ $.addEventListener("click", (e) => {
     });
   }
   //-----Delete order from api
-  if (e.target.matches(".return_item")) {
+  if (e.target.matches(".return_item") || e.target.matches("#back2")) {
     document.querySelectorAll(".list_buy").forEach((e) => e.remove());
     document.querySelector(".bill").textContent = "0";
     let arr = [];

@@ -135,7 +135,15 @@ $.addEventListener("click", (e) => {
         .then((data) => {
           data.forEach((e, i) => {
             if (e.OrderNumber == orderNumber) {
-              putApi(orderNumber, false);
+              console.log(e);
+              // deleteApi(e.OrderNumber);
+              // arrayItemAdd.splice(0, arrayItemAdd.length);
+              // localStorage.setItem(keyLocalStorageItemCart, JSON.stringify([]));
+              // document.querySelectorAll(".confirm_user").forEach((e) => {
+              //   e.remove();
+              // });
+              // document.querySelector(".confirm_item_buy").style.display = "none";
+              // countItem();
             }
           });
         });
@@ -183,17 +191,6 @@ $.addEventListener("click", (e) => {
     });
   }
   if (e.target.matches("#back") || e.target.matches(".home")) {
-    if (document.querySelector(".main_confirm").style.display == "block") {
-      getApi()
-        .then((res) => res.json())
-        .then((data) => {
-          data.forEach((e, i) => {
-            if (e.OrderNumber == orderNumber) {
-              putApi(orderNumber, false);
-            }
-          });
-        });
-    }
     document.querySelector(".home").style.color = "red";
     document.querySelector(".carts").style.color = "black";
     document.querySelector(".payment").style.color = "black";
