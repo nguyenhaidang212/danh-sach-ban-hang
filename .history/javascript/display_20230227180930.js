@@ -1,108 +1,4 @@
-const MAX = 20;
-const listData = [
-  {
-    id: 1,
-    name: "Surface Laptop Go (THH-00035)(i5 1035G1/8GB RAM/128GB SSD/12.4 Cảm ứng/Win 10/Vàng)(Bảo hành tại HACOM)",
-    so_luong: 20,
-    gia: 100,
-    src: "./imgs/lap1.png",
-    quality: 1,
-  },
-  {
-    id: 2,
-    name: "Laptop Apple Macbook Pro 13 (Z16R0003V) (Apple M2 /8C CPU/10C GPU/16GB/256GB SSD/13.3/Mac OS/Xám)",
-    so_luong: 20,
-    gia: 500,
-    src: "./imgs/lap2.png",
-    quality: 1,
-  },
-  {
-    id: 3,
-    name: "Laptop Lenovo Thinkpad P14s (21AK006WVA) (i7 1260P/24GB RAM/512GB SSD/14 2.2K/T550 4Gb/Dos/Đen)",
-    so_luong: 20,
-    gia: 1000,
-    src: "./imgs/lap3.png",
-    quality: 1,
-  },
-  {
-    id: 4,
-    name: "Laptop Lenovo IdeaPad Slim 5 Pro 14AR7H (82SJ0028VN) (R7 6800HS/16GB RAM/512GB SSD/14 2.8K/Win11/Xám)",
-    so_luong: 20,
-    gia: 1200,
-    src: "./imgs/lap4.png",
-    quality: 1,
-  },
-  {
-    id: 5,
-    name: "Laptop Lenovo IdeaPad Gaming 3 15ARH7 (82SB007HVN) (R7 6800H/8GB RAM/512GB SSD/15.6 FHD/RTX 3050 4GB/Win11/Xám)",
-    so_luong: 20,
-    gia: 1400,
-    src: "./imgs/lap13.png",
-    quality: 1,
-  },
-  {
-    id: 6,
-    name: "Laptop MSI Gaming GF63 Thin (11UD-473VN) (i5 11400H/8GB RAM/512GBSSD/RTX3050Ti 4G/15.6 inch FHD/Win11)",
-    so_luong: 20,
-    gia: 1500,
-    src: "./imgs/lap6.png",
-    quality: 1,
-  },
-  {
-    id: 7,
-    name: "Laptop Lenovo IdeaPad 3 14IAU7 (82RJ001BVN) (i5 1235U/8GB RAM/512GB SSD/14 FHD/Win11/Xanh)",
-    so_luong: 20,
-    gia: 1600,
-    src: "./imgs/lap14.png",
-    quality: 1,
-  },
-  {
-    id: 8,
-    name: "Laptop MSI Gaming Katana GF66 (12UCK-699VN) (i5 12450H 8GB RAM/512GB SSD/RTX3050 4G/15.6 inch FHD 144Hz/Win11/Đen) (2022)",
-    so_luong: 20,
-    gia: 1700,
-    src: "./imgs/lap8.png",
-    quality: 1,
-  },
-  {
-    id: 9,
-    name: "Laptop MSI Modern 15 (A11M-1024VN) (i5 1155G7/8GB RAM/512GB SSD/15.6 inch FHD/Win10/ Vỏ nhôm/Xám)",
-    so_luong: 20,
-    gia: 2000,
-    src: "./imgs/lap9.png",
-    quality: 1,
-  },
-  {
-    id: 10,
-    name: "Apple Macbook Air (MLY33SA/A) (Apple M2/8C CPU/8C GPU/8GB RAM/256GB SSD/13.6 inch IPS/Mac OS/Đen) (2022)",
-    so_luong: 20,
-    gia: 300,
-    src: "./imgs/lap10.png",
-    quality: 1,
-  },
-  {
-    id: 11,
-    name: "Apple Macbook Air 13 (MGN63SA/A) (Apple M1/8GB RAM/256GB SSD/13.3 inch IPS/Mac OS/Xám) (NEW)",
-    so_luong: 20,
-    gia: 400,
-    src: "./imgs/lap11.png",
-    quality: 1,
-  },
-  {
-    id: 12,
-    name: "Laptop LG Gram 16ZD90Q-G.AX51A5 (i5-1240P/8GB RAM/256GB SSD/16.0 inch WQXGA/Dos/Trắng) (2022)",
-    so_luong: 20,
-    gia: 200,
-    src: "./imgs/lap12.png",
-    quality: 1,
-  },
-];
-const keyLocalStorageListSP = "DANHSACHSP";
-const keyLocalStorageItemCart = "DANHSACHITEMCART";
-const listItem = document.querySelector(".list");
-const $ = document.body;
-const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-let orderNumber = 0;
+// Hien thi san pham
 localStorage.setItem(keyLocalStorageListSP, JSON.stringify(listData));
 item.forEach((value) => {
   const template = `<div class="item">
@@ -120,11 +16,7 @@ item.forEach((value) => {
 </div>`;
   listItem.insertAdjacentHTML("beforeend", template);
 });
-const arrayItemAdd = [];
-const mainMenu = document.querySelector(".main_menu");
-const mainBuy = document.querySelector(".main_buy");
-const buyDiplay = document.querySelector(".buy");
-const delItem = document.querySelector(".buy-del");
+// Chuyen trang
 $.addEventListener("click", (e) => {
   //-----Chuyen trang-----
   // main_buy
@@ -209,15 +101,15 @@ $.addEventListener("click", (e) => {
           document.querySelector(".order-menu").insertAdjacentHTML(
             "beforeend",
             `            <div class="order-grid-items">
-            <span class="order-grid-item">${e.id}</span
-            ><span class="order-grid-item">${e.name}</span
-            ><span class="order-grid-item">Đang xử lý</span
-            ><span class="order-grid-item">${e.total}<strong> $</strong></span
-            ><span class="order-grid-item">${e.date}</span>
-            <div class="order-grid-item order-detail">
-              Xem chi tiết
-            </div>
-          </div>`
+              <span class="order-grid-item">${e.id}</span
+              ><span class="order-grid-item">${e.name}</span
+              ><span class="order-grid-item">Đang xử lý</span
+              ><span class="order-grid-item">${e.total}<strong> $</strong></span
+              ><span class="order-grid-item">${e.date}</span>
+              <div class="order-grid-item order-detail">
+                Xem chi tiết
+              </div>
+            </div>`
           );
         });
         document.querySelector(".all-order").textContent = arrOrder.length;
@@ -254,18 +146,18 @@ $.addEventListener("click", (e) => {
     document.querySelectorAll(".item").forEach((e) => e.remove());
     getListLocalstorage().forEach((value) => {
       const template = `<div class="item">
-      <div class="item-imgs">
-        <img src="${value.src}" alt="" class="item-img"/>
-      </div>
-      <div class="item-icon">
-      <i class="fa-solid fa-cart-plus item-add"></i>
-      </div>
-      <div class="item-title">${value.name}</div>
-      <div class="item-info">
-        <div class="item-price">Giá: ${value.gia}</div>
-        <div class="item-quality">Số lượng: ${value.so_luong}</div>
-      </div>
-    </div>`;
+        <div class="item-imgs">
+          <img src="${value.src}" alt="" class="item-img"/>
+        </div>
+        <div class="item-icon">
+        <i class="fa-solid fa-cart-plus item-add"></i>
+        </div>
+        <div class="item-title">${value.name}</div>
+        <div class="item-info">
+          <div class="item-price">Giá: ${value.gia}</div>
+          <div class="item-quality">Số lượng: ${value.so_luong}</div>
+        </div>
+      </div>`;
       listItem.insertAdjacentHTML("beforeend", template);
     });
   }
@@ -328,28 +220,28 @@ $.addEventListener("click", (e) => {
             document.querySelector("#order-detail").insertAdjacentHTML(
               "beforeend",
               `<div class="order-detail-body">
-            <div class="order-detail-title">
-              <h1>Thông tin đơn hàng</h1>
-            </div>
-            <p>Mã đơn hàng</p>
-            <p class="madonhang">${value.id}</p>
-            <p>Số điện thoại</p>
-            <p>${value.phonenumber}</p>
-            <p>Email</p>
-            <p>${value.email}</p>
-            <p>Địa chỉ</p>
-            <p>${value.address}</p>
-            <p>Ghi chú</p>
-            <p>${value.message}</p>
-            <div class="order-detail-list">
-              <p>Danh sách sản phẩm
-              <i class="fa-sharp fa-solid fa-caret-right show-detail-item"></i>
-              <i class="fa-solid fa-caret-left hide-detail-item"></i>
-              </p>
-            </div>
-              <div class="list-item-order" style="display: none">
+              <div class="order-detail-title">
+                <h1>Thông tin đơn hàng</h1>
               </div>
-          </div>`
+              <p>Mã đơn hàng</p>
+              <p class="madonhang">${value.id}</p>
+              <p>Số điện thoại</p>
+              <p>${value.phonenumber}</p>
+              <p>Email</p>
+              <p>${value.email}</p>
+              <p>Địa chỉ</p>
+              <p>${value.address}</p>
+              <p>Ghi chú</p>
+              <p>${value.message}</p>
+              <div class="order-detail-list">
+                <p>Danh sách sản phẩm
+                <i class="fa-sharp fa-solid fa-caret-right show-detail-item"></i>
+                <i class="fa-solid fa-caret-left hide-detail-item"></i>
+                </p>
+              </div>
+                <div class="list-item-order" style="display: none">
+                </div>
+            </div>`
             );
           }
         });
@@ -378,7 +270,7 @@ $.addEventListener("click", (e) => {
               document.querySelector(".list-item-order").insertAdjacentHTML(
                 "beforeend",
                 `<span class="tensanpham">${e.name}</span>
-                <span class="soluong">${e.soluong}</span>`
+                  <span class="soluong">${e.soluong}</span>`
               );
             });
           }
@@ -510,10 +402,10 @@ $.addEventListener("click", (e) => {
         document.querySelector(".confirm_item_buy").insertAdjacentHTML(
           "beforeend",
           `
-      <div class="item_buy">
-      <span class="item_buy_name">${e.name}</span> <span>${e.price}</span><span>${e.soluong}</span>
-    </div>
-      `
+        <div class="item_buy">
+        <span class="item_buy_name">${e.name}</span> <span>${e.price}</span><span>${e.soluong}</span>
+      </div>
+        `
         );
       });
     }
@@ -556,136 +448,3 @@ $.addEventListener("click", (e) => {
       });
   }
 });
-//-----Add item----
-function addItem(value) {
-  item.forEach((e) => {
-    if (e.name == value.parentNode.nextElementSibling.textContent) {
-      const object = {
-        id: e.id,
-        soluong: e.quality,
-        name: e.name,
-        price: e.gia,
-      };
-      arrayItemAdd.forEach((e, i) => {
-        if (object.id == e.id) {
-          object.soluong = e.soluong + 1;
-          arrayItemAdd.splice(i, 1);
-        }
-      });
-      arrayItemAdd.push(object);
-    }
-  });
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
-}
-//-----Show item-----
-function displayItem(arr) {
-  arr.forEach((e) => {
-    item.forEach((value) => {
-      if (value.id == e.id) {
-        const price = Number(e.price) * Number(e.soluong);
-        buyDiplay.insertAdjacentHTML(
-          "beforebegin",
-          `<div class="list_buy">
-        <div class="buy-name">${value.name}</div>
-        <div class="buy-quality">
-        <i class="fa-solid fa-minus minus-icon"></i>
-        <span>${e.soluong}</span>
-        <i class="fa-solid fa-plus plus-icon"></i>
-        </div>
-        <div class="buy-price">${value.gia}</div>
-        <div class="buy-sum">${price}</div>
-        <div><i class="fa-solid fa-circle-xmark buy-del"></i></div>
-      </div>`
-        );
-      }
-    });
-  });
-}
-//-----Count item-----
-function countItem(value = 0) {
-  let count = 0;
-  getItemLocalstorage().forEach((e) => {
-    count += e.soluong;
-  });
-  document.querySelector(".buy_count").textContent = count;
-  if (count == 0) {
-    document.querySelector(".buy_count").style.display = "none";
-  } else {
-    document.querySelector(".buy_count").style.display = "block";
-  }
-}
-//-----Delete item-----
-function delItemBuy(name) {
-  name.parentNode.remove();
-  arrayItemAdd.forEach((e, i) => {
-    if (e.name == name.textContent) {
-      arrayItemAdd.splice(i, 1);
-    }
-  });
-  localStorage.setItem(keyLocalStorageItemCart, JSON.stringify(arrayItemAdd));
-}
-//-----Total Price-----
-function totalPlus(value = 0) {
-  totalAll();
-  value.parentNode.nextElementSibling.nextElementSibling.textContent =
-    Number(value.previousElementSibling.textContent) *
-    Number(value.parentNode.nextElementSibling.textContent);
-}
-function totalMinus(value = 0) {
-  totalAll();
-  value.parentNode.nextElementSibling.nextElementSibling.textContent =
-    Number(value.nextElementSibling.textContent) *
-    Number(value.parentNode.nextElementSibling.textContent);
-}
-function totalAll() {
-  let total = 0;
-  getItemLocalstorage().forEach((e) => {
-    total += Number(e.price) * Number(e.soluong);
-  });
-  document.querySelector(".bill").textContent = total;
-  return total;
-}
-//-----Count item-----
-function countList(value) {
-  listNew = [];
-  getListLocalstorage().map((e) => {
-    if (e.name == value.parentNode.nextElementSibling.textContent) {
-      if (e.so_luong == 0) {
-        alert("Không đủ sản phẩm");
-        value.preventDefault();
-      } else {
-        e.so_luong -= 1;
-      }
-    }
-    listNew.push(e);
-  });
-  localStorage.setItem(keyLocalStorageListSP, JSON.stringify(listNew));
-  document.querySelectorAll(".item").forEach((e) => e.remove());
-  getListLocalstorage().forEach((value) => {
-    const template = `<div class="item">
-    <div class="item-imgs">
-      <img src="${value.src}" alt="" class="item-img"/>
-    </div>
-    <div class="item-icon">
-    <i class="fa-solid fa-cart-plus item-add"></i>
-    </div>
-    <div class="item-title">${value.name}</div>
-    <div class="item-info">
-      <div class="item-price">Giá: ${value.gia}</div>
-      <div class="item-quality">Số lượng: ${value.so_luong}</div>
-    </div>
-  </div>`;
-    listItem.insertAdjacentHTML("beforeend", template);
-  });
-}
-//-----Localstorage-----
-function getItemLocalstorage() {
-  return JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
-}
-function getListLocalstorage() {
-  return JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-}
-function setListLocalstorage(arr) {
-  localStorage.setItem(keyLocalStorageListSP, JSON.stringify(arr));
-}
-// localStorage.clear();
