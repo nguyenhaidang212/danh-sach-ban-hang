@@ -261,7 +261,6 @@ $.addEventListener("click", (e) => {
         });
       });
   }
-  // Show detail orders
   if (
     !e.target.matches(".order-detail-body") &&
     e.target.matches(".order-detail-overlay")
@@ -300,7 +299,6 @@ $.addEventListener("click", (e) => {
       }
       newList.push(value);
     });
-    console.log(newList);
     localStorage.setItem(keyLocalStorageListSP, JSON.stringify(newList));
     const itemDelName =
       e.target.parentNode.previousElementSibling.previousElementSibling

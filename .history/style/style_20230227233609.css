@@ -327,6 +327,10 @@ main {
   grid-template-rows: 20px;
   row-gap: 12px;
 }
+.form_message {
+  display: block;
+  height: 200px;
+}
 .confirm_name {
   height: 20px;
   line-height: 20px;

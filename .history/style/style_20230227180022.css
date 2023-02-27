@@ -523,9 +523,8 @@ main {
   height: max-content;
   max-height: 400px;
   border: 1px solid #f3f4fb;
-  background-color: #eee;
+  background-color: #f3f4fb;
   padding: 8px;
-  padding-top: 0;
   row-gap: 10px;
   overflow-y: scroll;
 }

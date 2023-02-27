@@ -244,6 +244,16 @@ $.addEventListener("click", (e) => {
           }
         });
       });
+  }
+  if (
+    !e.target.matches(".order-detail-body") &&
+    e.target.matches(".order-detail-overlay")
+  ) {
+    document.querySelector(".order-detail-body").remove();
+    document.querySelector("#order").style.display = "block";
+    document.querySelector("#order-detail").style.display = "none";
+  }
+  if (e.target.matches(".show-detail-item")) {
     getApi()
       .then((res) => res.json())
       .then((data) => {
@@ -260,15 +270,6 @@ $.addEventListener("click", (e) => {
           }
         });
       });
-  }
-  // Show detail orders
-  if (
-    !e.target.matches(".order-detail-body") &&
-    e.target.matches(".order-detail-overlay")
-  ) {
-    document.querySelector(".order-detail-body").remove();
-    document.querySelector("#order").style.display = "block";
-    document.querySelector("#order-detail").style.display = "none";
   }
   if (e.target.matches(".hide-detail-item")) {
     document.querySelector(".show-detail-item").style.display = "inline";
@@ -300,7 +301,6 @@ $.addEventListener("click", (e) => {
       }
       newList.push(value);
     });
-    console.log(newList);
     localStorage.setItem(keyLocalStorageListSP, JSON.stringify(newList));
     const itemDelName =
       e.target.parentNode.previousElementSibling.previousElementSibling

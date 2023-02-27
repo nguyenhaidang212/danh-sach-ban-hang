@@ -300,7 +300,6 @@ $.addEventListener("click", (e) => {
       }
       newList.push(value);
     });
-    console.log(newList);
     localStorage.setItem(keyLocalStorageListSP, JSON.stringify(newList));
     const itemDelName =
       e.target.parentNode.previousElementSibling.previousElementSibling

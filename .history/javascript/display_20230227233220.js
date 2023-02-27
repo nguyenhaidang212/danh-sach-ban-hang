@@ -261,7 +261,6 @@ $.addEventListener("click", (e) => {
         });
       });
   }
-  // Show detail orders
   if (
     !e.target.matches(".order-detail-body") &&
     e.target.matches(".order-detail-overlay")
@@ -269,6 +268,24 @@ $.addEventListener("click", (e) => {
     document.querySelector(".order-detail-body").remove();
     document.querySelector("#order").style.display = "block";
     document.querySelector("#order-detail").style.display = "none";
+  }
+  if (e.target.matches(".show-detail-item")) {
+    getApi()
+      .then((res) => res.json())
+      .then((data) => {
+        document.querySelector(".list-item-order").style.display = "grid";
+        data.forEach((value) => {
+          if (value.id == document.querySelector(".madonhang").textContent) {
+            value.order.forEach((e) => {
+              document.querySelector(".list-item-order").insertAdjacentHTML(
+                "beforeend",
+                `<span class="tensanpham">${e.name}</span>
+                  <span class="soluong">${e.soluong}</span>`
+              );
+            });
+          }
+        });
+      });
   }
   if (e.target.matches(".hide-detail-item")) {
     document.querySelector(".show-detail-item").style.display = "inline";
@@ -300,7 +317,6 @@ $.addEventListener("click", (e) => {
       }
       newList.push(value);
     });
-    console.log(newList);
     localStorage.setItem(keyLocalStorageListSP, JSON.stringify(newList));
     const itemDelName =
       e.target.parentNode.previousElementSibling.previousElementSibling
