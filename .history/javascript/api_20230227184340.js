@@ -128,6 +128,6 @@ document.querySelector(".show").addEventListener("click", (e) => {
           });
         })
         .catch((error) => {});
-    }, 500);
+    }, 1000);
   }
 });
