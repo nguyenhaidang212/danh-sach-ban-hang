@@ -18,6 +18,3 @@ function setOrder(arr) {
   localStorage.setItem(userOrder, JSON.stringify(arr));
 }
 // localStorage.clear();
-setListLocalstorage(listData);
-setListItem([]);
-setOrder([]);

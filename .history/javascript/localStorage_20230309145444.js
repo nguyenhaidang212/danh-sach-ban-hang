@@ -1,3 +1,6 @@
+setListLocalstorage(listData);
+setListItem([]);
+setOrder([]);
 //-----Localstorage-----
 const getItemList = () => {
   return JSON.parse(localStorage.getItem(keyLocalStorageItemCart));
@@ -18,6 +21,4 @@ function setOrder(arr) {
   localStorage.setItem(userOrder, JSON.stringify(arr));
 }
 // localStorage.clear();
-setListLocalstorage(listData);
-setListItem([]);
-setOrder([]);
+export {getItemList,getList,getOrder,setListLocalstorage,setListItem,setOrder} default

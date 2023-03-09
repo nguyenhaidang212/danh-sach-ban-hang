@@ -11,9 +11,6 @@ function countItem() {
     document.querySelector(".buy_count").style.display = "block";
   }
 }
-function displayItem(arr) {
-  console.log(arr);
-}
 function totalAll() {
   let total = 0;
   getItemList().forEach((e) => {
@@ -260,3 +257,21 @@ function wardChoose() {
     }
   });
 }
+export {
+  districChoose,
+  wardChoose,
+  formWrong,
+  check,
+  deleteInfo,
+  deleteData,
+  delItemBuy,
+  getItemBuy,
+  plusItem,
+  minusItem,
+  returnItem,
+  createOrder,
+  styleApiOrder,
+  randomID,
+  countItem,
+  totalAll,
+};

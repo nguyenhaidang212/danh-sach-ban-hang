@@ -11,9 +11,6 @@ function countItem() {
     document.querySelector(".buy_count").style.display = "block";
   }
 }
-function displayItem(arr) {
-  console.log(arr);
-}
 function totalAll() {
   let total = 0;
   getItemList().forEach((e) => {
