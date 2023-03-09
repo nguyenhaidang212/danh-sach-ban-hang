@@ -134,18 +134,17 @@ function listItemRender(arr) {
   });
 }
 function displayItem(arr) {
-  document.querySelectorAll(".list_buy").forEach((e) => e.remove());
   arr.forEach((e) => {
     item.forEach((value) => {
       if (value.id == e.id) {
-        const price = Number(e.gia) * Number(e.so_luong_mua);
+        const price = Number(e.price) * Number(e.soluong);
         buyDiplay.insertAdjacentHTML(
           "beforebegin",
           `<div class="list_buy">
           <div class="buy-name">${value.name}</div>
           <div class="buy-quality">
           <i class="fa-solid fa-minus minus-icon"></i>
-          <span>${e.so_luong_mua}</span>
+          <span>${e.soluong}</span>
           <i class="fa-solid fa-plus plus-icon"></i>
           </div>
           <div class="buy-price">${value.gia}</div>
@@ -156,14 +155,4 @@ function displayItem(arr) {
       }
     });
   });
-  arr.forEach((e) => {
-    document.querySelectorAll(".plus-icon").forEach((value) => {
-      if (value.parentNode.previousElementSibling.textContent == e.name) {
-        if (e.so_luong == 0) {
-          value.style.display = "none";
-        } else value.style.display = "block";
-      }
-    });
-  });
-  totalAll();
 }

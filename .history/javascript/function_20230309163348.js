@@ -124,13 +124,16 @@ function plusItem(name) {
   const list = getItemList();
   const newList = getList();
   list.forEach((e) => {
-    if (e.name == name.parentNode.previousElementSibling.textContent) {
+    if (e.name == name) {
       e.so_luong_mua++;
       e.so_luong--;
       newList.forEach((item) => {
         if (item.name == e.name) {
           item.so_luong--;
           item.so_luong_mua++;
+          if (item.so_luong == 0) {
+            console.log(1);
+          }
         }
       });
     }

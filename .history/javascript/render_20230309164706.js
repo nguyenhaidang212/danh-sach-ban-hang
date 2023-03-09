@@ -157,13 +157,9 @@ function displayItem(arr) {
     });
   });
   arr.forEach((e) => {
-    document.querySelectorAll(".plus-icon").forEach((value) => {
-      if (value.parentNode.previousElementSibling.textContent == e.name) {
-        if (e.so_luong == 0) {
-          value.style.display = "none";
-        } else value.style.display = "block";
-      }
-    });
+    if (e.so_luong == 0) {
+      console.log(e);
+    }
   });
   totalAll();
 }

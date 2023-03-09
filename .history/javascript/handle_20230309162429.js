@@ -70,7 +70,7 @@ $.addEventListener("click", (e) => {
     countItem();
   }
   if (e.target.matches(".plus-icon")) {
-    plusItem(e.target);
+    plusItem(e.target.parentNode.previousElementSibling.textContent);
     countItem();
   }
   if (e.target.matches(".minus-icon")) {

@@ -131,6 +131,15 @@ function plusItem(name) {
         if (item.name == e.name) {
           item.so_luong--;
           item.so_luong_mua++;
+          if (item.so_luong == 0) {
+            document.querySelectorAll(".plus-icon").forEach((e) => {
+              if (
+                e.parentNode.previousElementSibling.textContent == item.name
+              ) {
+                console.log(e);
+              }
+            });
+          }
         }
       });
     }

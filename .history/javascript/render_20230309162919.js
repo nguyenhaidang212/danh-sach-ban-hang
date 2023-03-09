@@ -134,7 +134,6 @@ function listItemRender(arr) {
   });
 }
 function displayItem(arr) {
-  document.querySelectorAll(".list_buy").forEach((e) => e.remove());
   arr.forEach((e) => {
     item.forEach((value) => {
       if (value.id == e.id) {
@@ -156,14 +155,4 @@ function displayItem(arr) {
       }
     });
   });
-  arr.forEach((e) => {
-    document.querySelectorAll(".plus-icon").forEach((value) => {
-      if (value.parentNode.previousElementSibling.textContent == e.name) {
-        if (e.so_luong == 0) {
-          value.style.display = "none";
-        } else value.style.display = "block";
-      }
-    });
-  });
-  totalAll();
 }
