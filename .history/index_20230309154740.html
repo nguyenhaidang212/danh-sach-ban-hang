@@ -1,3 +1,4 @@
+@@ -0,0 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -56,22 +57,20 @@
     </main>
     <!-- Trang danh sach -->
     <main class="main_buy" style="display: none">
-      <div class="img">
+      <div class="title">
+        <span>Product Name</span><span>Quantity</span><span>Subtotal</span
+        ><span>Total</span><span>Clear Cart</span>
+      </div>
+      <div class="img" style="display: none">
         <img src="./imgs/117-1170538_404-your-cart-is-empty.png" alt="" />
       </div>
-      <div id="main_buy">
-        <div class="title">
-          <span>Product Name</span><span>Quantity</span><span>Subtotal</span
-          ><span>Total</span><span>Clear Cart</span>
-        </div>
-        <div class="info"></div>
-        <div class="buy">
-          <button id="back" class="back">Back to Shopping</button>
-          <div class="total">
-            <strong>Total: $</strong>
-            <div class="bill"></div>
-            <button id="buy">Buy</button>
-          </div>
+      <div class="info"></div>
+      <div class="buy">
+        <button id="back" class="back">Back to Shopping</button>
+        <div class="total">
+          <strong>Total: $</strong>
+          <div class="bill"></div>
+          <button id="buy">Buy</button>
         </div>
       </div>
     </main>
@@ -80,10 +79,12 @@
       <div class="buy_form">
         <div class="form_title">
           <h1>Thông tin người mua</h1>
+          <i class="fa-solid fa-circle-xmark close"></i>
         </div>
         <div class="form_content">
           <div class="form_grid">
             <div class="username">
+              <div class="form_wrong"></div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Họ</span>
                 <input
@@ -126,7 +127,6 @@
                 aria-describedby="basic-addon1"
               />
             </div>
-            <div class="form_wrong"></div>
             <div id="address">Địa chỉ</div>
             <div class="form_wrong form_address"></div>
             <div class="address">
@@ -173,6 +173,7 @@
           </div>
         </div>
         <div class="confirm">
+          <button type="button" class="btn btn-danger cancer">Hủy</button>
           <button type="button" class="btn btn-primary show btn-confirm">
             Trang thanh toán
           </button>

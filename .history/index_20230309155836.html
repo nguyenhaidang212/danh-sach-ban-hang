@@ -66,11 +66,9 @@
         </div>
         <div class="info"></div>
         <div class="buy">
-          <button id="back" class="back">Back to Shopping</button>
           <div class="total">
             <strong>Total: $</strong>
-            <div class="bill"></div>
-            <button id="buy">Buy</button>
+            <span class="bill"></span>
           </div>
         </div>
       </div>
@@ -84,7 +82,6 @@
         <div class="form_content">
           <div class="form_grid">
             <div class="username">
-              <div class="form_wrong"></div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Họ</span>
                 <input
@@ -94,7 +91,7 @@
                   aria-describedby="basic-addon1"
                 />
               </div>
-              <div class="form_wrong"></div>
+              <div class="form_wrong wrong1"></div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Tên</span>
                 <input
@@ -104,8 +101,8 @@
                   aria-describedby="basic-addon1"
                 />
               </div>
+              <div class="form_wrong wrong2"></div>
             </div>
-            <div class="form_wrong"></div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Email</span>
               <input
@@ -115,7 +112,7 @@
                 aria-describedby="basic-addon1"
               />
             </div>
-            <div class="form_wrong"></div>
+            <div class="form_wrong wrong3"></div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"
                 >Số điện thoại</span
@@ -127,8 +124,9 @@
                 aria-describedby="basic-addon1"
               />
             </div>
-            <div id="address">Địa chỉ</div>
-            <div class="form_wrong form_address"></div>
+            <div class="form_wrong wrong4"></div>
+            <!-- <div id="address">Địa chỉ</div> -->
+            <div class="form_address"></div>
             <div class="address">
               <select
                 class="form-select select-city"
@@ -151,7 +149,7 @@
                 <option selected>--Chọn Xã--</option>
               </select>
             </div>
-            <div class="form_wrong"></div>
+            <div class="form_wrong wrong5"></div>
             <div class="input-group mb-3">
               <input
                 type="text"
@@ -174,67 +172,89 @@
         </div>
         <div class="confirm">
           <button type="button" class="btn btn-primary show btn-confirm">
-            Trang thanh toán
+            Lưu lại
           </button>
         </div>
       </div>
     </main>
     <!-- Trang thanh toan -->
     <main class="main_confirm" style="display: none">
-      <div class="confirm_grid">
-        <div class="confirm_title">
-          <strong>Code</strong>
+      <div class="confirm_header" style="display: none">
+        Bạn chưa nhập thông tin khách hàng
+      </div>
+      <div class="confirm_header2" style="display: none">
+        Bạn chưa lên đơn hàng
+      </div>
+      <div class="confirm_context">
+        <div class="confirm_grid">
+          <div class="confirm_title"><strong>Code</strong></div>
+          <div class="confirm_title"><strong>Customer Name</strong></div>
+          <div class="confirm_title"><strong>Date</strong></div>
+          <div class="confirm_title"><strong>Item Numbers</strong></div>
+          <div class="confirm_title"><strong>Total Quantity</strong></div>
+          <div class="confirm_title"><strong>Totol Price</strong></div>
+          <div class="confirm_title"><strong>Return</strong></div>
         </div>
-        <div class="confirm_title"><strong>Customer Name</strong></div>
-        <div class="confirm_title"><strong>Date</strong></div>
-        <div class="confirm_title"><strong>Item Numbers</strong></div>
-        <div class="confirm_title"><strong>Total Quantity</strong></div>
-        <div class="confirm_title"><strong>Totol Price</strong></div>
-        <div class="confirm_title"><strong>Return</strong></div>
-      </div>
-      <div class="confirm_item_buy" style="display: none">
-        <i class="fa-solid fa-circle-xmark close_list"></i>
-        <div class="item_buy_title">
-          <strong>Name</strong> <strong>Price</strong><strong>Quantity</strong>
+        <div class="confirm_item_buy" style="display: none">
+          <i class="fa-solid fa-circle-xmark close_list"></i>
+          <div class="item_buy_title">
+            <strong>Name</strong> <strong>Price</strong
+            ><strong>Quantity</strong>
+          </div>
+        </div>
+        <div class="confirm_btn">
+          <button class="finish" id="">Creat Order!</button>
         </div>
       </div>
-      <div class="confirm_btn">
-        <button class="back" id="back2">Back to Shopping</button>
-        <button class="finish" id="">Xác nhận</button>
-      </div>
-      <div class="max_item"></div>
     </main>
     <!-- Don hang thanh cong -->
     <main class="success" style="display: none">
-      Bạn đã mua hàng thành công !
+      Bạn đã đặt hàng thành công !
     </main>
     <!-- Trang danh sach don hang -->
     <div id="order" style="display: none">
       <div class="order-menu">
         <div class="order-title">
-          <i class="fa-solid fa-list"></i>
-          <span class="all-orders"
-            >All orders
-            <span class="all-order"></span>
-          </span>
+          <div class="input-group mb-3 order_search">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Tìm đơn hàng theo tên"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+            />
+            <button
+              class="btn btn-outline-secondary btn-search"
+              type="button"
+              id="button-addon2"
+            >
+              Tìm kiếm
+            </button>
+          </div>
         </div>
         <div class="order-gird">
           <strong>Order ID</strong><strong>Customer Name</strong
           ><strong>Status</strong><strong>Total</strong><strong>Created</strong
-          ><strong class="show-detail"></strong>
+          ><strong class="show-detail">Xem chi tiết</strong>
         </div>
       </div>
     </div>
     <div id="order-detail" style="display: none">
       <div class="order-detail-overlay"></div>
+      <div class="order-detail-body">
+        <h1 style="margin-bottom: 12px;">
+          Order details</h1>
+        </div>
+      </div>
     </div>
     <script src="./javascript/variable.js"></script>
+    <script src="./javascript/localStorage.js"></script>
     <script src="./javascript/function.js"></script>
-    <script src="./javascript/display.js"></script>
+    <script src="./javascript/render.js"></script>
     <script src="./javascript/apiVariable.js"></script>
+    <script src="./javascript/handle.js"></script>
     <script src="./javascript/apiFunction.js"></script>
-    <script src="./javascript/validate.js"></script>
-    <script src="./javascript/api.js"></script>
+    <script src="./javascript/validateHandle.js"></script>
     <script src="./javascript/style.js"></script>
   </body>
 </html>
