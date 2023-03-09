@@ -184,9 +184,6 @@ $.addEventListener("click", (e) => {
     document.querySelector(".bill").textContent = totalAll();
   }
   // main_info
-  if (e.target.matches(".header-payment")) {
-    document.querySelector(".main-info").style.display = "block";
-  }
   if (e.target.matches("#buy") || e.target.matches(".payment")) {
     document.querySelector("#order").style.display = "none";
     if (false) {
