@@ -322,4 +322,4 @@ function setListLocalstorage(arr) {
   localStorage.setItem(keyLocalStorageListSP, JSON.stringify(arr));
 }
 
-
+// localStorage.clear();

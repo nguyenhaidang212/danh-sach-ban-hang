@@ -5,7 +5,7 @@ const listData = [
     so_luong: 20,
     gia: 100,
     src: "./imgs/lap1.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const listData = [
     so_luong: 20,
     gia: 500,
     src: "./imgs/lap2.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const listData = [
     so_luong: 20,
     gia: 1000,
     src: "./imgs/lap3.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const listData = [
     so_luong: 20,
     gia: 1200,
     src: "./imgs/lap4.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const listData = [
     so_luong: 20,
     gia: 1400,
     src: "./imgs/lap13.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const listData = [
     so_luong: 20,
     gia: 1500,
     src: "./imgs/lap6.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const listData = [
     so_luong: 20,
     gia: 1600,
     src: "./imgs/lap14.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ const listData = [
     so_luong: 20,
     gia: 1700,
     src: "./imgs/lap8.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ const listData = [
     so_luong: 20,
     gia: 2000,
     src: "./imgs/lap9.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ const listData = [
     so_luong: 20,
     gia: 300,
     src: "./imgs/lap10.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 11,
@@ -85,7 +85,7 @@ const listData = [
     so_luong: 20,
     gia: 400,
     src: "./imgs/lap11.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
   {
     id: 12,
@@ -93,52 +93,17 @@ const listData = [
     so_luong: 20,
     gia: 200,
     src: "./imgs/lap12.png",
-    so_luong_mua: 0,
+    quality: 1,
   },
 ];
 const keyLocalStorageListSP = "DANHSACHSP";
 const keyLocalStorageItemCart = "DANHSACHITEMCART";
-const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
-const userOrder = "Donhang";
-const $ = document.body;
 const listItem = document.querySelector(".list");
+const $ = document.body;
+const item = JSON.parse(localStorage.getItem(keyLocalStorageListSP));
 let orderNumber = 0;
 const arrayItemAdd = [];
 const mainMenu = document.querySelector(".main_menu");
 const mainBuy = document.querySelector(".main_buy");
-const mainInfo = document.querySelector(".main_info");
-const mainPayment = document.querySelector(".main_confirm");
-const mainOrder = document.querySelector("#order");
 const buyDiplay = document.querySelector(".buy");
 const delItem = document.querySelector(".buy-del");
-const home = document.querySelector(".home");
-const info = document.querySelector(".payment");
-const payment = document.querySelector(".header-payment");
-const cart = document.querySelector(".buy_display");
-const order = document.querySelector(".order");
-const formUser = document.querySelector(".form_username");
-const formName = document.querySelector(".form_username2");
-const formEmail = document.querySelector(".form_email");
-const formNumber = document.querySelector(".form_number");
-const arrList = [];
-const apiOrders = [];
-const selectCity = document.querySelector(".select-city");
-const selectDistrict = document.querySelector(".select-district");
-const selectWard = document.querySelector(".select-ward");
-const optionCity = document.querySelector(".option-city");
-const btnConfirm = document.querySelector(".btn-confirm");
-const input = document.querySelectorAll("input");
-const formSelect = document.querySelectorAll(".form-select");
-const arrayCity = [];
-const arrayDistric = [];
-const arrayWard = [];
-let city = [];
-let district = [];
-let ward = [];
-let email = "";
-let sodienthoai = "";
-let message = "";
-let ho = "";
-let ten = "";
-let address = "";
-const date = new Date();
