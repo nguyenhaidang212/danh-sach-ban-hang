@@ -19,48 +19,6 @@ function totalAll() {
   document.querySelector(".bill").textContent = total;
   return total;
 }
-function minusItem(name, value) {
-  const list = getItemList();
-  const newList = getList();
-  list.forEach((e, index) => {
-    if (e.name == name) {
-      e.so_luong_mua--;
-      e.so_luong++;
-      newList.forEach((item) => {
-        if (item.name == e.name) {
-          item.so_luong++;
-          item.so_luong_mua--;
-        }
-      });
-      if (e.so_luong_mua == 0) {
-        list.splice(index, 1);
-        value.remove();
-      }
-    }
-  });
-  setListLocalstorage(newList);
-  setListItem(list);
-  displayItem(list);
-}
-function plusItem(name) {
-  const list = getItemList();
-  const newList = getList();
-  list.forEach((e) => {
-    if (e.name == name.parentNode.previousElementSibling.textContent) {
-      e.so_luong_mua++;
-      e.so_luong--;
-      newList.forEach((item) => {
-        if (item.name == e.name) {
-          item.so_luong--;
-          item.so_luong_mua++;
-        }
-      });
-    }
-  });
-  setListLocalstorage(newList);
-  setListItem(list);
-  displayItem(list);
-}
 //-----Random ID using Date()
 function randomID() {
   const time = new Date().getTime();
@@ -71,7 +29,6 @@ function styleApiOrder() {
     e.style.display = "flex";
   });
 }
-//-----Create order----
 function createOrder() {
   let cityName, districtName, wardName;
   arrayCity.forEach((e) => {
@@ -123,7 +80,6 @@ function createOrder() {
     alert("Lưu thông tin thành công");
   }
 }
-//-----Return item buy-----
 function returnItem() {
   document.querySelectorAll(".confirm_order").forEach((e) => e.remove());
   const listItem = getItemList();
@@ -141,7 +97,48 @@ function returnItem() {
   totalAll();
   countItem();
 }
-//-----Delete item buy to form-----
+function minusItem(name, value) {
+  const list = getItemList();
+  const newList = getList();
+  list.forEach((e, index) => {
+    if (e.name == name) {
+      e.so_luong_mua--;
+      e.so_luong++;
+      newList.forEach((item) => {
+        if (item.name == e.name) {
+          item.so_luong++;
+          item.so_luong_mua--;
+        }
+      });
+      if (e.so_luong_mua == 0) {
+        list.splice(index, 1);
+        value.remove();
+      }
+    }
+  });
+  setListLocalstorage(newList);
+  setListItem(list);
+  displayItem(list);
+}
+function plusItem(name) {
+  const list = getItemList();
+  const newList = getList();
+  list.forEach((e) => {
+    if (e.name == name.parentNode.previousElementSibling.textContent) {
+      e.so_luong_mua++;
+      e.so_luong--;
+      newList.forEach((item) => {
+        if (item.name == e.name) {
+          item.so_luong--;
+          item.so_luong_mua++;
+        }
+      });
+    }
+  });
+  setListLocalstorage(newList);
+  setListItem(list);
+  displayItem(list);
+}
 function delItemBuy(name, value) {
   value.remove();
   const newList = getItemList();
@@ -163,7 +160,6 @@ function delItemBuy(name, value) {
     document.querySelector("#main_buy").style.display = "none";
   }
 }
-//-----Add list item buy to local-----
 function getItemBuy(name) {
   const newList = [];
   const itemList = getItemList();
@@ -187,7 +183,6 @@ function getItemBuy(name) {
   setListLocalstorage(newList);
   listItemRender(newList);
 }
-//-----Delete data localUser-----
 function deleteData() {
   setOrder([]);
   setListItem([]);
@@ -198,7 +193,6 @@ function deleteData() {
   setListLocalstorage(list);
   deleteInfo();
 }
-//-----Delete info-----
 function deleteInfo() {
   document.querySelectorAll(".form-control").forEach((e) => (e.value = ""));
   document.querySelector("textarea").value = "";
@@ -226,6 +220,23 @@ function check(value) {
 function formWrong() {
   document.querySelectorAll(".form_wrong").forEach((e) => {
     e.textContent = "";
+  });
+}
+//-----Choose district-----
+function districChoose() {
+  const district = document.querySelectorAll(".district");
+  district.forEach((e) => {
+    e.remove();
+  });
+  arrayDistric.forEach((e) => {
+    if (e.province_code == selectCity.value) {
+      selectDistrict.insertAdjacentHTML(
+        "afterbegin",
+        `
+          <option select value="${e.code}" class="district">${e.name}</option>
+          `
+      );
+    }
   });
 }
 //-----Choose district-----

@@ -5,7 +5,11 @@ home.addEventListener("click", (e) => {
   listItemRender(getList());
   formWrong();
 });
-
+laptop.addEventListener("click", (e) => {
+  displayHide(mainMenu, home);
+  listItemRender(getList());
+  formWrong();
+});
 cart.addEventListener("click", (e) => {
   displayHide(mainBuy, e.target);
   if (getItemList().length == 0) {

@@ -30,11 +30,11 @@ payment.addEventListener("click", (e) => {
 order.addEventListener("click", (e) => {
   apiOrders.splice(0, apiOrders.length);
   document.querySelectorAll(".order-detail").forEach((e) => e.remove());
-  displayHide(mainOrder, e.target);
   getApi().then((data) => {
     data.forEach((value) => {
       apiOrders.push(value);
     });
+    console.log(apiOrders);
   });
 });
 // Thao tác trên app

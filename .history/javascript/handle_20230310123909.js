@@ -35,6 +35,7 @@ order.addEventListener("click", (e) => {
     data.forEach((value) => {
       apiOrders.push(value);
     });
+    console.log(apiOrders);
   });
 });
 // Thao tác trên app

@@ -42,6 +42,7 @@ function minusItem(name, value) {
   setListItem(list);
   displayItem(list);
 }
+
 function plusItem(name) {
   const list = getItemList();
   const newList = getList();
