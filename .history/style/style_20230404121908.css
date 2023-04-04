@@ -546,7 +546,6 @@ textarea {
   height: fit-content;
   max-height: 280px;
   scroll-behavior: smooth;
-  overflow-y: scroll;
 }
 .show-detail-item {
   color: #0d6efd;
@@ -554,7 +553,7 @@ textarea {
 }
 .detail-list-title {
   display: grid;
-  grid-template-columns: 20% 60% 10%;
+  grid-template-columns: 20% 65% 10%;
   column-gap: 20px;
 }
 #list-item-name {

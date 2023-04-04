@@ -554,7 +554,7 @@ textarea {
 }
 .detail-list-title {
   display: grid;
-  grid-template-columns: 20% 60% 10%;
+  grid-template-columns: 10% 65% 10%;
   column-gap: 20px;
 }
 #list-item-name {

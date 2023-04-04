@@ -42,7 +42,7 @@ function renderOrderLists(value) {
     document.querySelector(".order-gird").insertAdjacentHTML(
       "beforeend",
       `
-        <span class="order-detail"> ${order.info.orderNumber}</span><span id="username" class="order-detail"> ${order.info.username}</span
+        <span class="order-detail"> ${order.info.orderNumber}</span><span class="order-detail username"> ${order.info.username}</span
       //   ><span class="order-detail">Đang xử lý</span><span class="order-detail"> ${order.total}$</span><span class="order-detail"> ${order.info.date}</span
       //   ><span class="order-detail show-detail">...</span>
         `
@@ -74,7 +74,7 @@ function renderOrderList(value) {
           "beforeend",
           `
             <div class="detail-list-title">
-              <span>Sản phẩm ${index + 1}:</span>
+              <span>${index + 1}</span>
              <span>${value.name}</span>
             <span>${value.so_luong_mua} cái</span>
            </div>

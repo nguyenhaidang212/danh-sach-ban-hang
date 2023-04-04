@@ -74,7 +74,7 @@ function renderOrderList(value) {
           "beforeend",
           `
             <div class="detail-list-title">
-              <span>Sản phẩm ${index + 1}:</span>
+              <span>${index + 1}</span>
              <span>${value.name}</span>
             <span>${value.so_luong_mua} cái</span>
            </div>
