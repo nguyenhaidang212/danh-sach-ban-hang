@@ -16,11 +16,9 @@ cart.addEventListener("click", (e) => {
     displayItem(getItemList());
     totalAll();
   }
-  formWrong();
 });
 info.addEventListener("click", (e) => {
   displayHide(mainInfo, e.target);
-  formWrong();
 });
 const arrayID = [];
 payment.addEventListener("click", (e) => {
@@ -29,7 +27,6 @@ payment.addEventListener("click", (e) => {
   totalAll();
   displayHide(mainPayment, e.target);
   renderOrder();
-  formWrong();
 });
 order.addEventListener("click", (e) => {
   document.querySelectorAll(".order-detail").forEach((e) => e.remove());

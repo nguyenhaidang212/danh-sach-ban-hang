@@ -76,7 +76,7 @@ function renderOrderList(value) {
             <div class="detail-list-title">
               <span>${index + 1}</span>
              <span>${value.name}</span>
-            <span>${value.so_luong_mua} cái</span>
+            <span>${value.so_luong_mua}</span>
            </div>
           `
         );

@@ -60,10 +60,13 @@ function renderOrderList(value) {
       <span>Phone number</span><span>${order.info.sodienthoai}</span>
       <span>Email</span><span>${order.info.email}</span>
       <span>Address</span><span>${order.info.address}</span>
-      <span>Message</span><span id="message">${order.info.message}</span>
+      <span id="message">Message</span><span>${order.info.message}</span>
       <span>List items</span>
       <div class="order-detail-list">
         <div class="detail-list-title">
+          <span>No.</span>
+          <span>Product</span>
+          <span>Quantity</span>
         </div>
       </div>
     </div>
@@ -76,7 +79,7 @@ function renderOrderList(value) {
             <div class="detail-list-title">
               <span>${index + 1}</span>
              <span>${value.name}</span>
-            <span>${value.so_luong_mua} cái</span>
+            <span>${value.so_luong_mua}</span>
            </div>
           `
         );
