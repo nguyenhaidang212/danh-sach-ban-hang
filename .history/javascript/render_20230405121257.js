@@ -51,7 +51,6 @@ function renderOrderLists(value) {
     );
   });
 }
-// show detail purchased order
 function renderOrderList(value) {
   arrList.forEach((order) => {
     if (order.info.orderNumber == value) {
@@ -87,21 +86,20 @@ function renderOrderList(value) {
     }
   });
 }
-// show order ready to pay
 function renderOrder() {
   const order = getOrder();
   const item = getItemList();
   if (order.length == 0) {
     document.querySelector(".confirm_header").style.display = "block";
-    document.querySelector(".confirm_header2").style.display = "none";
     document.querySelector(".confirm_context").style.display = "none";
+    document.querySelector(".confirm_header2").style.display = "none";
   } else if (item.length == 0) {
     document.querySelector(".confirm_header").style.display = "none";
     document.querySelector(".confirm_header2").style.display = "block";
     document.querySelector(".confirm_context").style.display = "none";
   } else {
-    document.querySelector(".confirm_header").style.display = "none";
     document.querySelector(".confirm_header2").style.display = "none";
+    document.querySelector(".confirm_header").style.display = "none";
     document.querySelector(".confirm_context").style.display = "block";
     render(item, order);
   }
@@ -137,7 +135,6 @@ function listItemRender(arr) {
     listItem.insertAdjacentHTML("beforeend", template);
   });
 }
-// show the list of products are buying
 function displayItem(arr) {
   document.querySelectorAll(".list_buy").forEach((e) => e.remove());
   arr.forEach((e) => {
