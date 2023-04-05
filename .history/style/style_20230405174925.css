@@ -211,8 +211,10 @@ main {
   height: 60px;
   text-align: left;
   line-height: 30px;
-  margin-right: 45px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-right: 45px;
 }
 .buy-quality {
   width: 150px;

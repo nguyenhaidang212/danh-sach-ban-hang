@@ -33,11 +33,11 @@ function validateForm() {
     document.querySelector(".wrong2").textContent =
       "Bạn cần nhập thông tin ở trên";
   }
-  if (formEmail.value == "") {
+  if (email == "") {
     document.querySelector(".wrong3").textContent =
       "Bạn cần nhập thông tin ở trên";
   }
-  if (formNumber.value == "" || sodienthoai.length != 10) {
+  if (sodienthoai == "" || sodienthoai.length != 10) {
     document.querySelector(".wrong4").textContent =
       "Bạn cần nhập thông tin ở trên";
   }

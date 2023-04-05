@@ -84,7 +84,6 @@ $.addEventListener("click", (e) => {
     countItem();
   }
   if (e.target.matches(".show")) {
-    setOrder([]);
     validateForm();
     createOrder();
     getApi().then((data) => {

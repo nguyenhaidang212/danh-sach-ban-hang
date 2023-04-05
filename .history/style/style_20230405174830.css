@@ -208,11 +208,14 @@ main {
 }
 .buy-name {
   width: 600px;
-  height: 60px;
+  height: 30px;
   text-align: left;
-  line-height: 30px;
-  margin-right: 45px;
+  line-height: 60px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   overflow: hidden;
+  -webkit-line-clamp: 1;
+  margin-right: 45px;
 }
 .buy-quality {
   width: 150px;

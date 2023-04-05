@@ -207,12 +207,10 @@ main {
   max-height: 400px;
 }
 .buy-name {
-  width: 600px;
   height: 60px;
-  text-align: left;
+  text-align: center;
   line-height: 30px;
   margin-right: 45px;
-  overflow: hidden;
 }
 .buy-quality {
   width: 150px;

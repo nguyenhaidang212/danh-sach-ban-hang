@@ -211,8 +211,8 @@ main {
   height: 60px;
   text-align: left;
   line-height: 30px;
+  /* overflow: hidden; */
   margin-right: 45px;
-  overflow: hidden;
 }
 .buy-quality {
   width: 150px;
