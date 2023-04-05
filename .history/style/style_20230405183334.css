@@ -19,6 +19,9 @@
   padding: 10px 100px 10px;
   justify-content: space-between;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  z-index: 2;
 }
 .header-title {
   display: flex;
@@ -164,6 +167,9 @@ main {
   top: 3px;
 }
 /* main_buy */
+.main_buy {
+  margin-top: 100px;
+}
 .back,
 .finish {
   background-color: #fe6332;

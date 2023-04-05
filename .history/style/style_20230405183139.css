@@ -12,6 +12,9 @@
   margin-bottom: 20px;
 }
 /* header */
+header {
+  position: sticky;
+}
 .header {
   display: flex;
   border-bottom: 1px solid #eee;
@@ -59,6 +62,16 @@ li:hover {
 .home {
   color: red;
 }
+/* .header-menu::after {
+  width: 40px;
+  height: 2px;
+  background-color: red;
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 0;
+  transition: transform linear 0.1s;
+} */
 
 .header-menu {
   text-decoration: none;

@@ -164,6 +164,9 @@ main {
   top: 3px;
 }
 /* main_buy */
+.main_buy {
+  margin-top: 100px;
+}
 .back,
 .finish {
   background-color: #fe6332;

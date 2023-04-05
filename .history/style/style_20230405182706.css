@@ -59,6 +59,16 @@ li:hover {
 .home {
   color: red;
 }
+/* .header-menu::after {
+  width: 40px;
+  height: 2px;
+  background-color: red;
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 0;
+  transition: transform linear 0.1s;
+} */
 
 .header-menu {
   text-decoration: none;
@@ -198,10 +208,9 @@ main {
 }
 #buy-img {
   width: 100px;
-  margin-top: -10px;
 }
 .buy-name {
-  width: 500px;
+  width: 600px;
   height: 60px;
   text-align: left;
   line-height: 30px;

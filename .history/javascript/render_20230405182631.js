@@ -147,7 +147,7 @@ function displayItem(arr) {
         buyDiplay.insertAdjacentHTML(
           "beforebegin",
           `<div class="list_buy">
-          <img id="buy-img" src="${value.src}" alt="">
+          <img src="" alt="">
           <div class="buy-name">${value.name}</div>
           <div class="buy-quality">
           <i class="fa-solid fa-minus minus-icon"></i>

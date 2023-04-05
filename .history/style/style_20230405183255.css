@@ -19,6 +19,8 @@
   padding: 10px 100px 10px;
   justify-content: space-between;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
 }
 .header-title {
   display: flex;

@@ -19,6 +19,7 @@
   padding: 10px 100px 10px;
   justify-content: space-between;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
+  position: sticky;
 }
 .header-title {
   display: flex;
@@ -59,6 +60,16 @@ li:hover {
 .home {
   color: red;
 }
+/* .header-menu::after {
+  width: 40px;
+  height: 2px;
+  background-color: red;
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 0;
+  transition: transform linear 0.1s;
+} */
 
 .header-menu {
   text-decoration: none;
