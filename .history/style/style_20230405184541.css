@@ -40,10 +40,6 @@
   margin-top: 10px;
   position: relative;
 }
-.header-menu2 {
-  display: none;
-  cursor: pointer;
-}
 .latop {
   cursor: pointer;
 }
@@ -91,7 +87,6 @@ main {
 }
 .list {
   display: grid;
-  width: 800px;
   margin: auto;
   grid-template-columns: 25% 25% 25% 25%;
   column-gap: 10px;

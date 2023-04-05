@@ -1,0 +1,7 @@
+@media (max-width: 1200px) {
+  .list {
+    display: grid;
+    width: 600px;
+    grid-template-columns: 30% 30% 30%;
+  }
+}

@@ -1,0 +1,9 @@
+@media (max-width: 1200px) {
+  .list {
+    display: grid;
+    width: 400px;
+    margin: auto;
+    grid-template-columns: 30% 30% 30%;
+    text-align: center;
+  }
+}

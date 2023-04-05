@@ -1,0 +1,10 @@
+@media (max-width: 1200px) {
+  .list {
+    display: grid;
+    margin: 0 225px;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: 10px;
+    row-gap: 20px;
+    text-align: center;
+  }
+}
