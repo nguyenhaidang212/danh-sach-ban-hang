@@ -48,10 +48,10 @@ function plusItem(name) {
   list.forEach((e) => {
     if (e.name == name.parentNode.previousElementSibling.textContent) {
       e.countItemBuy++;
-      e.countItem--;
+      e.so_luong--;
       newList.forEach((item) => {
         if (item.name == e.name) {
-          item.countItem--;
+          item.so_luong--;
           item.countItemBuy++;
         }
       });
@@ -183,7 +183,7 @@ function getItemBuy(name) {
       if (e.countItem == 0) {
         value.preventDefault();
       }
-      e.countItem--;
+      e.so_luong--;
       e.countItemBuy++;
       itemList.forEach((item, index) => {
         if (item.name == e.name) {
