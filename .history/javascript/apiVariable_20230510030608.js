@@ -2,6 +2,7 @@ const optionCity = document.querySelector(".option-city");
 const arrayCity = [];
 const arrayDistric = [];
 const arrayWard = [];
+
 const promiseCity = fetch("https://provinces.open-api.vn/api/");
 const promiseDistrict = fetch("https://provinces.open-api.vn/api/d/");
 const proemiseWard = fetch("https://provinces.open-api.vn/api/w/");
