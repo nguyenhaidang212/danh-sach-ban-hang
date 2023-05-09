@@ -351,7 +351,7 @@ textarea {
 .form_title {
   display: flex;
   justify-content: space-between;
-  margin: 12px 20px;
+  margin: 20px;
 }
 .form_content {
   border-top: 1px solid #eee;
