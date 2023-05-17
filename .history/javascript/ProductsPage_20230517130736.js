@@ -10,6 +10,7 @@ cart.addEventListener("click", (e) => {
       arrId.push(item.info.orderNumber);
     });
   });
+
   displayHide(mainBuy, e.target);
   if (getItemList().length === 0) {
     document.querySelector(".img").style.display = "block";

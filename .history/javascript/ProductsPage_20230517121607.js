@@ -4,11 +4,7 @@ cart.addEventListener("click", (e) => {
   document.querySelector(".order_success").style.display = "none";
   api.getApi().then((data) => {
     apiOrders.splice(0, apiOrders.length);
-    arrId.splice(0, arrId.length);
-    data.forEach((item) => {
-      apiOrders.push(item);
-      arrId.push(item.info.orderNumber);
-    });
+    data.forEach((item) => apiOrders.push(item));
   });
   displayHide(mainBuy, e.target);
   if (getItemList().length === 0) {
@@ -53,6 +49,10 @@ $.addEventListener("click", (e) => {
   }
   //   Xác nhận mua hàng
   if (e.target.matches(".btn_buy")) {
+    api.getApi().then((data) => {
+      arrId.splice(0, arrId.length);
+      data.forEach((value) => arrId.push(value.info.orderNumber));
+    });
     if (arrayCity) {
       document.querySelectorAll(".city-choose").forEach((e) => e.remove());
       arrayCity.forEach((e) => {

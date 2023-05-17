@@ -1,3 +1,4 @@
+import { checkID } from "./randomID";
 // Trang thông tin
 
 const arrId = [];
@@ -125,6 +126,7 @@ function createOrder() {
     };
     setOrder(orderUser);
     checkID();
+    // document.querySelector(".order_success").style.display = "block";
     document.querySelector(".orders_content").style.display = "block";
     document.querySelector(".img_order").style.display = "none";
     document.querySelector(".overlay").style.display = "none";
@@ -146,6 +148,8 @@ function createOrder() {
     totalAll();
     countItem();
     myFunction(create);
+    // setTimeout(showPage, 3000);
+    // myFunction();
   }
 }
 //-----RandomID + UniqueID function-----

@@ -1,5 +1,4 @@
 // Trang thông tin
-
 const arrId = [];
 $.addEventListener("click", (e) => {
   // Xác nhận mua đơn hàng
@@ -125,6 +124,7 @@ function createOrder() {
     };
     setOrder(orderUser);
     checkID();
+    // document.querySelector(".order_success").style.display = "block";
     document.querySelector(".orders_content").style.display = "block";
     document.querySelector(".img_order").style.display = "none";
     document.querySelector(".overlay").style.display = "none";
@@ -145,7 +145,9 @@ function createOrder() {
     deleteData();
     totalAll();
     countItem();
-    myFunction(create);
+    myFunction();
+    // setTimeout(showPage, 3000);
+    // myFunction();
   }
 }
 //-----RandomID + UniqueID function-----
@@ -212,18 +214,18 @@ getWardsApi().then((data) => {
   });
 });
 let myVar;
-function myFunction(obj) {
-  api.postApi(obj);
-  document.getElementById("loader").style.display = "block";
-  myVar = setTimeout(showPage, 500);
-}
-function showPage() {
+function myFunction() {
+  api.postApi(create);
   api.getApi().then((data) => {
     apiOrders.splice(0, apiOrders.length);
     data.forEach((item) => {
       apiOrders.push(item);
     });
   });
+  document.getElementById("loader").style.display = "block";
+  myVar = setTimeout(showPage, 500);
+}
+function showPage() {
   document.getElementById("loader").style.display = "none";
   document.getElementById("myDiv").style.display = "block";
 }

@@ -1,5 +1,4 @@
 // Trang thông tin
-
 const arrId = [];
 $.addEventListener("click", (e) => {
   // Xác nhận mua đơn hàng
@@ -103,7 +102,7 @@ function createOrder() {
     ten != false
   ) {
     const orderUser = {
-      orderNumber: Math.floor(Math.random() * 1000000),
+      orderNumber: Math.floor(Math.random() * 5),
       date:
         date.getFullYear() +
         "/" +
@@ -123,8 +122,9 @@ function createOrder() {
         cityName,
       message: document.querySelector("textarea").value,
     };
+    checkID(arrId);
     setOrder(orderUser);
-    checkID();
+    // document.querySelector(".order_success").style.display = "block";
     document.querySelector(".orders_content").style.display = "block";
     document.querySelector(".img_order").style.display = "none";
     document.querySelector(".overlay").style.display = "none";
@@ -142,17 +142,20 @@ function createOrder() {
       item,
       total: totalAll(),
     };
+    api.postApi(create);
     deleteData();
     totalAll();
     countItem();
-    myFunction(create);
+    myFunction();
+    // setTimeout(showPage, 3000);
+    // myFunction();
   }
 }
 //-----RandomID + UniqueID function-----
-function checkID() {
+function checkID(arr) {
   const order = getOrder();
-  if (arrId?.includes(order.orderNumber)) {
-    order.orderNumber = Math.floor(Math.random() * 1000000);
+  if (arr.includes(order.orderNumber)) {
+    order.orderNumber = Math.floor(Math.random() * 5);
     setOrder(order);
     checkID();
   } else {
@@ -212,18 +215,17 @@ getWardsApi().then((data) => {
   });
 });
 let myVar;
-function myFunction(obj) {
-  api.postApi(obj);
-  document.getElementById("loader").style.display = "block";
-  myVar = setTimeout(showPage, 500);
-}
-function showPage() {
+function myFunction() {
   api.getApi().then((data) => {
     apiOrders.splice(0, apiOrders.length);
     data.forEach((item) => {
       apiOrders.push(item);
     });
   });
+  document.getElementById("loader").style.display = "block";
+  myVar = setTimeout(showPage, 500);
+}
+function showPage() {
   document.getElementById("loader").style.display = "none";
   document.getElementById("myDiv").style.display = "block";
 }

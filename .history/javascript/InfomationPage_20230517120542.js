@@ -1,12 +1,15 @@
 // Trang thông tin
-
-const arrId = [];
 $.addEventListener("click", (e) => {
   // Xác nhận mua đơn hàng
   if (e.target.matches(".btn-confirm")) {
     setOrder([]);
     validateForm();
     createOrder();
+    // api.getApi1().then((data) => {
+    //   data.forEach((value) => {
+    //     arrayID.push(value.info.orderNumber);
+    //   });
+    // });
   }
   // Đóng form thông tin
   if (e.target.matches(".buy_form_close")) {
@@ -102,8 +105,14 @@ function createOrder() {
     ho != false &&
     ten != false
   ) {
+    const arrId = [];
+    api
+      .getApi()
+      .then((data) =>
+        data.forEach((value) => arrId.push(value.info.orderNumber))
+      );
     const orderUser = {
-      orderNumber: Math.floor(Math.random() * 1000000),
+      orderNumber: Math.floor(Math.random() * 100000),
       date:
         date.getFullYear() +
         "/" +
@@ -124,7 +133,7 @@ function createOrder() {
       message: document.querySelector("textarea").value,
     };
     setOrder(orderUser);
-    checkID();
+    document.querySelector(".order_success").style.display = "block";
     document.querySelector(".orders_content").style.display = "block";
     document.querySelector(".img_order").style.display = "none";
     document.querySelector(".overlay").style.display = "none";
@@ -142,17 +151,23 @@ function createOrder() {
       item,
       total: totalAll(),
     };
+    api.postApi(create);
+    api.getApi().then((data) => {
+      apiOrders.splice(0, apiOrders.length);
+      data.forEach((item) => {
+        apiOrders.push(item);
+      });
+    });
     deleteData();
     totalAll();
     countItem();
-    myFunction(create);
   }
 }
-//-----RandomID + UniqueID function-----
+//-----RandomID function-----
 function checkID() {
   const order = getOrder();
-  if (arrId?.includes(order.orderNumber)) {
-    order.orderNumber = Math.floor(Math.random() * 1000000);
+  if (arrayID.includes(order.orderNumber)) {
+    order.orderNumber = Math.floor(Math.random() * 100000);
     setOrder(order);
     checkID();
   } else {
@@ -211,19 +226,3 @@ getWardsApi().then((data) => {
     arrayWard.push(item);
   });
 });
-let myVar;
-function myFunction(obj) {
-  api.postApi(obj);
-  document.getElementById("loader").style.display = "block";
-  myVar = setTimeout(showPage, 500);
-}
-function showPage() {
-  api.getApi().then((data) => {
-    apiOrders.splice(0, apiOrders.length);
-    data.forEach((item) => {
-      apiOrders.push(item);
-    });
-  });
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "block";
-}

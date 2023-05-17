@@ -146,6 +146,8 @@ function createOrder() {
     totalAll();
     countItem();
     myFunction(create);
+    // setTimeout(showPage, 3000);
+    // myFunction();
   }
 }
 //-----RandomID + UniqueID function-----
